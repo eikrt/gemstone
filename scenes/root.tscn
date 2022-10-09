@@ -10,6 +10,7 @@ background_mode = 1
 [node name="Root" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_17fqk")]
+weight = 1.0
 
 [node name="DirectionalLight3d" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.493244, 0.869891, 0, -0.869891, 0.493244, 0, 36.447, 61.5198)
