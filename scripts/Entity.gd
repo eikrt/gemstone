@@ -1,9 +1,30 @@
-extends Entity
-class_name Player
+extends CharacterBody3D
+class_name Entity
 
+const SPEED = 5.0
+const JUMP_VELOCITY = 8.0
+var angle = 0.0
+@export var weight: float
+# Get the gravity from the project settings to be synced with RigidBody nodes.
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-func handle_input(delta):
-		# Handle Jump.
+func process_rays(delta):
+	if $RayCast3d.is_colliding():
+		print($RayCast3d.get_collision_point())
+		$BlobShadow.set_global_position($RayCast3d.get_collision_point())
+		$BlobShadow.position.y += 0.2
+		$BlobShadow.position.z += 0.2
+		var bscale = 1 /( (position.y + $AnimatedSprite3d.scale.y - $BlobShadow.position.y) / 6) 
+		$BlobShadow.scale.x = bscale
+		$BlobShadow.scale.y = bscale
+func _physics_process(delta):
+	# Add the gravity.
+	process_rays(delta)
+	Globaldata.playerPosition = position
+	if not is_on_floor():
+		velocity.y -= weight * gravity * delta
+
+	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	
@@ -35,14 +56,5 @@ func handle_input(delta):
 		pass
 	if Input.is_action_pressed("ui_down"):
 		pass
-func _physics_process(delta):
-	# Add the gravity.
-	process_rays(delta)
-	handle_input(delta)
-	Globaldata.playerPosition = position
-	if not is_on_floor():
-		velocity.y -= weight * gravity * delta
-
-
 	move_and_slide()
 	

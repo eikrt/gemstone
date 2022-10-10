@@ -8,6 +8,22 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "CharacterBody3D",
+"class": &"Entity",
+"language": &"GDScript",
+"path": "res://scripts/Entity.gd"
+}, {
+"base": "Entity",
+"class": &"Player",
+"language": &"GDScript",
+"path": "res://scripts/player.gd"
+}]
+_global_script_class_icons={
+"Entity": "",
+"Player": ""
+}
+
 [application]
 
 config/name="Eino"
