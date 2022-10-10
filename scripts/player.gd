@@ -8,10 +8,18 @@ var angle = 0.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-
+func process_rays(delta):
+	if $RayCast3d.is_colliding():
+		print($RayCast3d.get_collision_point())
+		$BlobShadow.set_global_position($RayCast3d.get_collision_point())
+		$BlobShadow.position.y += 0.2
+		$BlobShadow.position.z += 0.2
+		var bscale = 1 /( (position.y + $AnimatedSprite3d.scale.y - $BlobShadow.position.y) / 6) 
+		$BlobShadow.scale.x = bscale
+		$BlobShadow.scale.y = bscale
 func _physics_process(delta):
 	# Add the gravity.
-	
+	process_rays(delta)
 	Globaldata.playerPosition = position
 	if not is_on_floor():
 		velocity.y -= weight * gravity * delta
@@ -34,7 +42,6 @@ func _physics_process(delta):
 	input = input.normalized()
 	if (velocity.x < -0.1 || velocity.x > 0.1) || (velocity.z < -0.1 || velocity.z > 0.1):
 		$AnimatedSprite3d.playing = true
-		print(velocity.z)
 	else:
 		$AnimatedSprite3d.playing = false
 	

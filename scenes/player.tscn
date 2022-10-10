@@ -4,10 +4,9 @@
 [ext_resource type="Script" path="res://scripts/Anchor.gd" id="2_pklkp"]
 [ext_resource type="Texture2D" uid="uid://bjsqyjfxyj4oc" path="res://res/writer.png" id="3_id7fj"]
 [ext_resource type="Texture2D" uid="uid://crf3b5bjrwn0o" path="res://res/writer2.png" id="4_uilbf"]
+[ext_resource type="Texture2D" uid="uid://c72dnfbgybkr3" path="res://res/blobshadow.png" id="5_rw6v6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_atvgt"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_cnnhc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_awk0o"]
 animations = [{
@@ -19,13 +18,10 @@ animations = [{
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_fkyhf")
+weight = 1.0
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_atvgt")
-
-[node name="MeshInstance3d" type="MeshInstance3D" parent="."]
-visible = false
-mesh = SubResource("BoxMesh_cnnhc")
 
 [node name="Anchor" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.26719, 3.01738)
@@ -37,3 +33,12 @@ billboard = 2
 texture_filter = 2
 frames = SubResource("SpriteFrames_awk0o")
 frame = 1
+
+[node name="RayCast3d" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25788, 0)
+target_position = Vector3(0, -20, 0)
+
+[node name="BlobShadow" type="Sprite3D" parent="."]
+transform = Transform3D(0.999991, -0.000227059, -0.00432244, 0.0043284, 0.0524575, 0.998614, 0, -0.998623, 0.052458, -0.00197632, -0.438395, 0.0024531)
+texture_filter = 2
+texture = ExtResource("5_rw6v6")
