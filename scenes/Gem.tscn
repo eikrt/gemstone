@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://jwq2by20updm"]
+
+[ext_resource type="Script" path="res://scripts/Gem.gd" id="1_10bly"]
+[ext_resource type="Texture2D" uid="uid://burdxcnysniyk" path="res://res/ruby.png" id="2_eop46"]
+[ext_resource type="Texture2D" uid="uid://c72dnfbgybkr3" path="res://res/blobshadow.png" id="5_y0vtv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_atvgt"]
+
+[sub_resource type="Animation" id="Animation_72ck3"]
+resource_name = "New Anim"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3d:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_e6kdi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3d:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w1w14"]
+_data = {
+"New Anim": SubResource("Animation_72ck3"),
+"RESET": SubResource("Animation_e6kdi")
+}
+
+[node name="Gem" type="Area3D"]
+script = ExtResource("1_10bly")
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_atvgt")
+
+[node name="RayCast3d" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25788, 0)
+target_position = Vector3(0, -20, 0)
+
+[node name="BlobShadow" type="Sprite3D" parent="."]
+transform = Transform3D(0.999991, -0.000227059, -0.00432244, 0.0043284, 0.0524575, 0.998614, 0, -0.998623, 0.052458, -0.00197632, -0.438395, 0.0024531)
+texture_filter = 2
+texture = ExtResource("5_y0vtv")
+
+[node name="Sprite3d" type="Sprite3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+texture_filter = 2
+texture = ExtResource("2_eop46")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "New Anim"
+libraries = {
+"": SubResource("AnimationLibrary_w1w14")
+}
+
+[connection signal="area_entered" from="." to="." method="_on_gem_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_gem_body_entered"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://crf6mw8ym0glc"]
+
+[ext_resource type="FontFile" uid="uid://b0fc2wrdiwrgb" path="res://fonts/8bit/OldSchoolAdventures-42j9.ttf" id="1_4xe5e"]
+[ext_resource type="Script" path="res://scenes/GemsLabel.gd" id="2_fng7j"]
+
+[node name="Hud" type="Node2D"]
+
+[node name="Gems" type="Label" parent="."]
+offset_left = 15.0
+offset_top = 13.0
+offset_right = 95.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("1_4xe5e")
+theme_override_font_sizes/font_size = 18
+text = "Gems: "
+script = ExtResource("2_fng7j")
