@@ -4,6 +4,7 @@ class_name Player
 signal toOrtho
 signal toPerspective
 signal toUp
+signal setShader(shader)
 var itemInVicinity = null
 var holdingItem = false
 func get_class():
@@ -50,13 +51,17 @@ func handle_input(delta):
 		if orientation == "zlocked" || orientation == "xlocked":
 			currentSprite.flip_h = false
 	if Input.is_action_just_pressed("e"):
-		holdingItem = !holdingItem
-		if !holdingItem:
-			itemInVicinity.position = Vector3(position.x, position.y, position.z)
-			itemInVicinity.holded = holdingItem
+		if is_on_floor():
+			holdingItem = !holdingItem
+			if !holdingItem:
+				itemInVicinity.position = Vector3(position.x, position.y, position.z)
+				itemInVicinity.holded = holdingItem
+				emit_signal("setShader", "none")
 	if holdingItem:
 		itemInVicinity.holded = holdingItem
 		itemInVicinity.position = Vector3(position.x, position.y + 1, position.z)
+		emit_signal("setShader", "pixel")
+
 	
 	input = input.normalized()
 	if (velocity.x < -0.1 || velocity.x > 0.1) || (velocity.z < -0.1 || velocity.z > 0.1):

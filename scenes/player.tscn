@@ -62,7 +62,9 @@ script = ExtResource("2_pklkp")
 
 [node name="BackSprite" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(5.34774, 0, 0, 0, 5.65734, 0, 0, 0, 1, 0, 0.155233, 0)
+cast_shadow = 0
 billboard = 2
+alpha_cut = 1
 texture_filter = 2
 frames = SubResource("SpriteFrames_awk0o")
 playing = true
@@ -70,21 +72,27 @@ playing = true
 [node name="SideSprite" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(5.34774, 0, 0, 0, 5.65734, 0, 0, 0, 1, 0, 0.155233, 0)
 visible = false
+cast_shadow = 0
 billboard = 2
+alpha_cut = 1
 texture_filter = 2
 frames = SubResource("SpriteFrames_i8q8b")
 
 [node name="UpSprite" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(5.34774, 0, 0, 0, 5.65734, 0, 0, 0, 1, 0, 0.155233, 0)
 visible = false
+cast_shadow = 0
 billboard = 2
+alpha_cut = 1
 texture_filter = 2
 frames = SubResource("SpriteFrames_gghs0")
 
 [node name="FrontSprite" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(5.34774, 0, 0, 0, 5.65734, 0, 0, 0, 1, 0, 0.155233, 0)
 visible = false
+cast_shadow = 0
 billboard = 2
+alpha_cut = 1
 texture_filter = 2
 frames = SubResource("SpriteFrames_ftrsh")
 
@@ -94,6 +102,8 @@ target_position = Vector3(0, -20, 0)
 
 [node name="BlobShadow" type="Sprite3D" parent="."]
 transform = Transform3D(0.999991, -0.000227059, -0.00432244, 0.0043284, 0.0524575, 0.998614, 0, -0.998623, 0.052458, -0.00197632, -0.438395, 0.0024531)
+cast_shadow = 0
+alpha_cut = 1
 texture_filter = 2
 texture = ExtResource("5_rw6v6")
 

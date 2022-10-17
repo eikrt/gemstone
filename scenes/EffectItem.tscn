@@ -56,11 +56,13 @@ target_position = Vector3(0, -20, 0)
 
 [node name="BlobShadow" type="Sprite3D" parent="."]
 transform = Transform3D(0.999991, -0.000227059, -0.00432244, 0.0043284, 0.0524575, 0.998614, 0, -0.998623, 0.052458, -0.00197632, -0.438395, 0.0024531)
+cast_shadow = 0
 texture_filter = 2
 texture = ExtResource("2_6lj23")
 
 [node name="Sprite3d" type="Sprite3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+cast_shadow = 0
 texture_filter = 2
 texture = ExtResource("3_xibuf")
 
@@ -69,6 +71,3 @@ autoplay = "New Anim"
 libraries = {
 "": SubResource("AnimationLibrary_w1w14")
 }
-
-[connection signal="area_entered" from="." to="." method="_on_gem_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_gem_body_entered"]

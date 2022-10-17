@@ -61,6 +61,7 @@ texture = ExtResource("5_y0vtv")
 
 [node name="Sprite3d" type="Sprite3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+alpha_cut = 1
 texture_filter = 2
 texture = ExtResource("2_eop46")
 

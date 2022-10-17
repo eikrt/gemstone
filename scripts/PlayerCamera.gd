@@ -3,8 +3,11 @@ extends Camera3D
 
 # Called when the node enters the scene tree for the first time.
 var mode = "persp"
+@onready var pixelShader = preload("res://shaders/pixelated.gdshader")
+var pixelMat = ShaderMaterial.new()
+
 func _ready():
-	pass # Replace with function body.
+	pixelMat.shader = pixelShader
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,3 +40,11 @@ func _on_player_to_up():
 	projection = Camera3D.PROJECTION_ORTHOGONAL
 	size = 10
 	mode = "up"
+
+
+func _on_player_set_shader(shader):
+	if shader == "pixel":
+		$ShaderPlane.set_surface_override_material(0, pixelMat)
+		$ShaderPlane.visible = true
+	if shader == "none":
+		$ShaderPlane.visible = false

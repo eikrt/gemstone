@@ -3,6 +3,7 @@ extends Area3D
 
 # Called when the node enters the scene tree for the first time.
 var holded = false
+
 func get_class():
 	return "EffectItem"
 func _ready():

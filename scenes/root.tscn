@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://contuggd77qfl"]
+[gd_scene load_steps=12 format=3 uid="uid://contuggd77qfl"]
 
 [ext_resource type="PackedScene" uid="uid://dcryfcfk5nnmp" path="res://scenes/player.tscn" id="1_17fqk"]
 [ext_resource type="MeshLibrary" uid="uid://b8xvj13dnnuir" path="res://assets/cubes.tres" id="2_adalg"]
@@ -7,14 +7,20 @@
 [ext_resource type="PackedScene" uid="uid://crf6mw8ym0glc" path="res://scenes/hud.tscn" id="5_eyr8w"]
 [ext_resource type="PackedScene" uid="uid://yx6ylkvvck0y" path="res://scenes/Sider.tscn" id="6_lvanw"]
 [ext_resource type="PackedScene" uid="uid://dj6e303a7xcx" path="res://scenes/EffectItem.tscn" id="7_tkc8p"]
+[ext_resource type="PackedScene" uid="uid://o7fkly8e4dto" path="res://scenes/Ruby.tscn" id="8_rtowl"]
 
 [sub_resource type="Environment" id="Environment_6blxj"]
 background_mode = 1
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lmnju"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_v3p0t"]
+material = SubResource("ShaderMaterial_lmnju")
+
 [node name="Root" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_17fqk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.46206, -0.247259, -1.14222)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.46206, -0.520565, -1.14222)
 weight = 1.5
 
 [node name="GridMap" type="GridMap" parent="."]
@@ -26,10 +32,15 @@ data = {
 metadata/_editor_floor_ = Vector3(0, -1, 0)
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.896208, 0.443634, 0, -0.443634, 0.896208, 0, 1.52203, 2.22726)
+transform = Transform3D(1, 0, 0, 0, 0.896208, 0.443634, 0, -0.443634, 0.896208, 8.67136, 1.77676, 2.22726)
 environment = SubResource("Environment_6blxj")
 fov = 70.0
 script = ExtResource("3_b0cxn")
+
+[node name="ShaderPlane" type="MeshInstance3D" parent="PlayerCamera"]
+transform = Transform3D(1, 0, 0, 0, 0.0572154, -0.998362, 0, 0.998362, 0.0572154, 0.430762, -0.139484, -0.320101)
+visible = false
+mesh = SubResource("PlaneMesh_v3p0t")
 
 [node name="DirectionalLight3d" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.39094, 0.920416, 0, -0.920416, 0.39094, 0, 5.97917, 3.89312)
@@ -59,7 +70,6 @@ orientation_type = "up"
 
 [node name="OmniLight3d" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.79546, 9.4253)
-visible = false
 light_energy = 8.0
 light_size = 1000.0
 light_specular = 1.0
@@ -70,6 +80,27 @@ omni_range = 4096.0
 [node name="Gem" parent="EffectItems" instance=ExtResource("7_tkc8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.31967, -0.450587, 0)
 
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="ruby2" parent="Environment" instance=ExtResource("8_rtowl")]
+transform = Transform3D(32.3366, -2.72286, 1.10634e-06, 3.07542, 28.4067, -2.09907, 0.272418, 2.51625, 23.697, 7.48373, -0.0457602, -63.0675)
+
+[node name="ruby3" parent="Environment" instance=ExtResource("8_rtowl")]
+transform = Transform3D(32.3366, -2.72286, 1.10634e-06, 3.07542, 28.4067, -2.09907, 0.272418, 2.51625, 23.697, -42.5686, -0.0457602, -6.10848)
+
+[node name="ruby4" parent="Environment" instance=ExtResource("8_rtowl")]
+transform = Transform3D(32.3366, -2.72286, 1.10634e-06, 3.07542, 28.4067, -2.09907, 0.272418, 2.51625, 23.697, -42.5686, -0.0457602, -57.8775)
+
+[node name="ruby5" parent="Environment" instance=ExtResource("8_rtowl")]
+transform = Transform3D(32.3366, -2.72286, 1.10634e-06, 3.07542, 28.4067, -2.09907, 0.272418, 2.51625, 23.697, 59.4834, -0.0457602, -57.8775)
+
+[node name="ruby6" parent="Environment" instance=ExtResource("8_rtowl")]
+transform = Transform3D(32.3366, -2.72286, 1.10634e-06, 3.07542, 28.4067, -2.09907, 0.272418, 2.51625, 23.697, 59.4834, -0.0457602, 48.8589)
+
+[node name="ruby7" parent="Environment" instance=ExtResource("8_rtowl")]
+transform = Transform3D(32.3366, -2.72286, 1.10634e-06, 3.07542, 28.4067, -2.09907, 0.272418, 2.51625, 23.697, -27.0956, -0.0457602, 61.4223)
+
+[connection signal="setShader" from="Player" to="PlayerCamera" method="_on_player_set_shader"]
 [connection signal="toOrtho" from="Player" to="PlayerCamera" method="_on_player_to_ortho"]
 [connection signal="toPerspective" from="Player" to="PlayerCamera" method="_on_player_to_perspective"]
 [connection signal="toUp" from="Player" to="PlayerCamera" method="_on_player_to_up"]
