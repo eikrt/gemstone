@@ -11,16 +11,21 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	self.position.x = lerp(position.x, Globaldata.cameraTargetPosition.x, 0.1)
-	self.position.y = lerp(position.y, Globaldata.cameraTargetPosition.y, 0.1)
-	self.position.z = lerp(position.z, Globaldata.cameraTargetPosition.z, 0.1)
+func process_input(delta):
+	pass
+func _physics_process(delta):
+	process_input(delta)
+	self.position.x = lerp(position.x, Globaldata.cameraTargetPosition.x, 0.08)
+	self.position.y = lerp(position.y, Globaldata.cameraTargetPosition.y, 0.08)
+	self.position.z = lerp(position.z, Globaldata.cameraTargetPosition.z, 0.08)
 	if mode == "up":
 		position = Vector3(Globaldata.playerPosition.x, Globaldata.playerPosition.y + 10, Globaldata.playerPosition.z + 0.1)
 		look_at(Vector3(Globaldata.playerGPosition.x, Globaldata.playerGPosition.y, Globaldata.playerGPosition.z))
 	if mode == "ortho":
 		position.y = Globaldata.playerPosition.y
-	if mode == "ortho" || mode == "persp":
+	if mode == "persp":
+		look_at(Globaldata.cameraLookAt)
+	if mode == "ortho":
 		look_at(Globaldata.playerPosition)
 	
 

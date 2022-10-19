@@ -1,0 +1,221 @@
+{
+	"connections": [
+		{
+			"from": "normal_map2",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 4
+		},
+		{
+			"from": "scratches",
+			"from_port": 0,
+			"to": "blend",
+			"to_port": 0
+		},
+		{
+			"from": "colorize",
+			"from_port": 0,
+			"to": "blend",
+			"to_port": 1
+		},
+		{
+			"from": "fbm2",
+			"from_port": 0,
+			"to": "normal_map2",
+			"to_port": 0
+		},
+		{
+			"from": "fbm2",
+			"from_port": 0,
+			"to": "blend_2",
+			"to_port": 0
+		},
+		{
+			"from": "blend",
+			"from_port": 0,
+			"to": "blend_2",
+			"to_port": 1
+		},
+		{
+			"from": "blend_2",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 0
+		}
+	],
+	"label": "Graph",
+	"longdesc": "",
+	"name": "@@1147",
+	"node_position": {
+		"x": 0,
+		"y": 0
+	},
+	"nodes": [
+		{
+			"export_paths": {
+				"Godot": "/home/eino/repo/gemstone/material/stone_tablet"
+			},
+			"name": "Material",
+			"node_position": {
+				"x": 0,
+				"y": 0
+			},
+			"parameters": {
+				"albedo_color": {
+					"a": 1,
+					"b": 1,
+					"g": 1,
+					"r": 1,
+					"type": "Color"
+				},
+				"ao": 1,
+				"depth_scale": 0.5,
+				"emission_energy": 1,
+				"flags_transparent": true,
+				"metallic": 0,
+				"normal": 1,
+				"roughness": 1,
+				"size": 11,
+				"sss": 0
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "material"
+		},
+		{
+			"minimized": true,
+			"name": "runes",
+			"node_position": {
+				"x": -360,
+				"y": 64
+			},
+			"parameters": {
+				"columns": 4,
+				"rows": 4
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "runes"
+		},
+		{
+			"name": "scratches",
+			"node_position": {
+				"x": -598,
+				"y": 140
+			},
+			"parameters": {
+				"angle": -3,
+				"layers": 1,
+				"length": 0.16,
+				"randomness": 0,
+				"waviness": 0.51,
+				"width": 0.46
+			},
+			"seed": 0.384147,
+			"seed_locked": false,
+			"type": "scratches"
+		},
+		{
+			"name": "normal_map2",
+			"node_position": {
+				"x": -195,
+				"y": 318
+			},
+			"parameters": {
+				"buffer": 1,
+				"param2": 0,
+				"size": 10,
+				"strength": 1
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "normal_map2"
+		},
+		{
+			"name": "blend",
+			"node_position": {
+				"x": -243,
+				"y": 171
+			},
+			"parameters": {
+				"amount": 0.5,
+				"blend_type": 0
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "blend"
+		},
+		{
+			"name": "colorize",
+			"node_position": {
+				"x": -130,
+				"y": -84
+			},
+			"parameters": {
+				"gradient": {
+					"interpolation": 1,
+					"points": [
+						{
+							"a": 1,
+							"b": 0.446045,
+							"g": 0.467674,
+							"pos": 0,
+							"r": 0.492188
+						},
+						{
+							"a": 1,
+							"b": 0.535187,
+							"g": 0.535187,
+							"pos": 1,
+							"r": 0.554688
+						}
+					],
+					"type": "Gradient"
+				}
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "colorize"
+		},
+		{
+			"name": "fbm2",
+			"node_position": {
+				"x": -521,
+				"y": -130
+			},
+			"parameters": {
+				"folds": 5,
+				"iterations": 4,
+				"noise": 1,
+				"offset": 0,
+				"persistence": 1,
+				"scale_x": 1,
+				"scale_y": 1
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "fbm2"
+		},
+		{
+			"name": "blend_2",
+			"node_position": {
+				"x": -224,
+				"y": 27
+			},
+			"parameters": {
+				"amount": 0.5,
+				"blend_type": 0
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "blend"
+		}
+	],
+	"parameters": {
+
+	},
+	"seed": 0,
+	"seed_locked": false,
+	"shortdesc": "",
+	"type": "graph"
+}

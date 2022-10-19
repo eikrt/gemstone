@@ -2,7 +2,7 @@ extends CharacterBody3D
 class_name Entity
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 8.0
+const JUMP_VELOCITY = 10.0
 var angle = 0.0
 @onready var currentSprite = get_node("BackSprite")
 @export var weight: float
