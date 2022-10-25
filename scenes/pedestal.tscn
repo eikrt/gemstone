@@ -33,8 +33,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_kp52f")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_s2xjt"]
-size = Vector3(3.78965, 0.378393, 3.79744)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wbhuw"]
+points = PackedVector3Array(-1.99679, -1, -1.99679, -1.99679, -1, 1.99679, -1.2822, -0.522483, -1.2822, 1.9964, -1, -1.99679, 1.9964, -1, 1.99679, -1.2822, -0.522483, 1.28181, 1.28181, -0.522483, -1.2822, 1.28181, -0.522483, 1.28181)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4y012"]
 size = Vector3(1.92917, 0.296942, 1.8065)
@@ -47,9 +47,9 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("ArrayMesh_j2rxe")
 skeleton = NodePath("")
 
-[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.842808, 0)
-shape = SubResource("BoxShape3D_s2xjt")
+[node name="CollisionShape3ds" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_wbhuw")
 
 [node name="Area3d" type="Area3D" parent="."]
 

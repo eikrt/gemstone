@@ -108,10 +108,13 @@ texture_filter = 2
 texture = ExtResource("5_rw6v6")
 
 [node name="TriggerArea" type="Area3D" parent="."]
+transform = Transform3D(1.24948, 0, 0, 0, 1.73511, 0, 0, 0, 1.32054, 0, 0.310482, 0)
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="TriggerArea"]
 transform = Transform3D(0.816009, 0, 0, 0, 1, 0, 0, 0, 0.942002, 0, 0, 0)
 shape = SubResource("BoxShape3D_n1x6f")
 
 [connection signal="area_entered" from="TriggerArea" to="." method="_on_trigger_area_area_entered"]
+[connection signal="area_exited" from="TriggerArea" to="." method="_on_trigger_area_area_exited"]
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
+[connection signal="body_exited" from="TriggerArea" to="." method="_on_trigger_area_body_exited"]

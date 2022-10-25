@@ -8,7 +8,7 @@ signal setShader(shader)
 var itemInVicinity = null
 var holdingItem = false
 var cameraLookAt = Vector3()
-
+var cameraSetY = 0.0
 func get_class():
 	return "Player"
 	
@@ -55,25 +55,25 @@ func handle_input(delta):
 	if Input.is_action_just_pressed("e"):
 		if is_on_floor():
 			holdingItem = !holdingItem
-			if !holdingItem:
+			if !holdingItem and itemInVicinity:
 				itemInVicinity.position = Vector3(position.x, position.y, position.z)
 				itemInVicinity.holded = holdingItem
 				emit_signal("setShader", "none")
-	if holdingItem:
+	if holdingItem and itemInVicinity:
 		itemInVicinity.holded = holdingItem
 		itemInVicinity.position = Vector3(position.x, position.y + 1, position.z)
 		emit_signal("setShader", "pixel")
 	cameraLookAt.x = lerp(cameraLookAt.x, position.x, 0.08)
 	cameraLookAt.z = lerp(cameraLookAt.z, position.z, 0.08)
-	#cameraLookAt.y = lerp(cameraLookAt.y, position.y + cameraLookAt.y, 0.1)
+	cameraLookAt.y = lerp(cameraLookAt.y + cameraSetY, position.y, 0.1)
 	if Input.is_action_pressed("ui_up"):
 		if Globaldata.playerOrientation == "3d":
-			if cameraLookAt.y > -5:
-				cameraLookAt.y -= delta * 3
+			if cameraSetY > -2:
+				cameraSetY -= delta * 0.3
 	if Input.is_action_pressed("ui_down"):
 		if Globaldata.playerOrientation == "3d":
-			if cameraLookAt.y < 5:
-				cameraLookAt.y += delta * 3
+			if cameraSetY < 2:
+				cameraSetY += delta * 0.3
 	input = input.normalized()
 	if (velocity.x < -0.1 || velocity.x > 0.1) || (velocity.z < -0.1 || velocity.z > 0.1):
 		currentSprite.playing = true
@@ -156,3 +156,12 @@ func _physics_process(delta):
 func _on_trigger_area_area_entered(area):
 	if area.get_class() == "EffectItem":
 		itemInVicinity = area
+
+
+func _on_trigger_area_body_exited(body):
+	pass # Replace with function body.
+
+
+func _on_trigger_area_area_exited(area):
+	if area.get_class() == "EffectItem":
+		itemInVicinity = null

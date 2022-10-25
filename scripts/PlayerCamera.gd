@@ -16,7 +16,7 @@ func process_input(delta):
 func _physics_process(delta):
 	process_input(delta)
 	self.position.x = lerp(position.x, Globaldata.cameraTargetPosition.x, 0.08)
-	self.position.y = lerp(position.y, Globaldata.cameraTargetPosition.y, 0.08)
+	self.position.y = lerp(position.y, Globaldata.cameraTargetPosition.y, 0.2)
 	self.position.z = lerp(position.z, Globaldata.cameraTargetPosition.z, 0.08)
 	if mode == "up":
 		position = Vector3(Globaldata.playerPosition.x, Globaldata.playerPosition.y + 10, Globaldata.playerPosition.z + 0.1)

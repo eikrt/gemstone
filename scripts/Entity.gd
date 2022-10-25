@@ -11,12 +11,15 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func process_rays(delta):
 	if $RayCast3d.is_colliding():
+		$BlobShadow.visible = true
 		$BlobShadow.set_global_position($RayCast3d.get_collision_point())
 		$BlobShadow.position.y += 0.2
 		$BlobShadow.position.z += 0.2
 		var bscale = 1 /( (position.y + currentSprite.scale.y - $BlobShadow.position.y) / 6) 
 		$BlobShadow.scale.x = bscale
 		$BlobShadow.scale.y = bscale
+	else:
+		$BlobShadow.visible = false
 func _physics_process(delta):
 	# Add the gravity.
 	process_rays(delta)

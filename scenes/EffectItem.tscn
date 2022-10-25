@@ -48,6 +48,7 @@ _data = {
 script = ExtResource("1_dheor")
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.73274, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_atvgt")
 
 [node name="RayCast3d" type="RayCast3D" parent="."]

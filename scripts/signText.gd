@@ -9,7 +9,7 @@ func _ready():
 			$Body.text = "Move with wasd, rotate camera with arrows and jump with space!"
 		"effects":
 			$Title.text = "Items"
-			$Body.text = "You can find lots of peculiar items laying around. Maybe they can be useful? They seem to have serious side effects."
+			$Body.text = "You can find lots of peculiar items laying around. Maybe they can be useful? Try picking one up with E button. They seem to have serious side effects."
 		"collectibles":
 			$Title.text = "Collectibles"
 			$Body.text = "You can find two types of collectibles lying around: gems and tokens!"
