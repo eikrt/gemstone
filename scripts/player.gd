@@ -97,7 +97,8 @@ func handle_input(delta):
 			rotation.y -= 3 * delta
 
 
-		
+func perish():
+	position = Globaldata.checkpointPosition
 func change_orientation(o):
 	orientation = o
 	
@@ -152,7 +153,9 @@ func _physics_process(delta):
 
 
 
-
+func _process(delta):
+	if position.y < -10:
+		perish()
 func _on_trigger_area_area_entered(area):
 	if area.get_class() == "EffectItem":
 		itemInVicinity = area
@@ -165,3 +168,5 @@ func _on_trigger_area_body_exited(body):
 func _on_trigger_area_area_exited(area):
 	if area.get_class() == "EffectItem":
 		itemInVicinity = null
+	if area.get_class() == "Checkpoint":
+		Globaldata.checkpointPosition = area.position

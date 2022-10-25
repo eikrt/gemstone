@@ -6,3 +6,4 @@ var playerOrientation = "3d"
 var cameraLookAt = Vector3()
 var playerGems = 0
 var playerTokens = 0
+var checkpointPosition = Vector3()

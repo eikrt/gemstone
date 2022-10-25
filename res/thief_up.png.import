@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2wn7ndndrslh"
-path.s3tc="res://.godot/imported/thief_side.png-2fa51633e01233fc936c6a2150570b6b.s3tc.ctex"
-path.etc2="res://.godot/imported/thief_side.png-2fa51633e01233fc936c6a2150570b6b.etc2.ctex"
+uid="uid://bo3vokioayhn5"
+path.s3tc="res://.godot/imported/thief_up.png-8514e1c762f45f2cf92144b23b039b5e.s3tc.ctex"
+path.etc2="res://.godot/imported/thief_up.png-8514e1c762f45f2cf92144b23b039b5e.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc", "etc2"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://res/thief_side.png"
-dest_files=["res://.godot/imported/thief_side.png-2fa51633e01233fc936c6a2150570b6b.s3tc.ctex", "res://.godot/imported/thief_side.png-2fa51633e01233fc936c6a2150570b6b.etc2.ctex"]
+source_file="res://res/thief_up.png"
+dest_files=["res://.godot/imported/thief_up.png-8514e1c762f45f2cf92144b23b039b5e.s3tc.ctex", "res://.godot/imported/thief_up.png-8514e1c762f45f2cf92144b23b039b5e.etc2.ctex"]
 
 [params]
 

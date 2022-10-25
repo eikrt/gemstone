@@ -15,7 +15,7 @@ func process_rays(delta):
 		$BlobShadow.set_global_position($RayCast3d.get_collision_point())
 		$BlobShadow.position.y += 0.2
 		$BlobShadow.position.z += 0.2
-		var bscale = 1 /( (position.y + currentSprite.scale.y - $BlobShadow.position.y) / 6) 
+		var bscale = 1 /( (position.y + currentSprite.scale.y - $BlobShadow.position.y) / 16) 
 		$BlobShadow.scale.x = bscale
 		$BlobShadow.scale.y = bscale
 	else:
