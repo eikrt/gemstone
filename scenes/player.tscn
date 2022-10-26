@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dcryfcfk5nnmp"]
+[gd_scene load_steps=17 format=3 uid="uid://dcryfcfk5nnmp"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_fkyhf"]
 [ext_resource type="Script" path="res://scripts/Anchor.gd" id="2_pklkp"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dg8e2brucrwne" path="res://res/thief_side2.png" id="6_r86t6"]
 [ext_resource type="Texture2D" uid="uid://bo3vokioayhn5" path="res://res/thief_up.png" id="7_62gh0"]
 [ext_resource type="Texture2D" uid="uid://b85k2vi7j52jr" path="res://res/thief_up2.png" id="8_x7miy"]
+[ext_resource type="Script" path="res://scripts/BlobShadow.gd" id="10_jq75e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_atvgt"]
 
@@ -104,6 +105,8 @@ cast_shadow = 0
 alpha_cut = 1
 texture_filter = 2
 texture = ExtResource("5_rw6v6")
+script = ExtResource("10_jq75e")
+size = 5.0
 
 [node name="TriggerArea" type="Area3D" parent="."]
 transform = Transform3D(1.24948, 0, 0, 0, 1.73511, 0, 0, 0, 1.32054, 0, 0.310482, 0)
@@ -111,6 +114,9 @@ transform = Transform3D(1.24948, 0, 0, 0, 1.73511, 0, 0, 0, 1.32054, 0, 0.310482
 [node name="CollisionShape3d" type="CollisionShape3D" parent="TriggerArea"]
 transform = Transform3D(0.816009, 0, 0, 0, 1, 0, 0, 0, 0.942002, 0, 0, 0)
 shape = SubResource("BoxShape3D_n1x6f")
+
+[node name="ProjectileSpawnNode" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0372502, -0.107976, -0.370153)
 
 [connection signal="area_entered" from="TriggerArea" to="." method="_on_trigger_area_area_entered"]
 [connection signal="area_exited" from="TriggerArea" to="." method="_on_trigger_area_area_exited"]

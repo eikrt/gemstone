@@ -4,10 +4,13 @@ extends Camera3D
 # Called when the node enters the scene tree for the first time.
 var mode = "persp"
 @onready var pixelShader = preload("res://shaders/pixelated.gdshader")
+@onready var twistShader = preload("res://shaders/twisted.gdshader")
 var pixelMat = ShaderMaterial.new()
-
+var twistMat = ShaderMaterial.new()
+@onready var twistedTimer = get_node("TwistedTimer")
 func _ready():
 	pixelMat.shader = pixelShader
+	twistMat.shader = twistShader
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,7 +32,8 @@ func _physics_process(delta):
 		look_at(Globaldata.playerPosition)
 	
 
-
+func _process(delta):
+	twistMat.set_shader_parameter("scale", 100 / (twistedTimer.wait_time / twistedTimer.time_left))
 func _on_player_to_ortho():
 	projection = Camera3D.PROJECTION_ORTHOGONAL
 	size = 10
@@ -51,5 +55,10 @@ func _on_player_set_shader(shader):
 	if shader == "pixel":
 		$ShaderPlane.set_surface_override_material(0, pixelMat)
 		$ShaderPlane.visible = true
-	if shader == "none":
+	elif shader == "twist":
+		$ShaderPlane.set_surface_override_material(0, twistMat)
+		$ShaderPlane.visible = true
+		twistMat.set_shader_parameter("scale", 1000)
+		twistedTimer.start()
+	elif shader == "none":
 		$ShaderPlane.visible = false

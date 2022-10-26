@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://yx6ylkvvck0y"]
+[gd_scene load_steps=9 format=3 uid="uid://yx6ylkvvck0y"]
 
 [ext_resource type="Script" path="res://scripts/Sider.gd" id="1_40p0n"]
 [ext_resource type="Texture2D" uid="uid://c72dnfbgybkr3" path="res://res/blobshadow.png" id="2_nrxei"]
 [ext_resource type="Texture2D" uid="uid://cfwjouorly0rh" path="res://res/sider.png" id="3_6iowf"]
+[ext_resource type="Script" path="res://scripts/BlobShadow.gd" id="3_uiqpn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_atvgt"]
 
@@ -59,6 +60,8 @@ transform = Transform3D(0.999991, -0.000227059, -0.00432244, 0.0043284, 0.052457
 cast_shadow = 0
 texture_filter = 2
 texture = ExtResource("2_nrxei")
+script = ExtResource("3_uiqpn")
+size = 4.0
 
 [node name="Sprite3d" type="Sprite3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)

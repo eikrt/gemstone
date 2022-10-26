@@ -1,44 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://52tai13r04qs"]
+[gd_scene load_steps=8 format=3 uid="uid://52tai13r04qs"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_ydvus"]
+[ext_resource type="Script" path="res://scripts/BasicEnemy.gd" id="1_wxqi8"]
 [ext_resource type="Script" path="res://scripts/Anchor.gd" id="2_4cbgk"]
-[ext_resource type="Texture2D" uid="uid://bek3mawa2m0rr" path="res://res/thief.png" id="3_1gmsm"]
-[ext_resource type="Texture2D" uid="uid://dqkmgse1efsbo" path="res://res/thief2.png" id="4_1j8bc"]
-[ext_resource type="Texture2D" uid="uid://b2wn7ndndrslh" path="res://res/thief_side.png" id="5_nwn3b"]
-[ext_resource type="Texture2D" uid="uid://dg8e2brucrwne" path="res://res/thief_side2.png" id="6_wuaxh"]
-[ext_resource type="Texture2D" uid="uid://bo3vokioayhn5" path="res://res/thief_up.png" id="7_0r5sq"]
-[ext_resource type="Texture2D" uid="uid://b85k2vi7j52jr" path="res://res/thief_up2.png" id="8_s8to1"]
+[ext_resource type="Texture2D" uid="uid://kja1r33cr4em" path="res://res/cobra.png" id="2_u88w6"]
 [ext_resource type="Texture2D" uid="uid://c72dnfbgybkr3" path="res://res/blobshadow.png" id="9_c8j5b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_atvgt"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_awk0o"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_sb2d8"]
 animations = [{
-"frames": [ExtResource("3_1gmsm"), ExtResource("4_1j8bc")],
-"loop": true,
-"name": &"default",
-"speed": 3.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_i8q8b"]
-animations = [{
-"frames": [ExtResource("5_nwn3b"), ExtResource("6_wuaxh")],
-"loop": true,
-"name": &"default",
-"speed": 3.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_gghs0"]
-animations = [{
-"frames": [ExtResource("7_0r5sq"), ExtResource("8_s8to1")],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ftrsh"]
-animations = [{
-"frames": [ExtResource("3_1gmsm"), ExtResource("4_1j8bc")],
+"frames": [ExtResource("2_u88w6")],
 "loop": true,
 "name": &"default",
 "speed": 5.0
@@ -46,9 +17,8 @@ animations = [{
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n1x6f"]
 
-[node name="Player" type="CharacterBody3D"]
-script = ExtResource("1_ydvus")
-weight = 1.0
+[node name="BasicEnemy" type="CharacterBody3D"]
+script = ExtResource("1_wxqi8")
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.321859, 0, 0, 0, 1, 0, 0, 0, 0.315117, 0, 0, 0)
@@ -58,13 +28,13 @@ shape = SubResource("BoxShape3D_atvgt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.26719, 3.01738)
 script = ExtResource("2_4cbgk")
 
-[node name="BackSprite" type="AnimatedSprite3D" parent="."]
+[node name="FrontSprite" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(5.34774, 0, 0, 0, 5.65734, 0, 0, 0, 1, 0, 0.155233, 0)
 cast_shadow = 0
-billboard = 2
+billboard = 1
 alpha_cut = 1
 texture_filter = 2
-frames = SubResource("SpriteFrames_awk0o")
+frames = SubResource("SpriteFrames_sb2d8")
 playing = true
 
 [node name="SideSprite" type="AnimatedSprite3D" parent="."]
@@ -74,7 +44,6 @@ cast_shadow = 0
 billboard = 2
 alpha_cut = 1
 texture_filter = 2
-frames = SubResource("SpriteFrames_i8q8b")
 
 [node name="UpSprite" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(5.34774, 0, 0, 0, 5.65734, 0, 0, 0, 1, 0, 0.155233, 0)
@@ -83,16 +52,14 @@ cast_shadow = 0
 billboard = 2
 alpha_cut = 1
 texture_filter = 2
-frames = SubResource("SpriteFrames_gghs0")
 
-[node name="FrontSprite" type="AnimatedSprite3D" parent="."]
+[node name="BackSprite" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(5.34774, 0, 0, 0, 5.65734, 0, 0, 0, 1, 0, 0.155233, 0)
 visible = false
 cast_shadow = 0
 billboard = 2
 alpha_cut = 1
 texture_filter = 2
-frames = SubResource("SpriteFrames_ftrsh")
 
 [node name="RayCast3d" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25788, 0)
@@ -111,6 +78,9 @@ transform = Transform3D(1.24948, 0, 0, 0, 1.73511, 0, 0, 0, 1.32054, 0, 0.310482
 [node name="CollisionShape3d" type="CollisionShape3D" parent="TriggerArea"]
 transform = Transform3D(0.816009, 0, 0, 0, 1, 0, 0, 0, 0.942002, 0, 0, 0)
 shape = SubResource("BoxShape3D_n1x6f")
+
+[node name="Sprite3d" type="Sprite3D" parent="."]
+transform = Transform3D(5.34774, 0, 0, 0, 5.65734, 0, 0, 0, 1, 0, 0.155233, 0)
 
 [connection signal="area_entered" from="TriggerArea" to="." method="_on_trigger_area_area_entered"]
 [connection signal="area_exited" from="TriggerArea" to="." method="_on_trigger_area_area_exited"]

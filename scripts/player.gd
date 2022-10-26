@@ -9,16 +9,25 @@ var itemInVicinity = null
 var holdingItem = false
 var cameraLookAt = Vector3()
 var cameraSetY = 0.0
+var projectileScene = load("res://scenes/knife.tscn")
+var projectileSpeed = 10
+var shootDir = Vector3()
+var projectileSpawnPosition = Vector3()
 func get_class():
 	return "Player"
-	
+func shoot():
+	var projectile = projectileScene.instantiate()
+	projectile.position = $ProjectileSpawnNode.get_global_position()
+	projectile.velocity.x = shootDir.x * projectileSpeed
+	projectile.velocity.z = shootDir.z * projectileSpeed
+	get_tree().root.add_child(projectile)
 func handle_input(delta):
 		# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	# Get the input direction and handle the movement/deceleration.
 	var input = Vector3()
-  
+	projectileSpawnPosition = $ProjectileSpawnNode.position
 	if Input.is_action_pressed("w"):
 		if orientation == "3d" || orientation == "up":
 			input.z -= 1
@@ -59,6 +68,10 @@ func handle_input(delta):
 				itemInVicinity.position = Vector3(position.x, position.y, position.z)
 				itemInVicinity.holded = holdingItem
 				emit_signal("setShader", "none")
+	if Input.is_action_just_pressed("c"):
+		#shoot()
+		pass
+		
 	if holdingItem and itemInVicinity:
 		itemInVicinity.holded = holdingItem
 		itemInVicinity.position = Vector3(position.x, position.y + 1, position.z)
@@ -81,7 +94,8 @@ func handle_input(delta):
 	else:
 		currentSprite.playing = false
 	
-	var dir = (transform.basis.z * input.z + transform.basis.x * input.x)
+	dir = (transform.basis.z * input.z + transform.basis.x * input.x)
+	shootDir = (transform.basis.z * -1.0 + transform.basis.x * 0)
 	var lerpValue = 0.03
 	if is_on_floor():
 		lerpValue = 0.2
@@ -99,6 +113,8 @@ func handle_input(delta):
 
 func perish():
 	position = Globaldata.checkpointPosition
+	change_orientation(Globaldata.checkpointOrientation)
+	emit_signal("setShader", "twist")
 func change_orientation(o):
 	orientation = o
 	
@@ -170,3 +186,4 @@ func _on_trigger_area_area_exited(area):
 		itemInVicinity = null
 	if area.get_class() == "Checkpoint":
 		Globaldata.checkpointPosition = area.position
+		Globaldata.checkpointOrientation = area.orientation

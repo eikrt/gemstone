@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://jwq2by20updm"]
+[gd_scene load_steps=9 format=3 uid="uid://jwq2by20updm"]
 
 [ext_resource type="Script" path="res://scripts/Gem.gd" id="1_10bly"]
 [ext_resource type="Texture2D" uid="uid://burdxcnysniyk" path="res://res/ruby.png" id="2_eop46"]
+[ext_resource type="Script" path="res://scripts/BlobShadow.gd" id="3_57c5q"]
 [ext_resource type="Texture2D" uid="uid://c72dnfbgybkr3" path="res://res/blobshadow.png" id="5_y0vtv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_atvgt"]
@@ -58,6 +59,8 @@ target_position = Vector3(0, -20, 0)
 transform = Transform3D(0.999991, -0.000227059, -0.00432244, 0.0043284, 0.0524575, 0.998614, 0, -0.998623, 0.052458, -0.00197632, -0.438395, 0.0024531)
 texture_filter = 2
 texture = ExtResource("5_y0vtv")
+script = ExtResource("3_57c5q")
+size = 4.0
 
 [node name="Sprite3d" type="Sprite3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)

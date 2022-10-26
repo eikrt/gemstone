@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://contuggd77qfl"]
+[gd_scene load_steps=19 format=3 uid="uid://contuggd77qfl"]
 
 [ext_resource type="PackedScene" uid="uid://dcryfcfk5nnmp" path="res://scenes/player.tscn" id="1_17fqk"]
 [ext_resource type="MeshLibrary" uid="uid://b8xvj13dnnuir" path="res://assets/cubes.tres" id="2_adalg"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://hu158qmi2nvx" path="res://scenes/sign.tscn" id="12_sm4e5"]
 [ext_resource type="PackedScene" uid="uid://cga6mqnbimml8" path="res://scenes/signText.tscn" id="13_2xfhm"]
 [ext_resource type="PackedScene" uid="uid://dcg66ec6d8k5g" path="res://scenes/checkpoint.tscn" id="14_1cyqv"]
+[ext_resource type="PackedScene" uid="uid://52tai13r04qs" path="res://scenes/BasicEnemy.tscn" id="15_sjer2"]
 
 [sub_resource type="Environment" id="Environment_ksmlx"]
 glow_intensity = 1.0
@@ -33,7 +34,7 @@ size = Vector2(640, 420)
 [node name="Root" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_17fqk")]
-transform = Transform3D(1.00296, 0, 0, 0, 1.00296, 0, 0, 0, 1.00296, 3.74696, -0.520565, -29.9989)
+transform = Transform3D(1.00296, 0, 0, 0, 1.00296, 0, 0, 0, 1.00296, 8.44753, -0.520565, -27.7503)
 weight = 1.5
 
 [node name="GridMap" type="GridMap" parent="."]
@@ -55,6 +56,9 @@ script = ExtResource("3_b0cxn")
 transform = Transform3D(1, 0, 0, 0, 0.0572154, -0.998362, 0, 0.998362, 0.0572154, 0.430762, -0.139484, -0.320101)
 visible = false
 mesh = SubResource("PlaneMesh_v3p0t")
+
+[node name="TwistedTimer" type="Timer" parent="PlayerCamera"]
+one_shot = true
 
 [node name="DirectionalLight3d" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.39094, 0.920416, 0, -0.920416, 0.39094, 0, 5.97917, 3.89312)
@@ -87,10 +91,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3826, -0.454364, 15.4015)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75968, -0.454364, -28.0024)
 
 [node name="Gem2" parent="Gems" instance=ExtResource("4_l5cg0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.342, -0.454364, -28.9042)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.342, -0.454364, -28.5984)
 
 [node name="Gem3" parent="Gems" instance=ExtResource("4_l5cg0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.1198, 2.59393, -28.9042)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.9758, 2.59393, -28.5041)
 
 [node name="Hud" parent="." instance=ExtResource("5_eyr8w")]
 
@@ -195,6 +199,13 @@ textType = "collectibles"
 [node name="Checkpoint" parent="Checkpoints" instance=ExtResource("14_1cyqv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.09179, 0, -32.4962)
 active = true
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="BasicEnemy" parent="Enemies" instance=ExtResource("15_sjer2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47401, -0.439838, -54.945)
+
+[node name="Projectiles" type="Node3D" parent="."]
 
 [connection signal="setShader" from="Player" to="PlayerCamera" method="_on_player_set_shader"]
 [connection signal="toOrtho" from="Player" to="PlayerCamera" method="_on_player_to_ortho"]
