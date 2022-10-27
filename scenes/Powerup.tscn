@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dj6e303a7xcx"]
+[gd_scene load_steps=9 format=3 uid="uid://ckojn4uxnt0mn"]
 
-[ext_resource type="Script" path="res://scripts/EffectItem.gd" id="1_dheor"]
-[ext_resource type="Texture2D" uid="uid://c72dnfbgybkr3" path="res://res/blobshadow.png" id="2_6lj23"]
-[ext_resource type="Script" path="res://scripts/BlobShadow.gd" id="3_ojrl5"]
-[ext_resource type="Texture2D" uid="uid://lb17cbcsyr2w" path="res://res/key.png" id="3_xibuf"]
+[ext_resource type="Script" path="res://scripts/Powerup.gd" id="1_5f515"]
+[ext_resource type="Texture2D" uid="uid://c72dnfbgybkr3" path="res://res/blobshadow.png" id="2_4ltcb"]
+[ext_resource type="Script" path="res://scripts/BlobShadow.gd" id="3_rabeh"]
+[ext_resource type="Texture2D" uid="uid://wi1usesgjdpm" path="res://res/powerup.png" id="4_cgi0g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_atvgt"]
 
@@ -45,11 +45,10 @@ _data = {
 "RESET": SubResource("Animation_e6kdi")
 }
 
-[node name="EffectItem" type="Area3D"]
-script = ExtResource("1_dheor")
+[node name="Powerup" type="Area3D"]
+script = ExtResource("1_5f515")
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.73274, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_atvgt")
 
 [node name="RayCast3d" type="RayCast3D" parent="."]
@@ -60,8 +59,8 @@ target_position = Vector3(0, -20, 0)
 transform = Transform3D(0.999991, -0.000227059, -0.00432244, 0.0043284, 0.0524575, 0.998614, 0, -0.998623, 0.052458, -0.00197632, -0.438395, 0.0024531)
 cast_shadow = 0
 texture_filter = 2
-texture = ExtResource("2_6lj23")
-script = ExtResource("3_ojrl5")
+texture = ExtResource("2_4ltcb")
+script = ExtResource("3_rabeh")
 size = 4.0
 
 [node name="Sprite3d" type="Sprite3D" parent="."]
@@ -69,10 +68,12 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 cast_shadow = 0
 alpha_cut = 1
 texture_filter = 2
-texture = ExtResource("3_xibuf")
+texture = ExtResource("4_cgi0g")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "New Anim"
 libraries = {
 "": SubResource("AnimationLibrary_w1w14")
 }
+
+[connection signal="body_entered" from="." to="." method="_on_powerup_body_entered"]

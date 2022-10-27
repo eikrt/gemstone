@@ -34,6 +34,7 @@ func _physics_process(delta):
 
 func _process(delta):
 	twistMat.set_shader_parameter("scale", 100 / (twistedTimer.wait_time / twistedTimer.time_left))
+
 func _on_player_to_ortho():
 	projection = Camera3D.PROJECTION_ORTHOGONAL
 	size = 10
@@ -62,3 +63,7 @@ func _on_player_set_shader(shader):
 		twistedTimer.start()
 	elif shader == "none":
 		$ShaderPlane.visible = false
+
+
+func _on_twisted_timer_timeout():
+	Globaldata.playerPerished = false

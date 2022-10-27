@@ -5,6 +5,7 @@ signal toOrtho
 signal toPerspective
 signal toUp
 signal setShader(shader)
+@onready var blinkSprite = $BlinkSprite
 var itemInVicinity = null
 var holdingItem = false
 var cameraLookAt = Vector3()
@@ -13,6 +14,7 @@ var projectileScene = load("res://scenes/knife.tscn")
 var projectileSpeed = 10
 var shootDir = Vector3()
 var projectileSpawnPosition = Vector3()
+var skills = {"blink": true}
 func get_class():
 	return "Player"
 func shoot():
@@ -95,7 +97,7 @@ func handle_input(delta):
 		currentSprite.playing = false
 	
 	dir = (transform.basis.z * input.z + transform.basis.x * input.x)
-	shootDir = (transform.basis.z * -1.0 + transform.basis.x * 0)
+	shootDir = (transform.basis.z * -1.0 + transform.basis.x * 0.0)
 	var lerpValue = 0.03
 	if is_on_floor():
 		lerpValue = 0.2
@@ -109,12 +111,41 @@ func handle_input(delta):
 	if Input.is_action_pressed("ui_right"):
 		if orientation == "3d":
 			rotation.y -= 3 * delta
+	if Input.is_action_pressed("c"):
+		pre_ability("blink")
 
-
+func _input(event):
+	if event.is_action_released("c"):
+		conduct_ability("blink")
+		if skills.has("blink"):
+			$BlinkTimer.start();
+			blinkSprite.visible = false
+func pre_ability(ability):
+	if !skills.has(ability):
+		return
+	if skills[ability]:
+		if $BlinkRayCast.is_colliding():
+			$BlinkSprite.set_global_position($BlinkRayCast.get_collision_point())
+		else:
+			$BlinkSprite.position = Vector3(0,0,-3);
+		blinkSprite.visible = true
+func conduct_ability(ability):
+	if !skills.has(ability):
+		return
+	if skills[ability]:
+		skills[ability] = false
+	if ability == "blink":
+		blink()
+func blink():
+	set_global_position(blinkSprite.get_global_position())
 func perish():
 	position = Globaldata.checkpointPosition
 	change_orientation(Globaldata.checkpointOrientation)
+	holdingItem = false
 	emit_signal("setShader", "twist")
+	Globaldata.playerPerished = true
+func addSkill(skill):
+	skills[skill] = true
 func change_orientation(o):
 	orientation = o
 	
@@ -187,3 +218,7 @@ func _on_trigger_area_area_exited(area):
 	if area.get_class() == "Checkpoint":
 		Globaldata.checkpointPosition = area.position
 		Globaldata.checkpointOrientation = area.orientation
+
+
+func _on_blink_timer_timeout():
+	skills["blink"] = true

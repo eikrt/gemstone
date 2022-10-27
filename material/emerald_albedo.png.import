@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dg8e2brucrwne"
-path.s3tc="res://.godot/imported/thief_side2.png-f001ce49e108e950bd1b98e1b7e135db.s3tc.ctex"
-path.etc2="res://.godot/imported/thief_side2.png-f001ce49e108e950bd1b98e1b7e135db.etc2.ctex"
+uid="uid://b2aercafcn6aj"
+path.s3tc="res://.godot/imported/emerald_albedo.png-736d557b7eb4a12fa6b9cf6e2a0320d2.s3tc.ctex"
+path.etc2="res://.godot/imported/emerald_albedo.png-736d557b7eb4a12fa6b9cf6e2a0320d2.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc", "etc2"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://res/thief_side2.png"
-dest_files=["res://.godot/imported/thief_side2.png-f001ce49e108e950bd1b98e1b7e135db.s3tc.ctex", "res://.godot/imported/thief_side2.png-f001ce49e108e950bd1b98e1b7e135db.etc2.ctex"]
+source_file="res://material/emerald_albedo.png"
+dest_files=["res://.godot/imported/emerald_albedo.png-736d557b7eb4a12fa6b9cf6e2a0320d2.s3tc.ctex", "res://.godot/imported/emerald_albedo.png-736d557b7eb4a12fa6b9cf6e2a0320d2.etc2.ctex"]
 
 [params]
 
