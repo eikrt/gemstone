@@ -5,7 +5,7 @@ signal toOrtho
 signal toPerspective
 signal toUp
 signal setShader(shader)
-@onready var blinkSprite = $BlinkSprite
+@onready var blinkSprite = $BlinkNode/BlinkSprite
 var itemInVicinity = null
 var holdingItem = false
 var cameraLookAt = Vector3()
@@ -49,6 +49,7 @@ func handle_input(delta):
 		if orientation == "3d"  || orientation == "up" :
 			input.x -= 1
 		if orientation == "xlocked":
+			$BlinkNode.rotation.y = 3.14 / 2
 			input.x -= 1
 		if orientation == "zlocked":
 			input.z += 1
@@ -58,6 +59,7 @@ func handle_input(delta):
 		if orientation == "3d"  || orientation == "up":
 			input.x += 1
 		if orientation == "xlocked":
+			$BlinkNode.rotation.y = -3.14 / 2
 			input.x += 1
 		if orientation == "zlocked":
 			input.z -= 1
@@ -124,10 +126,10 @@ func pre_ability(ability):
 	if !skills.has(ability):
 		return
 	if skills[ability]:
-		if $BlinkRayCast.is_colliding():
-			$BlinkSprite.set_global_position($BlinkRayCast.get_collision_point())
+		if $BlinkNode/BlinkRayCast.is_colliding():
+			blinkSprite.set_global_position($BlinkNode/BlinkRayCast.get_collision_point())
 		else:
-			$BlinkSprite.position = Vector3(0,0,-3);
+			blinkSprite.position = Vector3(0,0,-3);
 		blinkSprite.visible = true
 func conduct_ability(ability):
 	if !skills.has(ability):
@@ -174,6 +176,7 @@ func change_orientation(o):
 		emit_signal("toUp")
 
 	else:
+		$BlinkNode.rotation.y = 0
 		currentSprite.visible = false
 		currentSprite = $BackSprite
 		currentSprite.visible = true

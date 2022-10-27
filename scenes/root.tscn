@@ -36,7 +36,7 @@ size = Vector2(640, 420)
 [node name="Root" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_17fqk")]
-transform = Transform3D(1.00296, 0, 0, 0, 1.00296, 0, 0, 0, 1.00296, 8.44753, -0.520565, 3.22019)
+transform = Transform3D(1.00349, 0, 0, 0, 1.00349, 0, 0, 0, 1.00349, 8.44753, -0.520565, -24.9242)
 weight = 1.5
 
 [node name="GridMap" type="GridMap" parent="."]
@@ -202,7 +202,7 @@ textType = "collectibles"
 [node name="Checkpoints" type="Node3D" parent="."]
 
 [node name="Checkpoint" parent="Checkpoints" instance=ExtResource("14_1cyqv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.09179, 0, -32.4962)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.09179, 0.422538, -32.4962)
 active = true
 
 [node name="Enemies" type="Node3D" parent="."]

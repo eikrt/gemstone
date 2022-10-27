@@ -108,10 +108,6 @@ frames = SubResource("SpriteFrames_ftrsh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25788, 0)
 target_position = Vector3(0, -20, 0)
 
-[node name="BlinkRayCast" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25788, 0.102646)
-target_position = Vector3(0, 0, -3)
-
 [node name="BlobShadow" type="Sprite3D" parent="."]
 transform = Transform3D(2.49998, -0.000567622, -0.0108061, 0.010821, 0.131144, 2.49653, 1.86265e-08, -2.49656, 0.131145, -0.00197632, -0.438395, 0.0024531)
 cast_shadow = 0
@@ -133,10 +129,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0372502, -0.107976, -0.370
 
 [node name="BlinkTimer" type="Timer" parent="."]
 
-[node name="BlinkSprite" type="MeshInstance3D" parent="."]
+[node name="BlinkNode" type="Node3D" parent="."]
+
+[node name="BlinkSprite" type="MeshInstance3D" parent="BlinkNode"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 visible = false
 mesh = SubResource("SphereMesh_luw70")
+skeleton = NodePath("../..")
+
+[node name="BlinkRayCast" type="RayCast3D" parent="BlinkNode"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25788, 0.102646)
+target_position = Vector3(0, 0, -3)
 
 [connection signal="area_entered" from="TriggerArea" to="." method="_on_trigger_area_area_entered"]
 [connection signal="area_exited" from="TriggerArea" to="." method="_on_trigger_area_area_exited"]
