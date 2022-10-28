@@ -120,7 +120,8 @@ func _input(event):
 	if event.is_action_released("c"):
 		conduct_ability("blink")
 		if skills.has("blink"):
-			$BlinkTimer.start();
+			if $BlinkTimer.is_stopped():
+				$BlinkTimer.start()
 			blinkSprite.visible = false
 func pre_ability(ability):
 	if !skills.has(ability):
@@ -136,8 +137,8 @@ func conduct_ability(ability):
 		return
 	if skills[ability]:
 		skills[ability] = false
-	if ability == "blink":
-		blink()
+		if ability == "blink":
+			blink()
 func blink():
 	set_global_position(blinkSprite.get_global_position())
 func perish():
