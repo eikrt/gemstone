@@ -67,3 +67,4 @@ func _on_player_set_shader(shader):
 
 func _on_twisted_timer_timeout():
 	Globaldata.playerPerished = false
+	$ShaderPlane.visible = false
