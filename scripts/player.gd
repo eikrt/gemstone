@@ -136,11 +136,11 @@ func handle_input(delta):
 
 	if Input.is_action_pressed("ui_left"):
 		if orientation == "3d":
-			rotation.y += 3 * delta
+			rotation.y = lerp(rotation.y, rotation.y + 1.0, 0.03)
 
 	if Input.is_action_pressed("ui_right"):
 		if orientation == "3d":
-			rotation.y -= 3 * delta
+			rotation.y = lerp(rotation.y, rotation.y - 1.0, 0.03)
 	if Input.is_action_pressed("c"):
 		pre_ability("blink")
 func launch():

@@ -60,7 +60,7 @@ fov = 70.0
 script = ExtResource("3_b0cxn")
 
 [node name="ShaderPlane" type="MeshInstance3D" parent="Player/CameraArm/PlayerCamera"]
-transform = Transform3D(1, 0, 0, 0, 0.0572154, -0.998362, 0, 0.998362, 0.0572154, 0.430762, -0.321927, 1.97881)
+transform = Transform3D(1, 0, 0, 0, 0.0572154, -0.998362, 0, 0.998362, 0.0572154, 0, 0.173699, -2.24398)
 visible = false
 mesh = SubResource("PlaneMesh_v3p0t")
 skeleton = NodePath("../../PlayerCamera")
@@ -187,6 +187,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.9758, 2.59393, 34.8765)
 [node name="Siders" type="Node3D" parent="."]
 
 [node name="Sider" parent="Siders" instance=ExtResource("6_lvanw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.9519, 32.5543, -25.5974)
+dir = "backa"
+
+[node name="Sider3" parent="Siders" instance=ExtResource("6_lvanw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.9519, 32.5543, -25.5974)
 dir = "backa"
 
