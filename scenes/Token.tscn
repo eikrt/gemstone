@@ -96,6 +96,7 @@ script = ExtResource("1_1nk14")
 
 [node name="Cylinder2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.013, 0, 0, 0, 0.2, 0, -0.280256, 0)
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_nxouo")
 skeleton = NodePath("")
 

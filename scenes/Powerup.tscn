@@ -83,6 +83,7 @@ libraries = {
 
 [node name="Icosphere" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.157475, -0.00190425, 0.206013)
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_xhwie")
 skeleton = NodePath("")
 
