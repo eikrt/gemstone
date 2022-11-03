@@ -8,6 +8,9 @@ void fragment() {
 	vec3 color;
 	color = texture(tex, UV).rgb;
 	float h_thing = world_position.y / 22.0;
+	if (h_thing > 0.0) {
+		h_thing /= 2.0;
+	}
 	color.r += h_thing;
 	color.g += h_thing;
 	color.b += h_thing;
