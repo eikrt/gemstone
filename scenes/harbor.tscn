@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dt6o2hiuk8lec"]
+[gd_scene load_steps=9 format=3 uid="uid://dn0telfqrgtqr"]
 
-[ext_resource type="PackedScene" uid="uid://dcryfcfk5nnmp" path="res://scenes/player.tscn" id="1_bs4ur"]
+[ext_resource type="PackedScene" uid="uid://bd43xy8x41u5e" path="res://scenes/player.tscn" id="1_bs4ur"]
 [ext_resource type="Script" path="res://scripts/CameraArm.gd" id="2_qlby7"]
 [ext_resource type="Script" path="res://scripts/PlayerCamera.gd" id="3_1jppn"]
-[ext_resource type="PackedScene" uid="uid://c3q50oemgl7ck" path="res://scenes/Terrain.tscn" id="5_nf6gk"]
-[ext_resource type="PackedScene" uid="uid://crf6mw8ym0glc" path="res://scenes/hud.tscn" id="6_8fb3a"]
+[ext_resource type="PackedScene" uid="uid://ban2lbe3im0is" path="res://scenes/Terrain.tscn" id="5_nf6gk"]
+[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="6_8fb3a"]
 
 [sub_resource type="Environment" id="Environment_ksmlx"]
 glow_intensity = 1.0
@@ -23,7 +23,7 @@ size = Vector2(640, 420)
 [node name="Root" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_bs4ur")]
-transform = Transform3D(1.00349, 0, 0, 0, 1.00349, 0, 0, 0, 1.00349, 98.1766, 3.89114, 119.903)
+transform = Transform3D(1.00349, 0, 0, 0, 1.00349, 0, 0, 0, 1.00349, 98.1766, 8.6877, 119.903)
 weight = 1.5
 
 [node name="CameraArm" type="SpringArm3D" parent="Player"]

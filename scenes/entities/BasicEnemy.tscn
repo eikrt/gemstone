@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=3 uid="uid://52tai13r04qs"]
+
+[ext_resource type="Script" path="res://scripts/BasicEnemy.gd" id="1_wxqi8"]
+[ext_resource type="Script" path="res://scripts/Anchor.gd" id="2_4cbgk"]
+[ext_resource type="Texture2D" uid="uid://kja1r33cr4em" path="res://res/cobra.png" id="2_u88w6"]
+[ext_resource type="Texture2D" uid="uid://c72dnfbgybkr3" path="res://res/blobshadow.png" id="9_c8j5b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_atvgt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sb2d8"]
+animations = [{
+"frames": [ExtResource("2_u88w6")],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n1x6f"]
+
+[node name="BasicEnemy" type="CharacterBody3D"]
+script = ExtResource("1_wxqi8")
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.321859, 0, 0, 0, 1, 0, 0, 0, 0.315117, 0, 0, 0)
+shape = SubResource("BoxShape3D_atvgt")
+
+[node name="Anchor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.26719, 3.01738)
+script = ExtResource("2_4cbgk")
+
+[node name="FrontSprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(5.34774, 0, 0, 0, 5.65734, 0, 0, 0, 1, 0, 0.155233, 0)
+cast_shadow = 0
+billboard = 1
+alpha_cut = 1
+texture_filter = 2
+frames = SubResource("SpriteFrames_sb2d8")
+playing = true
+
+[node name="SideSprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(5.34774, 0, 0, 0, 5.65734, 0, 0, 0, 1, 0, 0.155233, 0)
+visible = false
+cast_shadow = 0
+billboard = 2
+alpha_cut = 1
+texture_filter = 2
+
+[node name="UpSprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(5.34774, 0, 0, 0, 5.65734, 0, 0, 0, 1, 0, 0.155233, 0)
+visible = false
+cast_shadow = 0
+billboard = 2
+alpha_cut = 1
+texture_filter = 2
+
+[node name="BackSprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(5.34774, 0, 0, 0, 5.65734, 0, 0, 0, 1, 0, 0.155233, 0)
+visible = false
+cast_shadow = 0
+billboard = 2
+alpha_cut = 1
+texture_filter = 2
+
+[node name="RayCast3d" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25788, 0)
+target_position = Vector3(0, -20, 0)
+
+[node name="BlobShadow" type="Sprite3D" parent="."]
+transform = Transform3D(2.49998, -0.000567622, -0.0108061, 0.010821, 0.131144, 2.49653, 1.86265e-08, -2.49656, 0.131145, -0.00197632, -0.438395, 0.0024531)
+cast_shadow = 0
+alpha_cut = 1
+texture_filter = 2
+texture = ExtResource("9_c8j5b")
+
+[node name="TriggerArea" type="Area3D" parent="."]
+transform = Transform3D(1.24948, 0, 0, 0, 1.73511, 0, 0, 0, 1.32054, 0, 0.310482, 0)
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="TriggerArea"]
+transform = Transform3D(0.816009, 0, 0, 0, 1, 0, 0, 0, 0.942002, 0, 0, 0)
+shape = SubResource("BoxShape3D_n1x6f")
+
+[node name="Sprite3d" type="Sprite3D" parent="."]
+transform = Transform3D(5.34774, 0, 0, 0, 5.65734, 0, 0, 0, 1, 0, 0.155233, 0)
+
+[connection signal="area_entered" from="TriggerArea" to="." method="_on_trigger_area_area_entered"]
+[connection signal="area_exited" from="TriggerArea" to="." method="_on_trigger_area_area_exited"]
+[connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
+[connection signal="body_exited" from="TriggerArea" to="." method="_on_trigger_area_body_exited"]

@@ -1,0 +1,163 @@
+[gd_scene load_steps=21 format=3 uid="uid://dcryfcfk5nnmp"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_fkyhf"]
+[ext_resource type="Script" path="res://scripts/Anchor.gd" id="2_pklkp"]
+[ext_resource type="Texture2D" uid="uid://bek3mawa2m0rr" path="res://res/sprites/thief.png" id="3_n8fak"]
+[ext_resource type="Texture2D" uid="uid://dqkmgse1efsbo" path="res://res/sprites/thief2.png" id="4_2evgo"]
+[ext_resource type="Texture2D" uid="uid://b2wn7ndndrslh" path="res://res/sprites/thief_side.png" id="5_1wji2"]
+[ext_resource type="Texture2D" uid="uid://c72dnfbgybkr3" path="res://res/sprites/blobshadow.png" id="5_rw6v6"]
+[ext_resource type="Shader" path="res://shaders/blink_shader.gdshader" id="5_t4s3s"]
+[ext_resource type="Texture2D" uid="uid://dg8e2brucrwne" path="res://res/sprites/thief_side2.png" id="6_r86t6"]
+[ext_resource type="Texture2D" uid="uid://bo3vokioayhn5" path="res://res/sprites/thief_up.png" id="7_62gh0"]
+[ext_resource type="Texture2D" uid="uid://b85k2vi7j52jr" path="res://res/sprites/thief_up2.png" id="8_x7miy"]
+[ext_resource type="Script" path="res://scripts/BlobShadow.gd" id="10_jq75e"]
+[ext_resource type="Script" path="res://scripts/BlinkSprite.gd" id="12_cfpnr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_atvgt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_awk0o"]
+animations = [{
+"frames": [ExtResource("3_n8fak"), ExtResource("4_2evgo")],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i8q8b"]
+animations = [{
+"frames": [ExtResource("5_1wji2"), ExtResource("6_r86t6")],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gghs0"]
+animations = [{
+"frames": [ExtResource("7_62gh0"), ExtResource("8_x7miy")],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ftrsh"]
+animations = [{
+"frames": [ExtResource("3_n8fak"), ExtResource("4_2evgo")],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n1x6f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bdgio"]
+render_priority = 0
+shader = ExtResource("5_t4s3s")
+shader_parameter/tex = ExtResource("6_r86t6")
+
+[sub_resource type="SphereMesh" id="SphereMesh_luw70"]
+material = SubResource("ShaderMaterial_bdgio")
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_fkyhf")
+weight = 1.0
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.321859, 0, 0, 0, 1, 0, 0, 0, 0.315117, 0, 0, 0)
+shape = SubResource("BoxShape3D_atvgt")
+
+[node name="Anchor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.87625, 3.01738)
+script = ExtResource("2_pklkp")
+
+[node name="BackSprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(5.34774, 0, 0, 0, 5.65734, 0, 0, 0, 1, 0, 0.155233, 0)
+cast_shadow = 0
+billboard = 2
+alpha_cut = 1
+texture_filter = 2
+frames = SubResource("SpriteFrames_awk0o")
+playing = true
+
+[node name="SideSprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(5.34774, 0, 0, 0, 5.65734, 0, 0, 0, 1, 0, 0.155233, 0)
+visible = false
+cast_shadow = 0
+billboard = 2
+alpha_cut = 1
+texture_filter = 2
+frames = SubResource("SpriteFrames_i8q8b")
+
+[node name="UpSprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(5.34774, 0, 0, 0, 5.65734, 0, 0, 0, 1, 0, 0.155233, 0)
+visible = false
+cast_shadow = 0
+billboard = 2
+alpha_cut = 1
+texture_filter = 2
+frames = SubResource("SpriteFrames_gghs0")
+
+[node name="FrontSprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(5.34774, 0, 0, 0, 5.65734, 0, 0, 0, 1, 0, 0.155233, 0)
+visible = false
+cast_shadow = 0
+billboard = 2
+alpha_cut = 1
+texture_filter = 2
+frames = SubResource("SpriteFrames_ftrsh")
+
+[node name="RayCast3d" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25788, 0)
+target_position = Vector3(0, -20, 0)
+
+[node name="BlobShadow" type="Sprite3D" parent="."]
+transform = Transform3D(2.49998, -0.000567622, -0.0108061, 0.010821, 0.131144, 2.49653, 1.86265e-08, -2.49656, 0.131145, -0.00197632, -0.562012, 0.0024531)
+cast_shadow = 0
+alpha_cut = 1
+texture_filter = 2
+texture = ExtResource("5_rw6v6")
+script = ExtResource("10_jq75e")
+size = 5.0
+
+[node name="TriggerArea" type="Area3D" parent="."]
+transform = Transform3D(1.24948, 0, 0, 0, 1.73511, 0, 0, 0, 1.32054, 0, 0.310482, 0)
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="TriggerArea"]
+transform = Transform3D(0.816009, 0, 0, 0, 1, 0, 0, 0, 0.942002, 0, 0, 0)
+shape = SubResource("BoxShape3D_n1x6f")
+
+[node name="ProjectileSpawnNode" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0372502, -0.107976, -0.370153)
+
+[node name="BlinkTimer" type="Timer" parent="."]
+
+[node name="BlinkNode" type="CharacterBody3D" parent="."]
+script = ExtResource("12_cfpnr")
+
+[node name="BlinkSprite" type="MeshInstance3D" parent="BlinkNode"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+visible = false
+mesh = SubResource("SphereMesh_luw70")
+skeleton = NodePath("../..")
+
+[node name="BlinkRayCast" type="RayCast3D" parent="BlinkNode"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25788, 0.102646)
+target_position = Vector3(0, 0, -3)
+
+[node name="BlobShadow" type="Sprite3D" parent="BlinkNode"]
+transform = Transform3D(2.49998, -0.000567622, -0.0108061, 0.010821, 0.131144, 2.49653, 1.86265e-08, -2.49656, 0.131145, -0.00197632, -0.438395, -2.97154)
+cast_shadow = 0
+alpha_cut = 1
+texture_filter = 2
+texture = ExtResource("5_rw6v6")
+script = ExtResource("10_jq75e")
+size = 5.0
+
+[node name="RayCast3d" type="RayCast3D" parent="BlinkNode"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25788, 0)
+target_position = Vector3(0, -20, 0)
+
+[connection signal="area_entered" from="TriggerArea" to="." method="_on_trigger_area_area_entered"]
+[connection signal="area_exited" from="TriggerArea" to="." method="_on_trigger_area_area_exited"]
+[connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
+[connection signal="body_exited" from="TriggerArea" to="." method="_on_trigger_area_body_exited"]
+[connection signal="timeout" from="BlinkTimer" to="." method="_on_blink_timer_timeout"]
