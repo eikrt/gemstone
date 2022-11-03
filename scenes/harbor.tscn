@@ -1,0 +1,109 @@
+[gd_scene load_steps=9 format=3 uid="uid://dt6o2hiuk8lec"]
+
+[ext_resource type="PackedScene" uid="uid://dcryfcfk5nnmp" path="res://scenes/player.tscn" id="1_bs4ur"]
+[ext_resource type="Script" path="res://scripts/CameraArm.gd" id="2_qlby7"]
+[ext_resource type="Script" path="res://scripts/PlayerCamera.gd" id="3_1jppn"]
+[ext_resource type="PackedScene" uid="uid://c3q50oemgl7ck" path="res://scenes/Terrain.tscn" id="5_nf6gk"]
+[ext_resource type="PackedScene" uid="uid://crf6mw8ym0glc" path="res://scenes/hud.tscn" id="6_8fb3a"]
+
+[sub_resource type="Environment" id="Environment_ksmlx"]
+glow_intensity = 1.0
+glow_bloom = 0.1
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 0.1
+fog_density = 0.05
+adjustment_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lmnju"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_v3p0t"]
+material = SubResource("ShaderMaterial_lmnju")
+size = Vector2(640, 420)
+
+[node name="Root" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_bs4ur")]
+transform = Transform3D(1.00349, 0, 0, 0, 1.00349, 0, 0, 0, 1.00349, 98.1766, 3.89114, 119.903)
+weight = 1.5
+
+[node name="CameraArm" type="SpringArm3D" parent="Player"]
+transform = Transform3D(0.996522, 0, 0, 0, 0.893091, 0.442091, 0, -0.442091, 0.893091, 0, 0.669155, 0)
+spring_length = 5.0
+script = ExtResource("2_qlby7")
+
+[node name="PlayerCamera" type="Camera3D" parent="Player/CameraArm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.182443, 2.29892)
+environment = SubResource("Environment_ksmlx")
+current = true
+fov = 70.0
+script = ExtResource("3_1jppn")
+
+[node name="ShaderPlane" type="MeshInstance3D" parent="Player/CameraArm/PlayerCamera"]
+transform = Transform3D(1, 0, 0, 0, 0.0572154, -0.998362, 0, 0.998362, 0.0572154, 0, 0.173699, -2.24398)
+visible = false
+mesh = SubResource("PlaneMesh_v3p0t")
+skeleton = NodePath("../../PlayerCamera")
+
+[node name="TwistedTimer" type="Timer" parent="Player/CameraArm/PlayerCamera"]
+one_shot = true
+
+[node name="DirectionalLight3d" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.39094, 0.920416, 0, -0.920416, 0.39094, 0, 5.97917, 3.89312)
+shadow_enabled = true
+
+[node name="Gems" type="Node3D" parent="."]
+
+[node name="Hud" parent="." instance=ExtResource("6_8fb3a")]
+
+[node name="Siders" type="Node3D" parent="."]
+
+[node name="OmniLight3d" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.79546, 9.4253)
+light_energy = 8.0
+light_size = 1000.0
+light_specular = 1.0
+omni_range = 4096.0
+
+[node name="EffectItems" type="Node3D" parent="."]
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="Interactables" type="Node3D" parent="."]
+
+[node name="Tokens" type="Node3D" parent="."]
+
+[node name="Signs" type="Node3D" parent="."]
+
+[node name="Checkpoints" type="Node3D" parent="."]
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="Projectiles" type="Node3D" parent="."]
+
+[node name="Powerups" type="Node3D" parent="."]
+transform = Transform3D(1.00296, 0, 0, 0, 1.00296, 0, 0, 0, 1.00296, 8.44753, -0.520565, 3.22019)
+
+[node name="Other" type="Node3D" parent="."]
+transform = Transform3D(-0.830693, 0, -0.556731, 0, 1, 0, 0.556731, 0, -0.830693, 11.3867, -0.466064, 3.51504)
+
+[node name="Treasures" type="Node3D" parent="."]
+
+[node name="Platforms" type="Node3D" parent="."]
+
+[node name="Harmful" type="Node3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -67.3226, 1.0189, -17.1863)
+
+[node name="Cannons" type="Node3D" parent="."]
+transform = Transform3D(1.00349, 0, 0, 0, 1.00349, 0, 0, 0, 1.00349, 11.2689, 2.3956, -85.7622)
+
+[node name="Moons" type="Node3D" parent="."]
+
+[node name="Terrain" type="Node3D" parent="."]
+
+[node name="Terrain" parent="Terrain" instance=ExtResource("5_nf6gk")]
+
+[connection signal="setShader" from="Player" to="Player/CameraArm/PlayerCamera" method="_on_player_set_shader"]
+[connection signal="toOrtho" from="Player" to="Player/CameraArm/PlayerCamera" method="_on_player_to_ortho"]
+[connection signal="toPerspective" from="Player" to="Player/CameraArm/PlayerCamera" method="_on_player_to_perspective"]
+[connection signal="toUp" from="Player" to="Player/CameraArm/PlayerCamera" method="_on_player_to_up"]
+[connection signal="timeout" from="Player/CameraArm/PlayerCamera/TwistedTimer" to="Player/CameraArm/PlayerCamera" method="_on_twisted_timer_timeout"]

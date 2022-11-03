@@ -30,22 +30,23 @@ func _physics_process(delta):
 func _process(delta):
 	twistMat.set_shader_parameter("scale", 100 / (twistedTimer.wait_time / twistedTimer.time_left))
 
-func _on_player_to_ortho(dir):
+func _on_player_to_ortho(dir, o):
 	projection = Camera3D.PROJECTION_ORTHOGONAL
 	size = 10
-	get_node("../").mode = "ortho"
+	get_node("../").perspMode = "ortho"
+	get_node("../").orientation = o
 	self.dir = dir
 
 
 func _on_player_to_perspective():
 	projection = Camera3D.PROJECTION_PERSPECTIVE
-	get_node("../").mode = "persp"
+	get_node("../").perspMode = "persp"
 
 
 func _on_player_to_up():
 	projection = Camera3D.PROJECTION_ORTHOGONAL
 	size = 10
-	get_node("../").mode = "up"
+	get_node("../").perspMode = "up"
 
 
 func _on_player_set_shader(shader):

@@ -57,35 +57,55 @@ func handle_input(delta):
 			input.x -= 1
 		if orientation == "xlocked":
 			if orthoDir == "front":
-				input.x -= 1
+				input.x += 1
 				$BlinkNode.rotation.y = 3.14 / 2
 			else:
 				input.x += 1
 				$BlinkNode.rotation.y = -3.14 / 2
 		if orientation == "zlocked":
-			input.z += 1
-		if orientation == "zlocked" || orientation == "xlocked":
+			if orthoDir == "front":
+				input.z -= 1
+				$BlinkNode.rotation.y = 0
+			else:
+				input.z += 1
+				$BlinkNode.rotation.y = -3.14 / 2
+		if orientation == "xlocked":
 			if orthoDir == "front":
 				currentSprite.flip_h = true
 			else:
 				currentSprite.flip_h = true
+		if orientation == "zlocked":
+			if orthoDir == "front":
+				currentSprite.flip_h = true
+			else:
+				currentSprite.flip_h = false
 	if Input.is_action_pressed("d"):
 		if orientation == "3d"  || orientation == "up":
 			input.x += 1
 		if orientation == "xlocked":
 			if orthoDir == "front":
-				input.x += 1
+				input.x -= 1
 				$BlinkNode.rotation.y = -3.14 / 2
 			else:
 				input.x -= 1
 				$BlinkNode.rotation.y = 3.14 / 2
 		if orientation == "zlocked":
-			input.z -= 1
-		if orientation == "zlocked" || orientation == "xlocked":
+			if orthoDir == "front":
+				input.z += 1
+				$BlinkNode.rotation.y = 3.14
+			else:
+				input.z -= 1
+				$BlinkNode.rotation.y = -3.14 / 2
+		if orientation == "xlocked":
 			if orthoDir == "front":
 				currentSprite.flip_h = false
 			else:
 				currentSprite.flip_h = false
+		if orientation == "zlocked":
+			if orthoDir == "front":
+				currentSprite.flip_h = false
+			else:
+				currentSprite.flip_h = true
 	if Input.is_action_just_pressed("e"):
 		if is_on_floor():
 			holdingItem = !holdingItem
@@ -190,10 +210,13 @@ func change_orientation(o, dir):
 	orthoDir = dir
 	
 	if orientation == "xlocked":
-		$Anchor.position = Vector3(0, 2.26, 3.01)
-		rotation.y = 0
+		#$Anchor.position = Vector3(0, 2.26, 3.01)
+		if orthoDir == "back":
+			rotation.y = 0
+		elif orthoDir == "front":
+			rotation.y = 3.14
 	elif orientation == "zlocked":
-		$Anchor.position = Vector3(3.01, 2.26, 0)
+		#$Anchor.position = Vector3(3.01, 2.26, 0)
 		rotation.y = 0
 	elif orientation == "up":
 		$Anchor.position = Vector3(0, 4, 0)
@@ -203,7 +226,7 @@ func change_orientation(o, dir):
 		currentSprite.visible = false
 		currentSprite = $SideSprite
 		currentSprite.visible = true
-		emit_signal("toOrtho", dir)
+		emit_signal("toOrtho", dir, o)
 		currentSprite.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 		
 	elif orientation == "up":
@@ -242,7 +265,7 @@ func _physics_process(delta):
 
 
 func _process(delta):
-	if position.y < -20:
+	if position.y < -50:
 		perish()
 func _on_trigger_area_area_entered(area):
 	if area.get_class() == "EffectItem":
