@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=3 uid="uid://ckojn4uxnt0mn"]
 
 [ext_resource type="Script" path="res://scripts/Powerup.gd" id="1_5f515"]
-[ext_resource type="Texture2D" uid="uid://c72dnfbgybkr3" path="res://res/blobshadow.png" id="2_4ltcb"]
+[ext_resource type="Texture2D" uid="uid://c72dnfbgybkr3" path="res://res/sprites/blobshadow.png" id="2_4ltcb"]
 [ext_resource type="Script" path="res://scripts/BlobShadow.gd" id="3_rabeh"]
 [ext_resource type="Shader" path="res://shaders/powerup.gdshader" id="4_3uq3d"]
-[ext_resource type="Texture2D" uid="uid://cdp766bu165x1" path="res://material/carpet_albedo.png" id="5_dgq4k"]
+[ext_resource type="Texture2D" uid="uid://cdp766bu165x1" path="res://material/objects/carpet_albedo.png" id="5_dgq4k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_atvgt"]
 

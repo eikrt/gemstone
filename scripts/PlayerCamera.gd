@@ -6,12 +6,15 @@ var mode = "persp"
 var dir = "front"
 @onready var pixelShader = preload("res://shaders/pixelated.gdshader")
 @onready var twistShader = preload("res://shaders/twisted.gdshader")
+@onready var underwaterShader = preload("res://shaders/underwater.gdshader")
 var pixelMat = ShaderMaterial.new()
 var twistMat = ShaderMaterial.new()
+var underwaterMat = ShaderMaterial.new()
 @onready var twistedTimer = get_node("TwistedTimer")
 func _ready():
 	pixelMat.shader = pixelShader
 	twistMat.shader = twistShader
+	underwaterMat.shader = underwaterShader
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -65,3 +68,13 @@ func _on_player_set_shader(shader):
 func _on_twisted_timer_timeout():
 	Globaldata.playerPerished = false
 	$ShaderPlane.visible = false
+
+
+func _on_player_set_secondary_shader(shader):
+
+	if shader == "underWater":
+		$SecondaryShaderPlane.set_surface_override_material(0, underwaterMat)
+		$SecondaryShaderPlane.visible = true
+	if shader == "exitedUnderWater":
+		#$SecondaryShaderPlane.set_surface_override_material(0, underwaterMat)
+		$SecondaryShaderPlane.visible = false

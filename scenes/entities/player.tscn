@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dcryfcfk5nnmp"]
+[gd_scene load_steps=22 format=3 uid="uid://dcryfcfk5nnmp"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_fkyhf"]
 [ext_resource type="Script" path="res://scripts/Anchor.gd" id="2_pklkp"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b85k2vi7j52jr" path="res://res/sprites/thief_up2.png" id="8_x7miy"]
 [ext_resource type="Script" path="res://scripts/BlobShadow.gd" id="10_jq75e"]
 [ext_resource type="Script" path="res://scripts/BlinkSprite.gd" id="12_cfpnr"]
+[ext_resource type="PackedScene" uid="uid://3wu4plfnm4d8" path="res://models/blender/platforms/rock_pillar.blend" id="13_32ip5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_atvgt"]
 
@@ -131,6 +132,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0372502, -0.107976, -0.370
 [node name="BlinkTimer" type="Timer" parent="."]
 
 [node name="BlinkNode" type="CharacterBody3D" parent="."]
+visible = false
 script = ExtResource("12_cfpnr")
 
 [node name="BlinkSprite" type="MeshInstance3D" parent="BlinkNode"]
@@ -156,8 +158,18 @@ size = 5.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25788, 0)
 target_position = Vector3(0, -20, 0)
 
+[node name="rock_pillar" parent="BlinkNode" instance=ExtResource("13_32ip5")]
+
+[node name="ForwardjumpTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="BackjumpTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="area_entered" from="TriggerArea" to="." method="_on_trigger_area_area_entered"]
 [connection signal="area_exited" from="TriggerArea" to="." method="_on_trigger_area_area_exited"]
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
 [connection signal="body_exited" from="TriggerArea" to="." method="_on_trigger_area_body_exited"]
 [connection signal="timeout" from="BlinkTimer" to="." method="_on_blink_timer_timeout"]
+[connection signal="timeout" from="ForwardjumpTimer" to="." method="_on_forwardjump_timer_timeout"]
+[connection signal="timeout" from="BackjumpTimer" to="." method="_on_backjump_timer_timeout"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5d08dcl2xc77"]
+
+[ext_resource type="Script" path="res://scripts/water.gd" id="1_0aogx"]
+[ext_resource type="Shader" path="res://shaders/toxic_water.gdshader" id="1_n3wdw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r88ou"]
+render_priority = 0
+shader = ExtResource("1_n3wdw")
+
+[sub_resource type="BoxMesh" id="BoxMesh_hmr52"]
+material = SubResource("ShaderMaterial_r88ou")
+size = Vector3(600, 50, 600)
+subdivide_width = 256
+subdivide_height = 256
+subdivide_depth = 256
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lkqt4"]
+size = Vector3(1, 0.0741869, 1)
+
+[node name="Water" type="Area3D"]
+script = ExtResource("1_0aogx")
+
+[node name="MeshInstance3d" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_hmr52")
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+transform = Transform3D(600, 0, 0, 0, 600, 0, 0, 0, 600, 0, 0, 0)
+shape = SubResource("BoxShape3D_lkqt4")

@@ -5,8 +5,13 @@ signal toOrtho
 signal toPerspective
 signal toUp
 signal setShader(shader)
+signal setSecondaryShader(shader)
+const FORWARD_JUMP_SPEED: float = 15.0
+const FORWARD_JUMP_SPEED_Y: float = 5.0
+const BACKJUMP_SPEED: float = 14.0
 @onready var blinkSprite = $BlinkNode/BlinkSprite
 @onready var currentSprite = get_node("BackSprite")
+@onready var Water = preload("res://scenes/scenery/water.tscn")
 var itemInVicinity = null
 var holdingItem = false
 var cameraLookAt = Vector3()
@@ -15,7 +20,7 @@ var projectileScene = load("res://scenes/knife.tscn")
 var projectileSpeed = 10
 var shootDir = Vector3()
 var projectileSpawnPosition = Vector3()
-var skills = {"blink": true}
+var skills = {"blink": "locked", "forwardjump": "ready", "backjump": "ready"}
 var cannoned = false
 var upCannoned = false
 var launchSpeed = 100
@@ -28,12 +33,16 @@ func shoot():
 	projectile.velocity.x = shootDir.x * projectileSpeed
 	projectile.velocity.z = shootDir.z * projectileSpeed
 	get_tree().root.add_child(projectile)
+func resetStatuses():
+	cannoned = false
+	upCannoned = false
+func jump():
+	velocity.y = JUMP_VELOCITY
+	resetStatuses()
 func handle_input(delta):
 		# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		cannoned = false
-		upCannoned = false
+		jump()
 	# Get the input direction and handle the movement/deceleration.
 	var input = Vector3()
 	projectileSpawnPosition = $ProjectileSpawnNode.position
@@ -161,8 +170,19 @@ func handle_input(delta):
 	if Input.is_action_pressed("ui_right"):
 		if orientation == "3d":
 			rotation.y = lerp(rotation.y, rotation.y - 1.0, 0.03)
-	if Input.is_action_pressed("c"):
-		pre_ability("blink")
+
+	if Input.is_action_pressed("w"):
+		if Input.is_action_just_pressed("c"):
+			if skills["forwardjump"] == "ready":
+				if $ForwardjumpTimer.is_stopped():
+					$ForwardjumpTimer.start()
+				conduct_ability("forwardjump")
+	if Input.is_action_pressed("s"):
+		if Input.is_action_just_pressed("c"):
+			if skills["backjump"] == "ready":
+				if $BackjumpTimer.is_stopped():
+					$BackjumpTimer.start()
+				conduct_ability("backjump")
 func launch():
 	velocity.x = shootDir.x * launchSpeed
 	velocity.z = shootDir.z * launchSpeed
@@ -173,11 +193,13 @@ func up_launch():
 	upCannoned = false
 func _input(event):
 	if event.is_action_released("c"):
-		conduct_ability("blink")
-		if skills.has("blink"):
-			if $BlinkTimer.is_stopped():
-				$BlinkTimer.start()
-			blinkSprite.visible = false
+		pass
+		#conduct_ability("blink")
+		#if skills.has("blink"):
+		#	if $BlinkTimer.is_stopped():
+		#		$BlinkTimer.start()
+		#	blinkSprite.visible = false
+	
 func pre_ability(ability):
 	if !skills.has(ability):
 		return
@@ -191,9 +213,20 @@ func conduct_ability(ability):
 	if !skills.has(ability):
 		return
 	if skills[ability]:
-		skills[ability] = false
+		skills[ability] = "notready"
 		if ability == "blink":
 			blink()
+		if ability == "forwardjump":
+			forwardjump()
+		if ability == "backjump":
+			backjump()
+func backjump():
+	velocity.y += BACKJUMP_SPEED
+func forwardjump():
+
+	velocity.x += shootDir.x * FORWARD_JUMP_SPEED
+	velocity.z += shootDir.z * FORWARD_JUMP_SPEED
+	velocity.y += FORWARD_JUMP_SPEED_Y
 func blink():
 	set_global_position(blinkSprite.get_global_position())
 func perish():
@@ -204,7 +237,7 @@ func perish():
 	Globaldata.playerPerished = true
 	velocity = Vector3()
 func addSkill(skill):
-	skills[skill] = true
+	skills[skill] = "ready"
 func change_orientation(o, dir):
 	orientation = o
 	orthoDir = dir
@@ -265,6 +298,10 @@ func _physics_process(delta):
 
 
 func _process(delta):
+	for skill in skills:
+		if skills[skill] == "pending":
+			if is_on_floor():
+				skills[skill] = "ready"
 	if position.y < -50:
 		perish()
 func _on_trigger_area_area_entered(area):
@@ -280,6 +317,27 @@ func _on_trigger_area_area_entered(area):
 	if area.get_class() == "Moon":
 		Globaldata.playerMoons += 1
 		area.queue_free()
+	if area.get_class() == "Water":
+		if (area as Water).toxic:
+			perish()
+		else:
+			emit_signal("setSecondaryShader", "underWater")
+	if area.get_class() == "Shard":
+		Globaldata.playerShards += 1
+		if Globaldata.playerShards >= 10:
+			Globaldata.playerTokens += 1
+			Globaldata.playerShards = 0
+		area.queue_free()
+	if area.get_class() == "Token":
+		Globaldata.playerTokens += 1
+		area.queue_free()
+	if area.get_class() == "Moon":
+		Globaldata.playerMoons += 1
+		area.queue_free()
+	if area.get_class() == "Gem":
+		Globaldata.playerGems += 1
+		area.queue_free()
+	
 		
 
 
@@ -296,14 +354,24 @@ func _on_trigger_area_area_exited(area):
 		Globaldata.checkpointOrientation = area.orientation
 	if area.get_class() == "Cannon":
 		cannoned = false
+	if area.get_class() == "Water":
+		emit_signal("setSecondaryShader", "exitedUnderWater")
 
 
 
 
 func _on_blink_timer_timeout():
-	skills["blink"] = true
+	skills["blink"] = "ready"
 
 
 func _on_trigger_area_body_entered(body):
 	if body.get_class() == "Propeller" || body.get_class() == "Harming":
 		perish()
+
+
+func _on_forwardjump_timer_timeout():
+	skills["forwardjump"] = "pending"
+
+
+func _on_backjump_timer_timeout():
+	skills["backjump"] = "pending"

@@ -17,4 +17,3 @@ func _process(delta):
 	if Globaldata.playerPerished:
 		holded = false
 		set_global_position(Vector3(initialPos.x, initialPos.y, initialPos.z))
-		print(position)

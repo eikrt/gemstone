@@ -23,11 +23,17 @@ _global_script_classes=[{
 "class": &"Player",
 "language": &"GDScript",
 "path": "res://scripts/player.gd"
+}, {
+"base": "Area3D",
+"class": &"Water",
+"language": &"GDScript",
+"path": "res://scripts/water.gd"
 }]
 _global_script_class_icons={
 "Entity": "",
 "InterpolatedCamera3D": "res://addons/interpolated_camera_3d/interpolated_camera_3d.svg",
-"Player": ""
+"Player": "",
+"Water": ""
 }
 
 [application]

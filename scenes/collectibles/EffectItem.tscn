@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=3 uid="uid://dj6e303a7xcx"]
 
 [ext_resource type="Script" path="res://scripts/EffectItem.gd" id="1_dheor"]
-[ext_resource type="Texture2D" uid="uid://c72dnfbgybkr3" path="res://res/blobshadow.png" id="2_6lj23"]
+[ext_resource type="Texture2D" uid="uid://c72dnfbgybkr3" path="res://res/sprites/blobshadow.png" id="2_6lj23"]
 [ext_resource type="Script" path="res://scripts/BlobShadow.gd" id="3_ojrl5"]
 [ext_resource type="Shader" path="res://shaders/effectitem.gdshader" id="5_snxqq"]
-[ext_resource type="Texture2D" uid="uid://barg0iek7ixur" path="res://material/goldenwall_albedo.png" id="6_0jkds"]
+[ext_resource type="Texture2D" uid="uid://barg0iek7ixur" path="res://material/objects/goldenwall_albedo.png" id="6_0jkds"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_atvgt"]
 

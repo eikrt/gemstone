@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/moon.gd" id="1_owlt8"]
 [ext_resource type="Shader" path="res://shaders/moon.gdshader" id="1_tu8cl"]
-[ext_resource type="Texture2D" uid="uid://c3fun6llkihlj" path="res://material/goldenwall_normal.png" id="2_1oop4"]
+[ext_resource type="Texture2D" uid="uid://c3fun6llkihlj" path="res://material/objects/goldenwall_normal.png" id="2_1oop4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1wbsy"]
 render_priority = 0

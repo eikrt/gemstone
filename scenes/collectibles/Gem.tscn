@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/Gem.gd" id="1_10bly"]
 [ext_resource type="Script" path="res://scripts/BlobShadow.gd" id="3_57c5q"]
 [ext_resource type="Shader" path="res://shaders/gem.gdshader" id="4_qe1in"]
-[ext_resource type="Texture2D" uid="uid://b2aercafcn6aj" path="res://material/emerald_albedo.png" id="5_e0ylc"]
-[ext_resource type="Texture2D" uid="uid://c72dnfbgybkr3" path="res://res/blobshadow.png" id="5_y0vtv"]
+[ext_resource type="Texture2D" uid="uid://b2aercafcn6aj" path="res://material/objects/emerald_albedo.png" id="5_e0ylc"]
+[ext_resource type="Texture2D" uid="uid://c72dnfbgybkr3" path="res://res/sprites/blobshadow.png" id="5_y0vtv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_atvgt"]
 

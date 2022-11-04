@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://k7hs6n7bavaw"]
 
 [ext_resource type="Script" path="res://scripts/Token.gd" id="1_1nk14"]
-[ext_resource type="Texture2D" uid="uid://c72dnfbgybkr3" path="res://res/blobshadow.png" id="2_6hq2p"]
+[ext_resource type="Texture2D" uid="uid://c72dnfbgybkr3" path="res://res/sprites/blobshadow.png" id="2_6hq2p"]
 [ext_resource type="Shader" path="res://shaders/token.gdshader" id="2_gxby2"]
-[ext_resource type="Texture2D" uid="uid://cyr5xfcdoaltb" path="res://material/ceramic_albedo.png" id="4_0dxfr"]
+[ext_resource type="Texture2D" uid="uid://cyr5xfcdoaltb" path="res://material/objects/ceramic_albedo.png" id="4_0dxfr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ljtec"]
 render_priority = 0

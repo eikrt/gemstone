@@ -1,10 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://dt6o2hiuk8lec"]
+[gd_scene load_steps=20 format=3 uid="uid://dt6o2hiuk8lec"]
 
 [ext_resource type="PackedScene" uid="uid://dcryfcfk5nnmp" path="res://scenes/entities/player.tscn" id="1_bs4ur"]
 [ext_resource type="Script" path="res://scripts/CameraArm.gd" id="2_qlby7"]
 [ext_resource type="Script" path="res://scripts/PlayerCamera.gd" id="3_1jppn"]
+[ext_resource type="Shader" path="res://shaders/underwater.gdshader" id="4_4lpm5"]
+[ext_resource type="PackedScene" uid="uid://jwq2by20updm" path="res://scenes/collectibles/Gem.tscn" id="5_5w66f"]
+[ext_resource type="PackedScene" uid="uid://cphc8p05xq5tr" path="res://scenes/platforms/island_platform.tscn" id="5_a7kw0"]
 [ext_resource type="PackedScene" uid="uid://c3q50oemgl7ck" path="res://scenes/terrain/Terrain.tscn" id="5_nf6gk"]
 [ext_resource type="PackedScene" uid="uid://crf6mw8ym0glc" path="res://scenes/hud/hud.tscn" id="6_8fb3a"]
+[ext_resource type="PackedScene" uid="uid://dcg66ec6d8k5g" path="res://scenes/interactables/checkpoint.tscn" id="6_d735d"]
+[ext_resource type="PackedScene" uid="uid://c5d08dcl2xc77" path="res://scenes/scenery/water.tscn" id="7_biwsm"]
+[ext_resource type="PackedScene" uid="uid://iyp1klimirc4" path="res://scenes/platforms/island_platform_hole.tscn" id="7_epsck"]
+[ext_resource type="PackedScene" uid="uid://cnduifhyx160k" path="res://scenes/platforms/boat.tscn" id="10_wnd06"]
+[ext_resource type="PackedScene" uid="uid://yp0206iw8j1n" path="res://scenes/collectibles/TokenShard.tscn" id="11_is7ae"]
 
 [sub_resource type="Environment" id="Environment_ksmlx"]
 glow_intensity = 1.0
@@ -15,21 +23,65 @@ fog_density = 0.05
 adjustment_enabled = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lmnju"]
+render_priority = 0
+shader = ExtResource("4_4lpm5")
+shader_parameter/pixel_size = null
+shader_parameter/progress = null
+shader_parameter/scale = null
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_v3p0t"]
 material = SubResource("ShaderMaterial_lmnju")
 size = Vector2(640, 420)
 
+[sub_resource type="Animation" id="Animation_qbcet"]
+resource_name = "New Anim"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(104.258, -0.2172, 128.555), Vector3(90.1976, -0.2172, 138.326)]
+}
+
+[sub_resource type="Animation" id="Animation_55npe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(104.258, -0.2172, 128.555)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_inh0x"]
+_data = {
+"New Anim": SubResource("Animation_qbcet"),
+"RESET": SubResource("Animation_55npe")
+}
+
 [node name="Root" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_bs4ur")]
-transform = Transform3D(1.00349, 0, 0, 0, 1.00349, 0, 0, 0, 1.00349, 98.1766, 3.89114, 119.903)
+transform = Transform3D(1.00349, 0, 0, 0, 1.00349, 0, 0, 0, 1.00349, 129.843, 9.32193, 132.405)
 weight = 1.5
 
 [node name="CameraArm" type="SpringArm3D" parent="Player"]
 transform = Transform3D(0.996522, 0, 0, 0, 0.893091, 0.442091, 0, -0.442091, 0.893091, 0, 0.669155, 0)
 spring_length = 5.0
 script = ExtResource("2_qlby7")
+metadata/_edit_lock_ = true
 
 [node name="PlayerCamera" type="Camera3D" parent="Player/CameraArm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.182443, 2.29892)
@@ -47,11 +99,50 @@ skeleton = NodePath("../../PlayerCamera")
 [node name="TwistedTimer" type="Timer" parent="Player/CameraArm/PlayerCamera"]
 one_shot = true
 
+[node name="SecondaryShaderPlane" type="MeshInstance3D" parent="Player/CameraArm/PlayerCamera"]
+transform = Transform3D(1, 0, 0, 0, 0.102914, -0.99469, 0, 0.99469, 0.102914, 0, -0.701942, -0.750473)
+visible = false
+mesh = SubResource("PlaneMesh_v3p0t")
+
 [node name="DirectionalLight3d" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.39094, 0.920416, 0, -0.920416, 0.39094, 0, 5.97917, 3.89312)
+light_color = Color(0.870588, 0.517647, 0.384314, 1)
 shadow_enabled = true
 
 [node name="Gems" type="Node3D" parent="."]
+
+[node name="Gem" parent="Gems" instance=ExtResource("5_5w66f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.081, 1.19359, 123.131)
+
+[node name="Gem4" parent="Gems" instance=ExtResource("5_5w66f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.263, 6.98145, 125.814)
+
+[node name="Gem2" parent="Gems" instance=ExtResource("5_5w66f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.205, 4.86962, 113.483)
+
+[node name="Gem9" parent="Gems" instance=ExtResource("5_5w66f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101, 0.06602, 130.829)
+
+[node name="Gem10" parent="Gems" instance=ExtResource("5_5w66f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.0875, 0.06602, 132.176)
+
+[node name="Gem11" parent="Gems" instance=ExtResource("5_5w66f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.9436, 0.06602, 133.728)
+
+[node name="Gem6" parent="Gems" instance=ExtResource("5_5w66f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.026, 6.71328, 102.317)
+
+[node name="Gem8" parent="Gems" instance=ExtResource("5_5w66f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.725, 5.57066, 95.7299)
+
+[node name="Gem7" parent="Gems" instance=ExtResource("5_5w66f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.731, 5.54111, 106.776)
+
+[node name="Gem3" parent="Gems" instance=ExtResource("5_5w66f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 127.365, 3.94089, 118.763)
+
+[node name="Gem5" parent="Gems" instance=ExtResource("5_5w66f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 254.73, 7.88177, 237.527)
 
 [node name="Hud" parent="." instance=ExtResource("6_8fb3a")]
 
@@ -76,6 +167,9 @@ omni_range = 4096.0
 
 [node name="Checkpoints" type="Node3D" parent="."]
 
+[node name="Checkpoint" parent="Checkpoints" instance=ExtResource("6_d735d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.848, 8.21321, 132.009)
+
 [node name="Enemies" type="Node3D" parent="."]
 
 [node name="Projectiles" type="Node3D" parent="."]
@@ -90,6 +184,42 @@ transform = Transform3D(-0.830693, 0, -0.556731, 0, 1, 0, 0.556731, 0, -0.830693
 
 [node name="Platforms" type="Node3D" parent="."]
 
+[node name="IslandPlatform" parent="Platforms" instance=ExtResource("5_a7kw0")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 129.852, 0.61916, 130.663)
+
+[node name="IslandPlatform2" parent="Platforms" instance=ExtResource("5_a7kw0")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 127.176, -2.83751, 119.248)
+
+[node name="IslandPlatform8" parent="Platforms" instance=ExtResource("5_a7kw0")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 109.783, -5.75353, 123.55)
+
+[node name="IslandPlatform4" parent="Platforms" instance=ExtResource("5_a7kw0")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 117.473, -2.0537, 113.61)
+
+[node name="IslandPlatform5" parent="Platforms" instance=ExtResource("5_a7kw0")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 109.965, -0.0550823, 102.492)
+
+[node name="IslandPlatform6" parent="Platforms" instance=ExtResource("5_a7kw0")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 125.764, -1.28603, 106.97)
+
+[node name="IslandPlatform7" parent="Platforms" instance=ExtResource("5_a7kw0")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 118.423, -1.28603, 96.0778)
+
+[node name="IslandPlatform3" parent="Platforms" instance=ExtResource("7_epsck")]
+transform = Transform3D(1.17232, 0, 1.62039, 0, 2, 0, -1.62039, 0, 1.17232, 118.469, 3.09223, 125.996)
+
+[node name="IslandPlatform9" parent="Platforms" instance=ExtResource("7_epsck")]
+transform = Transform3D(1.17232, 0, 1.62039, 0, 2, 0, -1.62039, 0, 1.17232, 84.67, -0.0732744, 143.681)
+
+[node name="Boat" parent="Platforms" instance=ExtResource("10_wnd06")]
+transform = Transform3D(-0.810655, 0, -0.585524, 0, 1, 0, 0.585524, 0, -0.810655, 104.258, -0.2172, 128.555)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Boat"]
+autoplay = "New Anim"
+libraries = {
+"": SubResource("AnimationLibrary_inh0x")
+}
+
 [node name="Harmful" type="Node3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -67.3226, 1.0189, -17.1863)
 
@@ -102,6 +232,15 @@ transform = Transform3D(1.00349, 0, 0, 0, 1.00349, 0, 0, 0, 1.00349, 11.2689, 2.
 
 [node name="Terrain" parent="Terrain" instance=ExtResource("5_nf6gk")]
 
+[node name="Water" parent="Terrain" instance=ExtResource("7_biwsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -26.0136, 0)
+
+[node name="TokenShard" type="Node3D" parent="."]
+
+[node name="TokenShard" parent="TokenShard" instance=ExtResource("11_is7ae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.5134, 3.61427, 143.649)
+
+[connection signal="setSecondaryShader" from="Player" to="Player/CameraArm/PlayerCamera" method="_on_player_set_secondary_shader"]
 [connection signal="setShader" from="Player" to="Player/CameraArm/PlayerCamera" method="_on_player_set_shader"]
 [connection signal="toOrtho" from="Player" to="Player/CameraArm/PlayerCamera" method="_on_player_to_ortho"]
 [connection signal="toPerspective" from="Player" to="Player/CameraArm/PlayerCamera" method="_on_player_to_perspective"]

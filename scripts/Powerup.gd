@@ -2,6 +2,8 @@ extends Area3D
 
 
 # Called when the node enters the scene tree for the first time.
+func get_class():
+	return "Powerup"
 func _ready():
 	pass # Replace with function body.
 
@@ -11,7 +13,3 @@ func _process(delta):
 	pass
 
 
-func _on_powerup_body_entered(body):
-	if body.get_class() == "Player":
-		body.addSkill("blink")
-		queue_free()
