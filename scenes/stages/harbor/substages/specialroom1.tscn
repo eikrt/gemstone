@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://blg3cwc28qwgk"]
+[gd_scene load_steps=31 format=3 uid="uid://blg3cwc28qwgk"]
 
 [ext_resource type="Shader" path="res://shaders/harbor_specialroom_wall.gdshader" id="1_w4jtl"]
 [ext_resource type="Texture2D" uid="uid://dianuvugl4etq" path="res://material/objects/specialwall_albedo.png" id="2_b6ja5"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://yp0206iw8j1n" path="res://scenes/collectibles/TokenShard.tscn" id="6_8elj6"]
 [ext_resource type="PackedScene" uid="uid://jwq2by20updm" path="res://scenes/collectibles/Gem.tscn" id="7_nw4on"]
 [ext_resource type="PackedScene" uid="uid://ccehqen2ydq7r" path="res://scenes/interactables/port.tscn" id="8_so56l"]
+[ext_resource type="PackedScene" uid="uid://c75x886y64c8f" path="res://scenes/harmful/harm_fog.tscn" id="9_tnnn3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nyncx"]
 render_priority = 0
@@ -280,7 +281,7 @@ shape = SubResource("BoxShape3D_5hgi0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9465, 0, -5.30808)
 
 [node name="Carpet" type="StaticBody3D" parent="Platforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2816, 9.53674e-07, -0.337579)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 4, -7.10454, -2.60326, -39.4537)
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="Platforms/Carpet"]
 transform = Transform3D(1.00439, 0, 0, 0, 1.00439, 0, 0, 0, 1.00439, 10.6843, 2.85424, 12.721)
@@ -495,3 +496,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.11207, 21.7698, -3.94278)
 
 [node name="Port" parent="." instance=ExtResource("8_so56l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.45208, 24.3799, 2.59092)
+
+[node name="HarmFog" parent="." instance=ExtResource("9_tnnn3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.64717, 0.904711, 7.85932)
+
+[node name="HarmFog2" parent="." instance=ExtResource("9_tnnn3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.64717, 0.904711, -8.89987)
+
+[node name="HarmFog3" parent="." instance=ExtResource("9_tnnn3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.45825, 0.904711, -8.89987)
+
+[node name="HarmFog4" parent="." instance=ExtResource("9_tnnn3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.45825, 0.904711, 8.30678)

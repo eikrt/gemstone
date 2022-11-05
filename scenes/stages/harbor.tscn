@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dt6o2hiuk8lec"]
+[gd_scene load_steps=34 format=3 uid="uid://dt6o2hiuk8lec"]
 
 [ext_resource type="PackedScene" uid="uid://dcryfcfk5nnmp" path="res://scenes/entities/player.tscn" id="1_bs4ur"]
 [ext_resource type="Script" path="res://scripts/CameraArm.gd" id="2_qlby7"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://yp0206iw8j1n" path="res://scenes/collectibles/TokenShard.tscn" id="11_is7ae"]
 [ext_resource type="PackedScene" uid="uid://paaqessn5nfy" path="res://scenes/environment/house.tscn" id="12_5rff5"]
 [ext_resource type="PackedScene" uid="uid://jfc4tf5ssmm1" path="res://scenes/harmful/jump_ball.tscn" id="13_vhv31"]
+[ext_resource type="PackedScene" uid="uid://c75x886y64c8f" path="res://scenes/harmful/harm_fog.tscn" id="15_rqu6r"]
 [ext_resource type="PackedScene" uid="uid://blg3cwc28qwgk" path="res://scenes/stages/harbor/substages/specialroom1.tscn" id="17_i2bu6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ghag5"]
@@ -190,7 +191,7 @@ _data = {
 [node name="Root" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_bs4ur")]
-transform = Transform3D(1.00349, 0, 0, 0, 1.00349, 0, 0, 0, 1.00349, 72.3821, 0.693214, 97.6673)
+transform = Transform3D(1.00349, 0, 0, 0, 1.00349, 0, 0, 0, 1.00349, 72.3821, 5.99142, 94.5327)
 weight = 1.5
 
 [node name="CameraArm" type="SpringArm3D" parent="Player"]
@@ -323,10 +324,10 @@ omni_range = 4096.0
 [node name="Interactables" type="Node3D" parent="."]
 
 [node name="Port" parent="Interactables" instance=ExtResource("7_7rsbj")]
-transform = Transform3D(0.189718, 0, 4.14222, 0, 1.89211, 0, -1.41678, 0, 0.554677, 58.3863, 1.12049, 92.4988)
+transform = Transform3D(0.189718, 0, 4.14222, 0, 1.89211, 0, -1.41678, 0, 0.554677, 58.3863, 0.725802, 92.4988)
 
 [node name="Target" type="Node3D" parent="Interactables/Port"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.12673, -106.538, 2.21954)
+transform = Transform3D(1, 0, 2.68221e-07, 0, 1, 0, 3.72529e-09, 0, 1, -4.97471, -107.302, 3.90259)
 
 [node name="Port2" parent="Interactables" instance=ExtResource("7_7rsbj")]
 transform = Transform3D(1.42943, 0, 0, 0, 1.89211, 0, 0, 0, 4.17919, 77.0278, -184.315, 96.5684)
@@ -479,6 +480,9 @@ autoplay = "New Anim"
 libraries = {
 "": SubResource("AnimationLibrary_0fwcc")
 }
+
+[node name="HarmFog" parent="Harmful" instance=ExtResource("15_rqu6r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.028, -0.472258, 53.1089)
 
 [node name="Cannons" type="Node3D" parent="."]
 transform = Transform3D(1.00349, 0, 0, 0, 1.00349, 0, 0, 0, 1.00349, 11.2689, 2.3956, -85.7622)

@@ -306,6 +306,8 @@ func _process(delta):
 		pass
 		#perish()
 func _on_trigger_area_area_entered(area):
+	if area.get_class() == "Harming":
+		perish()
 	if area.get_class() == "EffectItem":
 		itemInVicinity = area
 	if area.get_class() == "Cannon":
