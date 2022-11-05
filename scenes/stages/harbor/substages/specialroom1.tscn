@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://blg3cwc28qwgk"]
+[gd_scene load_steps=30 format=3 uid="uid://blg3cwc28qwgk"]
 
 [ext_resource type="Shader" path="res://shaders/harbor_specialroom_wall.gdshader" id="1_w4jtl"]
 [ext_resource type="Texture2D" uid="uid://dianuvugl4etq" path="res://material/objects/specialwall_albedo.png" id="2_b6ja5"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://k7hs6n7bavaw" path="res://scenes/collectibles/Token.tscn" id="5_hwu4y"]
 [ext_resource type="PackedScene" uid="uid://yp0206iw8j1n" path="res://scenes/collectibles/TokenShard.tscn" id="6_8elj6"]
 [ext_resource type="PackedScene" uid="uid://jwq2by20updm" path="res://scenes/collectibles/Gem.tscn" id="7_nw4on"]
+[ext_resource type="PackedScene" uid="uid://ccehqen2ydq7r" path="res://scenes/interactables/port.tscn" id="8_so56l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nyncx"]
 render_priority = 0
@@ -491,3 +492,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.34862, 12.3037, -8.46794)
 
 [node name="Gem7" parent="." instance=ExtResource("7_nw4on")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.11207, 21.7698, -3.94278)
+
+[node name="Port" parent="." instance=ExtResource("8_so56l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.45208, 24.3799, 2.59092)

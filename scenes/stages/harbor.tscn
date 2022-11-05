@@ -323,10 +323,16 @@ omni_range = 4096.0
 [node name="Interactables" type="Node3D" parent="."]
 
 [node name="Port" parent="Interactables" instance=ExtResource("7_7rsbj")]
-transform = Transform3D(1.42943, 0, 0, 0, 1.89211, 0, 0, 0, 4.17919, 56.9307, 1.04978, 92.0151)
+transform = Transform3D(0.189718, 0, 4.14222, 0, 1.89211, 0, -1.41678, 0, 0.554677, 58.3863, 1.12049, 92.4988)
 
 [node name="Target" type="Node3D" parent="Interactables/Port"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.12673, -106.538, 2.21954)
+
+[node name="Port2" parent="Interactables" instance=ExtResource("7_7rsbj")]
+transform = Transform3D(1.42943, 0, 0, 0, 1.89211, 0, 0, 0, 4.17919, 77.0278, -184.315, 96.5684)
+
+[node name="Target" type="Node3D" parent="Interactables/Port2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8324, 106.429, -1.47998)
 
 [node name="Tokens" type="Node3D" parent="."]
 
@@ -485,7 +491,7 @@ transform = Transform3D(1.00349, 0, 0, 0, 1.00349, 0, 0, 0, 1.00349, 11.2689, 2.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.68902, -7.91313, -5.26099)
 
 [node name="Water" parent="Terrain" instance=ExtResource("7_biwsm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.29259, -34.7211, 1.76696)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.29259, -27.3866, 1.76696)
 
 [node name="TokenShard" type="Node3D" parent="."]
 

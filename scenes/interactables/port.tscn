@@ -1,12 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccehqen2ydq7r"]
+[gd_scene load_steps=6 format=3 uid="uid://ccehqen2ydq7r"]
 
 [ext_resource type="Script" path="res://scripts/Port.gd" id="1_7h72q"]
+[ext_resource type="Shader" path="res://shaders/port.gdshader" id="2_7fdwb"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_npimo"]
-albedo_color = Color(0, 0, 0, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j3ybd"]
+render_priority = 0
+shader = ExtResource("2_7fdwb")
 
 [sub_resource type="BoxMesh" id="BoxMesh_dck1n"]
-material = SubResource("StandardMaterial3D_npimo")
+material = SubResource("ShaderMaterial_j3ybd")
+subdivide_width = 32
+subdivide_height = 32
+subdivide_depth = 32
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q42ax"]
 
@@ -14,6 +19,7 @@ material = SubResource("StandardMaterial3D_npimo")
 script = ExtResource("1_7h72q")
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0643307, 0, 0)
 mesh = SubResource("BoxMesh_dck1n")
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="."]
