@@ -1,0 +1,23 @@
+shader_type spatial;
+uniform sampler2D tex;
+uniform sampler2D normalmap;
+float random (vec2 uv) {
+    return fract(sin(dot(uv.xy,
+        vec2(12.9898,78.233))) * 43758.5453123);
+}
+void vertex() {
+	VERTEX.y += sin(TIME * 5.0 + VERTEX.x * 20.0) * 0.05;
+	VERTEX.z += sin(TIME * 5.0 + VERTEX.y * 20.0) * 0.05;
+}
+
+
+void fragment() {
+	vec3 color;
+	color = texture(tex, UV).rgb;
+	METALLIC = 1.0;
+	color.r += 0.5;
+
+	ALBEDO = color;
+	ROUGHNESS = 0.8;
+	NORMAL_MAP = texture(normalmap, UV).rgb;
+}

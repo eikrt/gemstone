@@ -6,8 +6,8 @@ float random (vec2 uv) {
         vec2(12.9898,78.233))) * 43758.5453123);
 }
 void vertex() {
-	VERTEX.y += sin(TIME * 5.0 + VERTEX.x * 20.0) * 0.1;
-	VERTEX.z += sin(TIME * 5.0 + VERTEX.y * 20.0) * 0.1;
+	VERTEX.y += sin(TIME * 5.0 + VERTEX.x * 20.0) * 0.2;
+	VERTEX.z += sin(TIME * 5.0 + VERTEX.y * 20.0) * 0.2;
 }
 
 

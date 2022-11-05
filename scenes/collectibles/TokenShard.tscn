@@ -97,6 +97,7 @@ texture = ExtResource("4_tsvo3")
 
 [node name="Icosphere" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.0713554, 0)
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_5r0lb")
 skeleton = NodePath("")
 

@@ -6,9 +6,9 @@ signal toPerspective
 signal toUp
 signal setShader(shader)
 signal setSecondaryShader(shader)
-const FORWARD_JUMP_SPEED: float = 15.0
-const FORWARD_JUMP_SPEED_Y: float = 5.0
-const BACKJUMP_SPEED: float = 14.0
+const FORWARD_JUMP_SPEED: float = 8.0
+const FORWARD_JUMP_SPEED_Y: float = 3.0
+const BACKJUMP_SPEED: float = 12.0
 @onready var blinkSprite = $BlinkNode/BlinkSprite
 @onready var currentSprite = get_node("BackSprite")
 @onready var Water = preload("res://scenes/scenery/water.tscn")
@@ -302,8 +302,9 @@ func _process(delta):
 		if skills[skill] == "pending":
 			if is_on_floor():
 				skills[skill] = "ready"
-	if position.y < -50:
-		perish()
+	if position.y < -150:
+		pass
+		#perish()
 func _on_trigger_area_area_entered(area):
 	if area.get_class() == "EffectItem":
 		itemInVicinity = area
@@ -337,6 +338,9 @@ func _on_trigger_area_area_entered(area):
 	if area.get_class() == "Gem":
 		Globaldata.playerGems += 1
 		area.queue_free()
+	if area.get_class() == "Port":
+		set_global_position(area.get_node("Target").get_global_position())
+	
 	
 		
 

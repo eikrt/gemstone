@@ -1,5 +1,6 @@
 shader_type spatial;
 uniform sampler2D tex;
+uniform sampler2D normalmap;
 varying vec3 world_position;
 void vertex() {
 	world_position = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
@@ -15,4 +16,5 @@ void fragment() {
 	color.g += h_thing;
 	color.b += h_thing;
 	ALBEDO = color;
+	NORMAL_MAP = texture(normalmap, UV).rgb;
 }

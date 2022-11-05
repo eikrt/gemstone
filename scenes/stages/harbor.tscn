@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dt6o2hiuk8lec"]
+[gd_scene load_steps=33 format=3 uid="uid://dt6o2hiuk8lec"]
 
 [ext_resource type="PackedScene" uid="uid://dcryfcfk5nnmp" path="res://scenes/entities/player.tscn" id="1_bs4ur"]
 [ext_resource type="Script" path="res://scripts/CameraArm.gd" id="2_qlby7"]
@@ -9,17 +9,33 @@
 [ext_resource type="PackedScene" uid="uid://c3q50oemgl7ck" path="res://scenes/terrain/Terrain.tscn" id="5_nf6gk"]
 [ext_resource type="PackedScene" uid="uid://crf6mw8ym0glc" path="res://scenes/hud/hud.tscn" id="6_8fb3a"]
 [ext_resource type="PackedScene" uid="uid://dcg66ec6d8k5g" path="res://scenes/interactables/checkpoint.tscn" id="6_d735d"]
+[ext_resource type="PackedScene" uid="uid://ccehqen2ydq7r" path="res://scenes/interactables/port.tscn" id="7_7rsbj"]
 [ext_resource type="PackedScene" uid="uid://c5d08dcl2xc77" path="res://scenes/scenery/water.tscn" id="7_biwsm"]
 [ext_resource type="PackedScene" uid="uid://iyp1klimirc4" path="res://scenes/platforms/island_platform_hole.tscn" id="7_epsck"]
 [ext_resource type="PackedScene" uid="uid://cnduifhyx160k" path="res://scenes/platforms/boat.tscn" id="10_wnd06"]
+[ext_resource type="PackedScene" uid="uid://bdxt1v20p12qp" path="res://scenes/platforms/pier.tscn" id="11_cys7g"]
 [ext_resource type="PackedScene" uid="uid://yp0206iw8j1n" path="res://scenes/collectibles/TokenShard.tscn" id="11_is7ae"]
+[ext_resource type="PackedScene" uid="uid://paaqessn5nfy" path="res://scenes/environment/house.tscn" id="12_5rff5"]
+[ext_resource type="PackedScene" uid="uid://jfc4tf5ssmm1" path="res://scenes/harmful/jump_ball.tscn" id="13_vhv31"]
+[ext_resource type="PackedScene" uid="uid://blg3cwc28qwgk" path="res://scenes/stages/harbor/substages/specialroom1.tscn" id="17_i2bu6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ghag5"]
+sky_top_color = Color(0.654902, 0.360784, 0.164706, 1)
+sky_horizon_color = Color(0.968627, 0.505882, 0.321569, 1)
+
+[sub_resource type="Sky" id="Sky_ob70q"]
+sky_material = SubResource("ProceduralSkyMaterial_ghag5")
 
 [sub_resource type="Environment" id="Environment_ksmlx"]
+background_mode = 2
+sky = SubResource("Sky_ob70q")
 glow_intensity = 1.0
 glow_bloom = 0.1
 fog_light_color = Color(0, 0, 0, 1)
 fog_light_energy = 0.1
 fog_density = 0.05
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.03
 adjustment_enabled = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lmnju"]
@@ -71,10 +87,110 @@ _data = {
 "RESET": SubResource("Animation_55npe")
 }
 
+[sub_resource type="Animation" id="Animation_dpdco"]
+resource_name = "New Anim"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(74.6042, 2.65863, 55.5257), Vector3(82.2613, 2.65863, 55.5257)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath(".:disable_mode")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_j6vie"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(74.6042, 2.65863, 55.5257)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:disable_mode")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gi5pc"]
+_data = {
+"New Anim": SubResource("Animation_dpdco"),
+"RESET": SubResource("Animation_j6vie")
+}
+
+[sub_resource type="Animation" id="Animation_5l80l"]
+resource_name = "New Anim"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(82.5031, 2.65863, 49.1341), Vector3(74.9212, 2.65863, 49.1341)]
+}
+
+[sub_resource type="Animation" id="Animation_t41w8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(82.5031, 2.65863, 49.1341)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0fwcc"]
+_data = {
+"New Anim": SubResource("Animation_5l80l"),
+"RESET": SubResource("Animation_t41w8")
+}
+
 [node name="Root" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_bs4ur")]
-transform = Transform3D(1.00349, 0, 0, 0, 1.00349, 0, 0, 0, 1.00349, 129.843, 9.32193, 132.405)
+transform = Transform3D(1.00349, 0, 0, 0, 1.00349, 0, 0, 0, 1.00349, 72.3821, 0.693214, 97.6673)
 weight = 1.5
 
 [node name="CameraArm" type="SpringArm3D" parent="Player"]
@@ -132,6 +248,51 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.9436, 0.06602, 133.728)
 [node name="Gem6" parent="Gems" instance=ExtResource("5_5w66f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.026, 6.71328, 102.317)
 
+[node name="Gem12" parent="Gems" instance=ExtResource("5_5w66f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.8159, 6.71328, 103.988)
+
+[node name="Gem13" parent="Gems" instance=ExtResource("5_5w66f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.8159, 6.71328, 94.1249)
+
+[node name="Gem14" parent="Gems" instance=ExtResource("5_5w66f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.8159, 6.71328, 81.091)
+
+[node name="Gem15" parent="Gems" instance=ExtResource("5_5w66f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.2253, 6.71328, 81.091)
+
+[node name="Gem16" parent="Gems" instance=ExtResource("5_5w66f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.0804, 6.71328, 80.6915)
+
+[node name="Gem17" parent="Gems" instance=ExtResource("5_5w66f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.3338, 6.71328, 80.6915)
+
+[node name="Gem18" parent="Gems" instance=ExtResource("5_5w66f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.5261, 6.71328, 94.2747)
+
+[node name="Gem19" parent="Gems" instance=ExtResource("5_5w66f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.1316, 6.71328, 94.2747)
+
+[node name="Gem20" parent="Gems" instance=ExtResource("5_5w66f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.0366, 6.71328, 94.2747)
+
+[node name="Gem21" parent="Gems" instance=ExtResource("5_5w66f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.0366, 6.71328, 94.2747)
+
+[node name="Gem22" parent="Gems" instance=ExtResource("5_5w66f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.5015, 6.71328, 94.2747)
+
+[node name="Gem23" parent="Gems" instance=ExtResource("5_5w66f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.5015, 6.71328, 89.4307)
+
+[node name="Gem24" parent="Gems" instance=ExtResource("5_5w66f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.5015, 6.71328, 84.1872)
+
+[node name="Gem25" parent="Gems" instance=ExtResource("5_5w66f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.5015, 6.71328, 81.1872)
+
+[node name="Gem26" parent="Gems" instance=ExtResource("5_5w66f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.664, 6.71328, 80.8702)
+
 [node name="Gem8" parent="Gems" instance=ExtResource("5_5w66f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.725, 5.57066, 95.7299)
 
@@ -161,6 +322,12 @@ omni_range = 4096.0
 
 [node name="Interactables" type="Node3D" parent="."]
 
+[node name="Port" parent="Interactables" instance=ExtResource("7_7rsbj")]
+transform = Transform3D(1.42943, 0, 0, 0, 1.89211, 0, 0, 0, 4.17919, 56.9307, 1.04978, 92.0151)
+
+[node name="Target" type="Node3D" parent="Interactables/Port"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.12673, -106.538, 2.21954)
+
 [node name="Tokens" type="Node3D" parent="."]
 
 [node name="Signs" type="Node3D" parent="."]
@@ -169,6 +336,9 @@ omni_range = 4096.0
 
 [node name="Checkpoint" parent="Checkpoints" instance=ExtResource("6_d735d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.848, 8.21321, 132.009)
+
+[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource("6_d735d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.215, 3.21613, 86.5255)
 
 [node name="Enemies" type="Node3D" parent="."]
 
@@ -205,11 +375,20 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 125.764, -1.28603, 106.97)
 [node name="IslandPlatform7" parent="Platforms" instance=ExtResource("5_a7kw0")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 118.423, -1.28603, 96.0778)
 
+[node name="IslandPlatform10" parent="Platforms" instance=ExtResource("5_a7kw0")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 118.423, -5.06399, 86.0265)
+
+[node name="IslandPlatform11" parent="Platforms" instance=ExtResource("5_a7kw0")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 90.1776, -0.187023, 86.9114)
+
 [node name="IslandPlatform3" parent="Platforms" instance=ExtResource("7_epsck")]
 transform = Transform3D(1.17232, 0, 1.62039, 0, 2, 0, -1.62039, 0, 1.17232, 118.469, 3.09223, 125.996)
 
 [node name="IslandPlatform9" parent="Platforms" instance=ExtResource("7_epsck")]
-transform = Transform3D(1.17232, 0, 1.62039, 0, 2, 0, -1.62039, 0, 1.17232, 84.67, -0.0732744, 143.681)
+transform = Transform3D(0.58616, 0, 0.810195, 0, 1, 0, -0.810195, 0, 0.58616, 84.67, 0.772995, 143.681)
+
+[node name="IslandPlatform12" parent="Platforms" instance=ExtResource("7_epsck")]
+transform = Transform3D(0.58616, 0, 0.810195, 0, 1, 0, -0.810195, 0, 0.58616, 84.67, 0.772995, 143.681)
 
 [node name="Boat" parent="Platforms" instance=ExtResource("10_wnd06")]
 transform = Transform3D(-0.810655, 0, -0.585524, 0, 1, 0, 0.585524, 0, -0.810655, 104.258, -0.2172, 128.555)
@@ -220,8 +399,80 @@ libraries = {
 "": SubResource("AnimationLibrary_inh0x")
 }
 
+[node name="Pier" parent="Platforms" instance=ExtResource("11_cys7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.156, 4.8925, 80.9113)
+
+[node name="Pier9" parent="Platforms" instance=ExtResource("11_cys7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.0739, 4.8925, 94.0918)
+
+[node name="Pier17" parent="Platforms" instance=ExtResource("11_cys7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.9697, 4.63542, 103.822)
+
+[node name="Pier18" parent="Platforms" instance=ExtResource("11_cys7g")]
+transform = Transform3D(0.999754, 0, -0.0221639, 0, 1, 0, 0.0221639, 0, 0.999754, 91.1138, 4.96465, 81.1663)
+
+[node name="Pier2" parent="Platforms" instance=ExtResource("11_cys7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120.761, 4.8925, 80.9052)
+
+[node name="Pier3" parent="Platforms" instance=ExtResource("11_cys7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.53, 4.8925, 80.9052)
+
+[node name="Pier4" parent="Platforms" instance=ExtResource("11_cys7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.177, 4.8925, 80.9052)
+
+[node name="Pier5" parent="Platforms" instance=ExtResource("11_cys7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.686, 4.8925, 80.9052)
+
+[node name="Pier14" parent="Platforms" instance=ExtResource("11_cys7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.8594, 4.8925, 80.5728)
+
+[node name="Pier15" parent="Platforms" instance=ExtResource("11_cys7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.3109, 4.74976, 94.1329)
+
+[node name="Pier16" parent="Platforms" instance=ExtResource("11_cys7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.076, 4.8925, 94.1687)
+
+[node name="Pier6" parent="Platforms" instance=ExtResource("11_cys7g")]
+transform = Transform3D(0.0308002, 0, 0.999526, 0, 1, 0, -0.999526, 0, 0.0308002, 97.8692, 4.8925, 80.6378)
+
+[node name="Pier7" parent="Platforms" instance=ExtResource("11_cys7g")]
+transform = Transform3D(0.0308002, 0, 0.999526, 0, 1, 0, -0.999526, 0, 0.0308002, 97.6801, 4.8925, 86.0802)
+
+[node name="Pier8" parent="Platforms" instance=ExtResource("11_cys7g")]
+transform = Transform3D(0.0308002, 0, 0.999526, 0, 1, 0, -0.999526, 0, 0.0308002, 97.4958, 4.8925, 92.1571)
+
+[node name="Pier11" parent="Platforms" instance=ExtResource("11_cys7g")]
+transform = Transform3D(0.0308002, 0, 0.999526, 0, 1, 0, -0.999526, 0, 0.0308002, 82.1507, 4.8925, 80.6378)
+
+[node name="Pier12" parent="Platforms" instance=ExtResource("11_cys7g")]
+transform = Transform3D(0.0308002, 0, 0.999526, 0, 1, 0, -0.999526, 0, 0.0308002, 81.9616, 4.8925, 86.0802)
+
+[node name="Pier13" parent="Platforms" instance=ExtResource("11_cys7g")]
+transform = Transform3D(0.0308002, 0, 0.999526, 0, 1, 0, -0.999526, 0, 0.0308002, 81.7772, 4.8925, 92.1571)
+
+[node name="House" parent="Platforms" instance=ExtResource("12_5rff5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.0987, 0.703541, 92.6478)
+
 [node name="Harmful" type="Node3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -67.3226, 1.0189, -17.1863)
+
+[node name="JumpBall" parent="Harmful" instance=ExtResource("13_vhv31")]
+transform = Transform3D(1.49998, -1.07816e-06, -0.00704379, 1.07288e-06, 1.5, -1.12555e-06, 0.00704379, 1.1205e-06, 1.49998, 74.6042, 2.65863, 55.5257)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Harmful/JumpBall"]
+autoplay = "New Anim"
+libraries = {
+"": SubResource("AnimationLibrary_gi5pc")
+}
+
+[node name="JumpBall2" parent="Harmful" instance=ExtResource("13_vhv31")]
+transform = Transform3D(1.49998, -1.07816e-06, -0.00704379, 1.07288e-06, 1.5, -1.12555e-06, 0.00704379, 1.1205e-06, 1.49998, 82.5031, 2.65863, 49.1341)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Harmful/JumpBall2"]
+autoplay = "New Anim"
+libraries = {
+"": SubResource("AnimationLibrary_0fwcc")
+}
 
 [node name="Cannons" type="Node3D" parent="."]
 transform = Transform3D(1.00349, 0, 0, 0, 1.00349, 0, 0, 0, 1.00349, 11.2689, 2.3956, -85.7622)
@@ -231,14 +482,26 @@ transform = Transform3D(1.00349, 0, 0, 0, 1.00349, 0, 0, 0, 1.00349, 11.2689, 2.
 [node name="Terrain" type="Node3D" parent="."]
 
 [node name="Terrain" parent="Terrain" instance=ExtResource("5_nf6gk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.68902, -7.91313, -5.26099)
 
 [node name="Water" parent="Terrain" instance=ExtResource("7_biwsm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -26.0136, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.29259, -34.7211, 1.76696)
 
 [node name="TokenShard" type="Node3D" parent="."]
 
 [node name="TokenShard" parent="TokenShard" instance=ExtResource("11_is7ae")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.5134, 3.61427, 143.649)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.5134, 2.88177, 143.649)
+
+[node name="TokenShard3" parent="TokenShard" instance=ExtResource("11_is7ae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.1885, 2.97224, 86.8399)
+
+[node name="TokenShard2" parent="TokenShard" instance=ExtResource("11_is7ae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.985, 1.18905, 126.229)
+
+[node name="SpecialRooms" type="Node3D" parent="."]
+
+[node name="HarborSpecialRoom1" parent="SpecialRooms" instance=ExtResource("17_i2bu6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.4682, -208.556, 94.6504)
 
 [connection signal="setSecondaryShader" from="Player" to="Player/CameraArm/PlayerCamera" method="_on_player_set_secondary_shader"]
 [connection signal="setShader" from="Player" to="Player/CameraArm/PlayerCamera" method="_on_player_set_shader"]

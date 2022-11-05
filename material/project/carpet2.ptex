@@ -1,0 +1,177 @@
+{
+	"connections": [
+		{
+			"from": "colorize",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 0
+		},
+		{
+			"from": "mesh",
+			"from_port": 1,
+			"to": "normal_map2",
+			"to_port": 0
+		},
+		{
+			"from": "normal_map2",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 4
+		},
+		{
+			"from": "mesh",
+			"from_port": 1,
+			"to": "blend",
+			"to_port": 0
+		},
+		{
+			"from": "blend",
+			"from_port": 0,
+			"to": "colorize",
+			"to_port": 0
+		},
+		{
+			"from": "color_noise",
+			"from_port": 0,
+			"to": "blend",
+			"to_port": 1
+		}
+	],
+	"label": "Graph",
+	"longdesc": "",
+	"name": "@@288",
+	"node_position": {
+		"x": 0,
+		"y": 0
+	},
+	"nodes": [
+		{
+			"export_paths": {
+
+			},
+			"name": "Material",
+			"node_position": {
+				"x": 630,
+				"y": -9
+			},
+			"parameters": {
+				"albedo_color": {
+					"a": 1,
+					"b": 1,
+					"g": 1,
+					"r": 1,
+					"type": "Color"
+				},
+				"ao": 1,
+				"depth_scale": 0.5,
+				"emission_energy": 1,
+				"flags_transparent": true,
+				"metallic": 0,
+				"normal": 1,
+				"roughness": 1,
+				"size": 11,
+				"sss": 0
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "material"
+		},
+		{
+			"name": "colorize",
+			"node_position": {
+				"x": 221,
+				"y": -31
+			},
+			"parameters": {
+				"gradient": {
+					"interpolation": 1,
+					"points": [
+						{
+							"a": 1,
+							"b": 0.087494,
+							"g": 0.087494,
+							"pos": 0.536364,
+							"r": 0.476562
+						},
+						{
+							"a": 1,
+							"b": 0.156738,
+							"g": 0.825325,
+							"pos": 1,
+							"r": 0.835938
+						}
+					],
+					"type": "Gradient"
+				}
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "colorize"
+		},
+		{
+			"name": "mesh",
+			"node_position": {
+				"x": -58,
+				"y": 278
+			},
+			"parameters": {
+				"diagonal": true,
+				"shape": 0,
+				"tiling": 5
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "mesh"
+		},
+		{
+			"name": "normal_map2",
+			"node_position": {
+				"x": 318,
+				"y": 245
+			},
+			"parameters": {
+				"buffer": 1,
+				"param2": 0,
+				"size": 10,
+				"strength": 1
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "normal_map2"
+		},
+		{
+			"name": "blend",
+			"node_position": {
+				"x": 260,
+				"y": 114
+			},
+			"parameters": {
+				"amount": 0.5,
+				"blend_type": 0
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "blend"
+		},
+		{
+			"name": "color_noise",
+			"node_position": {
+				"x": -9,
+				"y": 574
+			},
+			"parameters": {
+				"size": 6
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "color_noise"
+		}
+	],
+	"parameters": {
+
+	},
+	"seed": 0,
+	"seed_locked": false,
+	"shortdesc": "",
+	"type": "graph"
+}

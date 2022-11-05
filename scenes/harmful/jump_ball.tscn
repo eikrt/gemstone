@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://jfc4tf5ssmm1"]
+
+[ext_resource type="Script" path="res://scripts/JumpingBall.gd" id="1_8gs0k"]
+[ext_resource type="Material" path="res://material/objects/sandstone.tres" id="2_ptj1g"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_grcjl"]
+material = ExtResource("2_ptj1g")
+radial_segments = 16
+rings = 16
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ktn0i"]
+
+[node name="JumpBall" type="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_8gs0k")
+
+[node name="MeshInstance3d" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_grcjl")
+
+[node name="JumpTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ktn0i")
+
+[connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
