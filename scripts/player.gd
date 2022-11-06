@@ -51,16 +51,12 @@ func handle_input(delta):
 			input.z -= 1
 		
 		if orientation == "3d":
-			currentSprite.visible = false
-			currentSprite = $BackSprite
-			currentSprite.visible = true
+			pass
 	if Input.is_action_pressed("s"):
 		if orientation == "3d"  || orientation == "up":
 			input.z += 1
 		if orientation == "3d":
-			currentSprite.visible = false
-			currentSprite = $FrontSprite
-			currentSprite.visible = true
+			pass
 	if Input.is_action_pressed("a"):
 		if orientation == "3d"  || orientation == "up" :
 			input.x -= 1
@@ -80,14 +76,14 @@ func handle_input(delta):
 				$BlinkNode.rotation.y = -3.14 / 2
 		if orientation == "xlocked":
 			if orthoDir == "front":
-				currentSprite.flip_h = true
+				pass
 			else:
-				currentSprite.flip_h = true
+				pass
 		if orientation == "zlocked":
 			if orthoDir == "front":
-				currentSprite.flip_h = true
+				pass
 			else:
-				currentSprite.flip_h = false
+				pass
 	if Input.is_action_pressed("d"):
 		if orientation == "3d"  || orientation == "up":
 			input.x += 1
@@ -107,14 +103,14 @@ func handle_input(delta):
 				$BlinkNode.rotation.y = -3.14 / 2
 		if orientation == "xlocked":
 			if orthoDir == "front":
-				currentSprite.flip_h = false
+				pass
 			else:
-				currentSprite.flip_h = false
+				pass
 		if orientation == "zlocked":
 			if orthoDir == "front":
-				currentSprite.flip_h = false
+				pass
 			else:
-				currentSprite.flip_h = true
+				pass
 	if Input.is_action_just_pressed("e"):
 		if is_on_floor():
 			holdingItem = !holdingItem
@@ -150,10 +146,10 @@ func handle_input(delta):
 				cameraSetY += delta * 0.3
 	input = input.normalized()
 	if (velocity.x < -0.1 || velocity.x > 0.1) || (velocity.z < -0.1 || velocity.z > 0.1):
-		currentSprite.playing = true
+		pass
 	
 	else:
-		currentSprite.playing = false
+		pass
 	
 	dir = (transform.basis.z * input.z + transform.basis.x * input.x)
 	shootDir = (transform.basis.z * -1.0 + transform.basis.x * 0.0)
@@ -256,28 +252,21 @@ func change_orientation(o, dir):
 	else:
 		$Anchor.position = Vector3(0, 2.26, 3.01)
 	if orientation == "zlocked" || orientation == "xlocked":
-		currentSprite.visible = false
-		currentSprite = $SideSprite
-		currentSprite.visible = true
+		pass
 		emit_signal("toOrtho", dir, o)
 		currentSprite.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 		
 	elif orientation == "up":
-		currentSprite.visible = false
-		currentSprite = $UpSprite
-		currentSprite.visible = true
+		pass
 		rotation.y = 0
 		emit_signal("toUp")
 
 	else:
 		$BlinkNode.rotation.y = 0
-		currentSprite.visible = false
-		currentSprite = $BackSprite
-		currentSprite.visible = true
-		currentSprite.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
+		pass
 		emit_signal("toPerspective")
 	if orientation == "up":
-		currentSprite.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+		pass
 func _physics_process(delta):
 	# Add the gravity.
 	process_rays(delta)
