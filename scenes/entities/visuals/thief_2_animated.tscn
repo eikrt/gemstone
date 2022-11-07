@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuqishtjpwdva"]
+
+[ext_resource type="PackedScene" uid="uid://77op0p4arkha" path="res://models/blender/characters/thief2_animated.gltf" id="1_s1tam"]
+
+[node name="thief2_animated" instance=ExtResource("1_s1tam")]

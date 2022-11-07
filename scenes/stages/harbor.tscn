@@ -253,40 +253,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.026, 6.71328, 102.317)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.8159, 6.71328, 103.988)
 
 [node name="Gem13" parent="Gems" instance=ExtResource("5_5w66f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.8159, 6.71328, 94.1249)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.8159, 5.73902, 94.1249)
 
 [node name="Gem14" parent="Gems" instance=ExtResource("5_5w66f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.8159, 6.71328, 81.091)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.8159, 5.66233, 81.091)
 
 [node name="Gem15" parent="Gems" instance=ExtResource("5_5w66f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.2253, 6.71328, 81.091)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.2253, 5.66233, 81.091)
 
 [node name="Gem16" parent="Gems" instance=ExtResource("5_5w66f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.0804, 6.71328, 80.6915)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.0804, 5.66233, 80.6915)
 
 [node name="Gem17" parent="Gems" instance=ExtResource("5_5w66f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.3338, 6.71328, 80.6915)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.3338, 5.66233, 80.6915)
 
 [node name="Gem18" parent="Gems" instance=ExtResource("5_5w66f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.5261, 6.71328, 94.2747)
 
 [node name="Gem19" parent="Gems" instance=ExtResource("5_5w66f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.1316, 6.71328, 94.2747)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.1316, 5.58749, 94.2747)
 
 [node name="Gem20" parent="Gems" instance=ExtResource("5_5w66f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.0366, 6.71328, 94.2747)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.0366, 5.58749, 94.2747)
 
 [node name="Gem21" parent="Gems" instance=ExtResource("5_5w66f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.0366, 6.71328, 94.2747)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.0366, 5.58749, 94.2747)
 
 [node name="Gem22" parent="Gems" instance=ExtResource("5_5w66f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.5015, 6.71328, 94.2747)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.5015, 5.66233, 94.2747)
 
 [node name="Gem23" parent="Gems" instance=ExtResource("5_5w66f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.5015, 6.71328, 89.4307)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.5015, 5.66233, 89.4307)
 
 [node name="Gem24" parent="Gems" instance=ExtResource("5_5w66f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.5015, 6.71328, 84.1872)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.5015, 5.66233, 84.1872)
 
 [node name="Gem25" parent="Gems" instance=ExtResource("5_5w66f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.5015, 6.71328, 81.1872)

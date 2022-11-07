@@ -24,6 +24,7 @@ var skills = {"blink": "locked", "forwardjump": "ready", "backjump": "ready"}
 var cannoned = false
 var upCannoned = false
 var launchSpeed = 100
+@onready var aplayer = $PlayerVisual.get_node("AnimationPlayer")
 var orthoDir = "front"
 func get_class():
 	return "Player"
@@ -37,6 +38,8 @@ func resetStatuses():
 	cannoned = false
 	upCannoned = false
 func jump():
+	aplayer.advance(100)
+	aplayer.play("JumpAction")
 	velocity.y = JUMP_VELOCITY
 	resetStatuses()
 func handle_input(delta):
@@ -145,13 +148,23 @@ func handle_input(delta):
 			if cameraSetY < 2:
 				cameraSetY += delta * 0.3
 	input = input.normalized()
-	var aplayer = $PlayerVisual.get_node("AnimationPlayer")
-	if ((velocity.x < -0.1 || velocity.x > 0.1) || (velocity.z < -0.1 || velocity.z > 0.1)) && is_on_floor():
-		
-		aplayer.play("ArmatureAction")
-	
-	else:
+	if !Input.is_action_pressed("w") && !Input.is_action_pressed("a")  && !Input.is_action_pressed("s")  && !Input.is_action_pressed("d") && is_on_floor():
+		aplayer.stop(true)
+		aplayer.stop()
 		aplayer.seek(0.2)
+	if ((velocity.x < -0.01 || velocity.x > 0.01) || (velocity.z < -0.01 || velocity.z > 0.01)) && is_on_floor():
+		if not aplayer.is_playing():
+			aplayer.play("WalkAction")
+		else:
+			pass
+	elif is_on_floor():
+		if not aplayer.is_playing():
+			aplayer.play("WalkAction") # change to idle
+			aplayer.stop()
+			aplayer.seek(0.2)
+	if not is_on_floor():
+		if not aplayer.is_playing():
+			aplayer.play("JumpAction")
 	
 	dir = (transform.basis.z * input.z + transform.basis.x * input.x)
 	shootDir = (transform.basis.z * -1.0 + transform.basis.x * 0.0)
@@ -219,9 +232,10 @@ func conduct_ability(ability):
 		if ability == "backjump":
 			backjump()
 func backjump():
+	aplayer.play("BackFlipAction")
 	velocity.y += BACKJUMP_SPEED
 func forwardjump():
-
+	aplayer.play("FrontJumpAction")
 	velocity.x += shootDir.x * FORWARD_JUMP_SPEED
 	velocity.z += shootDir.z * FORWARD_JUMP_SPEED
 	velocity.y += FORWARD_JUMP_SPEED_Y
