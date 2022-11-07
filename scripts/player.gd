@@ -145,11 +145,13 @@ func handle_input(delta):
 			if cameraSetY < 2:
 				cameraSetY += delta * 0.3
 	input = input.normalized()
-	if (velocity.x < -0.1 || velocity.x > 0.1) || (velocity.z < -0.1 || velocity.z > 0.1):
-		pass
+	var aplayer = $PlayerVisual.get_node("AnimationPlayer")
+	if ((velocity.x < -0.1 || velocity.x > 0.1) || (velocity.z < -0.1 || velocity.z > 0.1)) && is_on_floor():
+		
+		aplayer.play("ArmatureAction")
 	
 	else:
-		pass
+		aplayer.seek(0.2)
 	
 	dir = (transform.basis.z * input.z + transform.basis.x * input.x)
 	shootDir = (transform.basis.z * -1.0 + transform.basis.x * 0.0)
