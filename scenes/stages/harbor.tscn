@@ -191,7 +191,7 @@ _data = {
 [node name="Root" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_bs4ur")]
-transform = Transform3D(1.00349, 0, 0, 0, 1.00349, 0, 0, 0, 1.00349, 130.793, 8.06231, 130.922)
+transform = Transform3D(1.00349, 0, 0, 0, 1.00349, 0, 0, 0, 1.00349, 73.551, -183.782, 96.937)
 weight = 1.5
 
 [node name="CameraArm" type="SpringArm3D" parent="Player"]
@@ -268,7 +268,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.0804, 5.66233, 80.6915)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.3338, 5.66233, 80.6915)
 
 [node name="Gem18" parent="Gems" instance=ExtResource("5_5w66f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.5261, 6.71328, 94.2747)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.5261, 5.62913, 94.2747)
 
 [node name="Gem19" parent="Gems" instance=ExtResource("5_5w66f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.1316, 5.58749, 94.2747)
@@ -330,7 +330,7 @@ transform = Transform3D(0.189718, 0, 4.14222, 0, 1.89211, 0, -1.41678, 0, 0.5546
 transform = Transform3D(1, 0, 2.68221e-07, 0, 1, 0, 3.72529e-09, 0, 1, -4.97471, -107.302, 3.90259)
 
 [node name="Port2" parent="Interactables" instance=ExtResource("7_7rsbj")]
-transform = Transform3D(1.42943, 0, 0, 0, 1.89211, 0, 0, 0, 4.17919, 77.0278, -184.315, 96.5684)
+transform = Transform3D(1.42943, 0, 0, 0, 1.89211, 0, 0, 0, 4.17919, 76.9335, -184.315, 95.5051)
 
 [node name="Target" type="Node3D" parent="Interactables/Port2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8324, 106.429, -1.47998)
