@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://bnw1d0b88vuvn"]
+
+[ext_resource type="Script" path="res://scripts/laser_shooter.gd" id="1_orei6"]
+[ext_resource type="Texture2D" uid="uid://dianuvugl4etq" path="res://material/objects/specialwall_albedo.png" id="2_kjst8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yjnd1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aj17p"]
+albedo_texture = ExtResource("2_kjst8")
+
+[sub_resource type="PrismMesh" id="PrismMesh_ecs46"]
+material = SubResource("StandardMaterial3D_aj17p")
+
+[node name="LaserShooter" type="StaticBody3D"]
+script = ExtResource("1_orei6")
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_yjnd1")
+
+[node name="MeshInstance3d" type="MeshInstance3D" parent="."]
+mesh = SubResource("PrismMesh_ecs46")
+
+[node name="RayCast3d" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 4)

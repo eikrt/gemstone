@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://fix13p1sw57t"]
+
+[ext_resource type="Script" path="res://scripts/distort_square.gd" id="1_63ql0"]
+[ext_resource type="Shader" path="res://shaders/distordsquare.gdshader" id="1_lftq4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_csvnv"]
+render_priority = 0
+shader = ExtResource("1_lftq4")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fliq5"]
+material = SubResource("ShaderMaterial_csvnv")
+top_radius = 4.0
+bottom_radius = 4.0
+height = 20.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yx05d"]
+size = Vector3(8, 22, 8)
+
+[node name="DistortSquare" type="Area3D"]
+script = ExtResource("1_63ql0")
+
+[node name="MeshInstance3d2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.27819, 0)
+mesh = SubResource("CylinderMesh_fliq5")
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+shape = SubResource("BoxShape3D_yx05d")

@@ -347,6 +347,11 @@ func _on_trigger_area_area_entered(area):
 		area.queue_free()
 	if area.get_class() == "Port":
 		set_global_position(area.get_node("Target").get_global_position())
+	if area.get_class() == "LightSquare":
+		perish()
+	if area.get_class() == "DistortSquare":
+		emit_signal("setShader", "upsidedown")
+		$DistortionTimer.start()
 	
 	
 		
@@ -386,3 +391,7 @@ func _on_forwardjump_timer_timeout():
 
 func _on_backjump_timer_timeout():
 	skills["backjump"] = "pending"
+
+
+func _on_distortion_timer_timeout():
+	emit_signal("setShader", "none")

@@ -1,0 +1,166 @@
+{
+	"connections": [
+		{
+			"from": "noise_white_2",
+			"from_port": 0,
+			"to": "blend",
+			"to_port": 1
+		},
+		{
+			"from": "colorize",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 0
+		},
+		{
+			"from": "blend",
+			"from_port": 0,
+			"to": "colorize",
+			"to_port": 0
+		},
+		{
+			"from": "fbm2",
+			"from_port": 0,
+			"to": "blend",
+			"to_port": 0
+		}
+	],
+	"label": "Graph",
+	"longdesc": "",
+	"name": "@@288",
+	"node_position": {
+		"x": 0,
+		"y": 0
+	},
+	"nodes": [
+		{
+			"export_paths": {
+				"Godot": "/home/eino/repo/gemstone/material/objects/groundtiles"
+			},
+			"name": "Material",
+			"node_position": {
+				"x": 245,
+				"y": -16
+			},
+			"parameters": {
+				"albedo_color": {
+					"a": 1,
+					"b": 1,
+					"g": 1,
+					"r": 1,
+					"type": "Color"
+				},
+				"ao": 1,
+				"depth_scale": 0.5,
+				"emission_energy": 1,
+				"flags_transparent": true,
+				"metallic": 0,
+				"normal": 1,
+				"roughness": 1,
+				"size": 11,
+				"sss": 0
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "material"
+		},
+		{
+			"name": "noise_white",
+			"node_position": {
+				"x": -419,
+				"y": 149
+			},
+			"parameters": {
+				"size": 11
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "noise_white"
+		},
+		{
+			"name": "colorize",
+			"node_position": {
+				"x": -87,
+				"y": 67
+			},
+			"parameters": {
+				"gradient": {
+					"interpolation": 1,
+					"points": [
+						{
+							"a": 1,
+							"b": 0.244583,
+							"g": 0.523806,
+							"pos": 0,
+							"r": 0.535156
+						},
+						{
+							"a": 1,
+							"b": 0.402069,
+							"g": 0.664062,
+							"pos": 1,
+							"r": 0.612892
+						}
+					],
+					"type": "Gradient"
+				}
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "colorize"
+		},
+		{
+			"name": "blend",
+			"node_position": {
+				"x": -131,
+				"y": 207
+			},
+			"parameters": {
+				"amount": 0.5,
+				"blend_type": 4
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "blend"
+		},
+		{
+			"name": "noise_white_2",
+			"node_position": {
+				"x": -439,
+				"y": 557
+			},
+			"parameters": {
+				"size": 8
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "noise_white"
+		},
+		{
+			"name": "fbm2",
+			"node_position": {
+				"x": -445,
+				"y": 293
+			},
+			"parameters": {
+				"folds": 1,
+				"iterations": 3,
+				"noise": 9,
+				"offset": 0,
+				"persistence": 0.5,
+				"scale_x": 2,
+				"scale_y": 8
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "fbm2"
+		}
+	],
+	"parameters": {
+
+	},
+	"seed": 0,
+	"seed_locked": false,
+	"shortdesc": "",
+	"type": "graph"
+}

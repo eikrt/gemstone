@@ -171,6 +171,10 @@ one_shot = true
 [node name="PlayerVisual" parent="." instance=ExtResource("14_tvop7")]
 transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0, 0.726074, 0)
 
+[node name="DistortionTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="area_entered" from="TriggerArea" to="." method="_on_trigger_area_area_entered"]
 [connection signal="area_exited" from="TriggerArea" to="." method="_on_trigger_area_area_exited"]
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
@@ -178,3 +182,4 @@ transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 
 [connection signal="timeout" from="BlinkTimer" to="." method="_on_blink_timer_timeout"]
 [connection signal="timeout" from="ForwardjumpTimer" to="." method="_on_forwardjump_timer_timeout"]
 [connection signal="timeout" from="BackjumpTimer" to="." method="_on_backjump_timer_timeout"]
+[connection signal="timeout" from="DistortionTimer" to="." method="_on_distortion_timer_timeout"]

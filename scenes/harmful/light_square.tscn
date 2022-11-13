@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqnl8uv6lr6o3"]
+
+[ext_resource type="Script" path="res://scripts/light_square.gd" id="1_jteut"]
+[ext_resource type="Shader" path="res://shaders/lightray.gdshader" id="1_rxsas"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5p007"]
+render_priority = 0
+shader = ExtResource("1_rxsas")
+shader_parameter/position = null
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_smshp"]
+material = SubResource("ShaderMaterial_5p007")
+top_radius = 2.0
+bottom_radius = 2.0
+height = 20.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yx05d"]
+size = Vector3(4, 22, 4)
+
+[node name="LightSquare" type="Area3D"]
+script = ExtResource("1_jteut")
+
+[node name="MeshInstance3d2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.27819, 0)
+mesh = SubResource("CylinderMesh_smshp")
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+shape = SubResource("BoxShape3D_yx05d")

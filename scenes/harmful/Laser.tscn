@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbbmpdniaqpgs"]
+
+[ext_resource type="Script" path="res://scripts/laser_shooter.gd" id="1_2y2c3"]
+[ext_resource type="Shader" path="res://shaders/laser.gdshader" id="2_ug3uo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vbtt0"]
+render_priority = 0
+shader = ExtResource("2_ug3uo")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3f8gm"]
+material = SubResource("ShaderMaterial_vbtt0")
+
+[node name="Laser" type="Area3D"]
+script = ExtResource("1_2y2c3")
+
+[node name="RayCast3d" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 4)
+
+[node name="MeshInstance3d" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_3f8gm")
