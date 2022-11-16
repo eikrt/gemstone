@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3x6nfy4hqqo4"]
+
+[ext_resource type="Texture2D" uid="uid://b3x8vkiqjqhmy" path="res://material/objects/pedestal_albedo.png" id="1_601f5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ilkrd"]
+albedo_texture = ExtResource("1_601f5")
+
+[sub_resource type="BoxMesh" id="BoxMesh_rtt3c"]
+material = SubResource("StandardMaterial3D_ilkrd")
+size = Vector3(8, 0.1, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_782ub"]
+size = Vector3(7.97761, 0.128572, 3.95614)
+
+[node name="SmallRamp" type="StaticBody3D"]
+
+[node name="MeshInstance3d" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_rtt3c")
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_782ub")

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bi1s40yelwj8p"]
+
+[ext_resource type="Script" path="res://scripts/harm_fog.gd" id="1_inxm1"]
+
+[sub_resource type="FogMaterial" id="FogMaterial_v7pqu"]
+density = 3.0
+albedo = Color(0.631373, 0.929412, 0.568627, 1)
+emission = Color(0.513726, 0.733333, 0.384314, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ap4g3"]
+size = Vector3(10.1128, 1, 10.1834)
+
+[node name="HarmFog" type="Area3D"]
+transform = Transform3D(0.111133, 0, 0, 0, 1, 0, 0, 0, 0.11527, 0, 0.0777549, 0)
+script = ExtResource("1_inxm1")
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
+shape = 0
+material = SubResource("FogMaterial_v7pqu")
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ap4g3")

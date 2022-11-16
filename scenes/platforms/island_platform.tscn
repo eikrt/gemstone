@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cphc8p05xq5tr"]
 
-[ext_resource type="Material" path="res://material/objects/sandstone.tres" id="1_dj8do"]
+[ext_resource type="Material" uid="uid://bfjtgnolp5lwa" path="res://material/objects/sandstone.tres" id="1_dj8do"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_b7v6g"]
 _surfaces = [{

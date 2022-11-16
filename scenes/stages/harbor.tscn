@@ -12,17 +12,23 @@
 [ext_resource type="PackedScene" uid="uid://ccehqen2ydq7r" path="res://scenes/interactables/port.tscn" id="7_7rsbj"]
 [ext_resource type="PackedScene" uid="uid://c5d08dcl2xc77" path="res://scenes/scenery/water.tscn" id="7_biwsm"]
 [ext_resource type="PackedScene" uid="uid://iyp1klimirc4" path="res://scenes/platforms/island_platform_hole.tscn" id="7_epsck"]
+[ext_resource type="PackedScene" uid="uid://ypjsjietj874" path="res://scenes/environment/palm.tscn" id="7_urtuh"]
+[ext_resource type="PackedScene" uid="uid://cmpv4mamk8dru" path="res://scenes/interactables/upcannon.tscn" id="8_2ujrc"]
+[ext_resource type="PackedScene" uid="uid://k7hs6n7bavaw" path="res://scenes/collectibles/Token.tscn" id="8_r5eyu"]
+[ext_resource type="PackedScene" uid="uid://bncnletwnvibx" path="res://scenes/interactables/pedestal.tscn" id="9_101il"]
 [ext_resource type="PackedScene" uid="uid://cnduifhyx160k" path="res://scenes/platforms/boat.tscn" id="10_wnd06"]
+[ext_resource type="PackedScene" uid="uid://dj6e303a7xcx" path="res://scenes/collectibles/EffectItem.tscn" id="10_ywmhg"]
 [ext_resource type="PackedScene" uid="uid://bdxt1v20p12qp" path="res://scenes/platforms/pier.tscn" id="11_cys7g"]
 [ext_resource type="PackedScene" uid="uid://yp0206iw8j1n" path="res://scenes/collectibles/TokenShard.tscn" id="11_is7ae"]
 [ext_resource type="PackedScene" uid="uid://paaqessn5nfy" path="res://scenes/environment/house.tscn" id="12_5rff5"]
 [ext_resource type="PackedScene" uid="uid://jfc4tf5ssmm1" path="res://scenes/harmful/jump_ball.tscn" id="13_vhv31"]
 [ext_resource type="Texture2D" uid="uid://cf1lrx5jkkwh4" path="res://material/objects/groundtiles_albedo.png" id="14_jdcmg"]
+[ext_resource type="PackedScene" uid="uid://b3x6nfy4hqqo4" path="res://scenes/platforms/small_ramp.tscn" id="15_iqr43"]
 [ext_resource type="PackedScene" uid="uid://c75x886y64c8f" path="res://scenes/harmful/harm_fog.tscn" id="15_rqu6r"]
+[ext_resource type="PackedScene" uid="uid://cxhcno1v1gn51" path="res://scenes/platforms/narrow_path.tscn" id="16_q2bb5"]
 [ext_resource type="PackedScene" uid="uid://blg3cwc28qwgk" path="res://scenes/stages/harbor/substages/specialroom1.tscn" id="17_i2bu6"]
-[ext_resource type="PackedScene" uid="uid://bqnl8uv6lr6o3" path="res://scenes/harmful/light_square.tscn" id="17_iobdp"]
-[ext_resource type="PackedScene" uid="uid://fix13p1sw57t" path="res://scenes/harmful/distort_square.tscn" id="18_2c1a5"]
 [ext_resource type="PackedScene" uid="uid://enj6tn6ma26h" path="res://scenes/scenery/undulating_dunes.tscn" id="21_pgoig"]
+[ext_resource type="PackedScene" uid="uid://bi1s40yelwj8p" path="res://scenes/harmful/harm_fog_cube.tscn" id="21_pq162"]
 [ext_resource type="PackedScene" uid="uid://c6uwak3ey6kcq" path="res://scenes/scenery/Cliff.tscn" id="22_1cu1y"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ghag5"]
@@ -54,6 +60,16 @@ shader_parameter/scale = null
 [sub_resource type="PlaneMesh" id="PlaneMesh_v3p0t"]
 material = SubResource("ShaderMaterial_lmnju")
 size = Vector2(640, 420)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vai3l"]
+albedo_texture = ExtResource("14_jdcmg")
+
+[sub_resource type="BoxMesh" id="BoxMesh_o7itq"]
+material = SubResource("StandardMaterial3D_vai3l")
+size = Vector3(30, 4, 40)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_24ljb"]
+size = Vector3(78.2124, 4.45086, 60.4338)
 
 [sub_resource type="Animation" id="Animation_qbcet"]
 resource_name = "New Anim"
@@ -92,16 +108,6 @@ _data = {
 "New Anim": SubResource("Animation_qbcet"),
 "RESET": SubResource("Animation_55npe")
 }
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_mbhst"]
-size = Vector3(80.2492, 3.15727, 61.8951)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vai3l"]
-albedo_texture = ExtResource("14_jdcmg")
-
-[sub_resource type="BoxMesh" id="BoxMesh_o7itq"]
-material = SubResource("StandardMaterial3D_vai3l")
-size = Vector3(30, 4, 40)
 
 [sub_resource type="Animation" id="Animation_dpdco"]
 resource_name = "New Anim"
@@ -203,9 +209,9 @@ _data = {
 "RESET": SubResource("Animation_t41w8")
 }
 
-[sub_resource type="Animation" id="Animation_ynd4a"]
+[sub_resource type="Animation" id="Animation_new78"]
 resource_name = "New Anim"
-length = 16.0
+length = 5.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -214,13 +220,13 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 4, 8, 12),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(58.7667, 0.762321, 35.0458), Vector3(92.9146, 0.762321, 35.0458), Vector3(92.9146, 0.762321, 11.3138), Vector3(58.1848, 0.762321, 11.3138)]
+"values": [Vector3(79.4402, 3.36408, 13.0112), Vector3(79.4402, 12.477, 13.0112)]
 }
 
-[sub_resource type="Animation" id="Animation_qe1j5"]
+[sub_resource type="Animation" id="Animation_ggv7q"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -232,95 +238,19 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(58.7667, 0.762321, 35.0458)]
+"values": [Vector3(79.4402, 3.36408, 13.0112)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6notq"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l55ka"]
 _data = {
-"New Anim": SubResource("Animation_ynd4a"),
-"RESET": SubResource("Animation_qe1j5")
-}
-
-[sub_resource type="Animation" id="Animation_m7ffm"]
-resource_name = "New Anim"
-length = 16.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 4, 8, 12),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(76.1134, 0.762321, 23.4521), Vector3(58.1696, 0.762321, 35.6076), Vector3(75.6793, 0.762321, 23.6076), Vector3(57.7355, 0.762321, 10.5839)]
-}
-
-[sub_resource type="Animation" id="Animation_67fbm"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(76.1134, 0.762321, 23.4521)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0baq0"]
-_data = {
-"New Anim": SubResource("Animation_m7ffm"),
-"RESET": SubResource("Animation_67fbm")
-}
-
-[sub_resource type="Animation" id="Animation_q2axy"]
-resource_name = "New Anim"
-length = 18.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3, 6, 9, 12, 15),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(62.806, 5.2541, 32.2291), Vector3(90.5962, 5.2541, 32.2291), Vector3(60.6969, 5.2541, 13.7436), Vector3(90.5962, 5.2541, 13.7436), Vector3(61.5653, 5.2541, 13.7436), Vector3(90.3481, 5.2541, 32.2291)]
-}
-
-[sub_resource type="Animation" id="Animation_a82mp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(62.806, 5.2541, 32.2291)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ax50x"]
-_data = {
-"New Anim": SubResource("Animation_q2axy"),
-"RESET": SubResource("Animation_a82mp")
+"New Anim": SubResource("Animation_new78"),
+"RESET": SubResource("Animation_ggv7q")
 }
 
 [node name="Root" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_bs4ur")]
-transform = Transform3D(1.00349, 0, 0, 0, 1.00349, 0, 0, 0, 1.00349, 59.0194, 4.34162, 94.9126)
+transform = Transform3D(1.00349, -0.00218927, 0, 0.00218927, 1.00349, 0, 0, 0, 1.00349, 48.338, 22.573, 20.5476)
 weight = 1.5
 
 [node name="CameraArm" type="SpringArm3D" parent="Player"]
@@ -450,6 +380,45 @@ omni_range = 4096.0
 
 [node name="Environment" type="Node3D" parent="."]
 
+[node name="Palm" parent="Environment" instance=ExtResource("7_urtuh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.0188, 0, 57.4647)
+
+[node name="Palm2" parent="Environment" instance=ExtResource("7_urtuh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.821, 0, 46.145)
+
+[node name="Palm3" parent="Environment" instance=ExtResource("7_urtuh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.5508, 0, 63.076)
+
+[node name="Palm4" parent="Environment" instance=ExtResource("7_urtuh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.2767, 0, 49.778)
+
+[node name="Palm5" parent="Environment" instance=ExtResource("7_urtuh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.9626, 0, -63.2386)
+
+[node name="Palm7" parent="Environment" instance=ExtResource("7_urtuh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.5564, 0.286415, -63.2386)
+
+[node name="Palm8" parent="Environment" instance=ExtResource("7_urtuh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.437, 1.4999, -57.364)
+
+[node name="Palm10" parent="Environment" instance=ExtResource("7_urtuh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.6341, 0.475438, -36.3929)
+
+[node name="Palm11" parent="Environment" instance=ExtResource("7_urtuh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.849, 1.29359, -25.561)
+
+[node name="Palm12" parent="Environment" instance=ExtResource("7_urtuh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.2716, 0, 79.6276)
+
+[node name="Palm13" parent="Environment" instance=ExtResource("7_urtuh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.994, 0, 103.363)
+
+[node name="Palm9" parent="Environment" instance=ExtResource("7_urtuh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.184, 0, -81.7161)
+
+[node name="Palm6" parent="Environment" instance=ExtResource("7_urtuh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.0422, 40.7339, -12.5336)
+
 [node name="Interactables" type="Node3D" parent="."]
 
 [node name="Port" parent="Interactables" instance=ExtResource("7_7rsbj")]
@@ -464,7 +433,20 @@ transform = Transform3D(1.42943, 0, 0, 0, 1.89211, 0, 0, 0, 4.17919, 76.9335, -1
 [node name="Target" type="Node3D" parent="Interactables/Port2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8324, 106.429, -1.47998)
 
+[node name="UpCannon" parent="Interactables" instance=ExtResource("8_2ujrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.9233, 15.6178, 4.57229)
+launchSpeed = 32
+
 [node name="Tokens" type="Node3D" parent="."]
+
+[node name="Token" parent="Tokens" instance=ExtResource("8_r5eyu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.436, 3.00601, 30.6253)
+
+[node name="Token3" parent="Tokens" instance=ExtResource("8_r5eyu")]
+transform = Transform3D(0.999278, 0, 0.0379867, 0, 1, 0, -0.0379867, 0, 0.999278, 50.4935, 41.6074, -12.1282)
+
+[node name="Token2" parent="Tokens" instance=ExtResource("8_r5eyu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.0958, 84.9907, 9.59444)
 
 [node name="Signs" type="Node3D" parent="."]
 
@@ -472,6 +454,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8324, 106.429, -1.47998)
 
 [node name="Checkpoint" parent="Checkpoints" instance=ExtResource("6_d735d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.848, 8.21321, 132.009)
+
+[node name="Checkpoint3" parent="Checkpoints" instance=ExtResource("6_d735d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.8699, 25.4898, 50.5141)
 
 [node name="Checkpoint2" parent="Checkpoints" instance=ExtResource("6_d735d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.215, 3.21613, 86.5255)
@@ -486,300 +471,353 @@ transform = Transform3D(1.00296, 0, 0, 0, 1.00296, 0, 0, 0, 1.00296, 8.44753, -0
 [node name="Other" type="Node3D" parent="."]
 transform = Transform3D(-0.830693, 0, -0.556731, 0, 1, 0, 0.556731, 0, -0.830693, 11.3867, -0.466064, 3.51504)
 
+[node name="Pedestal" parent="Other" instance=ExtResource("9_101il")]
+transform = Transform3D(-0.830693, 0, 0.556731, 0, 1, 0, -0.556731, 0, -0.830693, -23.8824, 16.5031, -33.4914)
+
+[node name="EffectItem" parent="Other" instance=ExtResource("10_ywmhg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.733, 25.7944, -76.5132)
+effectName = "twistedtime"
+
 [node name="Treasures" type="Node3D" parent="."]
 
 [node name="Platforms" type="Node3D" parent="."]
 
-[node name="IslandPlatform" parent="Platforms" instance=ExtResource("5_a7kw0")]
+[node name="IslandPlatforms" type="Node3D" parent="Platforms"]
+
+[node name="IslandPlatform" parent="Platforms/IslandPlatforms" instance=ExtResource("5_a7kw0")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 129.852, 0.61916, 130.663)
 
-[node name="IslandPlatform13" parent="Platforms" instance=ExtResource("5_a7kw0")]
-transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 6, 7.11161, 78.3165, 10.1942)
+[node name="IslandPlatform13" parent="Platforms/IslandPlatforms" instance=ExtResource("5_a7kw0")]
+transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 6, 51.5397, 36.756, -12.1953)
 
-[node name="IslandPlatform2" parent="Platforms" instance=ExtResource("5_a7kw0")]
+[node name="IslandPlatform2" parent="Platforms/IslandPlatforms" instance=ExtResource("5_a7kw0")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 127.176, -2.83751, 119.248)
 
-[node name="IslandPlatform8" parent="Platforms" instance=ExtResource("5_a7kw0")]
+[node name="IslandPlatform8" parent="Platforms/IslandPlatforms" instance=ExtResource("5_a7kw0")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 109.783, -5.75353, 123.55)
 
-[node name="IslandPlatform4" parent="Platforms" instance=ExtResource("5_a7kw0")]
+[node name="IslandPlatform4" parent="Platforms/IslandPlatforms" instance=ExtResource("5_a7kw0")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 117.473, -2.0537, 113.61)
 
-[node name="IslandPlatform5" parent="Platforms" instance=ExtResource("5_a7kw0")]
+[node name="IslandPlatform5" parent="Platforms/IslandPlatforms" instance=ExtResource("5_a7kw0")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 109.965, -0.0550823, 102.492)
 
-[node name="IslandPlatform6" parent="Platforms" instance=ExtResource("5_a7kw0")]
+[node name="IslandPlatform6" parent="Platforms/IslandPlatforms" instance=ExtResource("5_a7kw0")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 125.764, -1.28603, 106.97)
 
-[node name="IslandPlatform7" parent="Platforms" instance=ExtResource("5_a7kw0")]
+[node name="IslandPlatform7" parent="Platforms/IslandPlatforms" instance=ExtResource("5_a7kw0")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 118.423, -1.28603, 96.0778)
 
-[node name="IslandPlatform10" parent="Platforms" instance=ExtResource("5_a7kw0")]
+[node name="IslandPlatform10" parent="Platforms/IslandPlatforms" instance=ExtResource("5_a7kw0")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 118.423, -5.06399, 86.0265)
 
-[node name="IslandPlatform11" parent="Platforms" instance=ExtResource("5_a7kw0")]
+[node name="IslandPlatform11" parent="Platforms/IslandPlatforms" instance=ExtResource("5_a7kw0")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 90.1776, -0.187023, 86.9114)
 
-[node name="IslandPlatform3" parent="Platforms" instance=ExtResource("7_epsck")]
+[node name="IslandPlatform3" parent="Platforms/IslandPlatforms" instance=ExtResource("7_epsck")]
 transform = Transform3D(1.17232, 0, 1.62039, 0, 2, 0, -1.62039, 0, 1.17232, 118.469, 3.09223, 125.996)
 
-[node name="IslandPlatform9" parent="Platforms" instance=ExtResource("7_epsck")]
+[node name="IslandPlatform9" parent="Platforms/IslandPlatforms" instance=ExtResource("7_epsck")]
 transform = Transform3D(0.58616, 0, 0.810195, 0, 1, 0, -0.810195, 0, 0.58616, 84.67, 0.772995, 143.681)
 
-[node name="IslandPlatform12" parent="Platforms" instance=ExtResource("7_epsck")]
+[node name="IslandPlatform12" parent="Platforms/IslandPlatforms" instance=ExtResource("7_epsck")]
 transform = Transform3D(0.58616, 0, 0.810195, 0, 1, 0, -0.810195, 0, 0.58616, 84.67, 0.772995, 143.681)
 
-[node name="Boat" parent="Platforms" instance=ExtResource("10_wnd06")]
+[node name="Piers" type="Node3D" parent="Platforms"]
+
+[node name="Pier" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.156, 4.8925, 80.9113)
+
+[node name="Pier9" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.0739, 4.8925, 94.0918)
+
+[node name="Pier17" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.9697, 4.63542, 103.822)
+
+[node name="Pier19" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.6894, 1.38033, 105.969)
+
+[node name="Pier20" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.6128, 1.38033, 113.989)
+
+[node name="Pier21" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.5315, 1.38033, 120.527)
+
+[node name="Pier22" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.5315, 10.2207, 114.207)
+
+[node name="Pier18" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(0.999754, 0, -0.0221639, 0, 1, 0, 0.0221639, 0, 0.999754, 91.1138, 4.96465, 81.1663)
+
+[node name="Pier2" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120.761, 4.8925, 80.9052)
+
+[node name="Pier3" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.53, 4.8925, 80.9052)
+
+[node name="Pier4" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.177, 4.8925, 80.9052)
+
+[node name="Pier5" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.686, 4.8925, 80.9052)
+
+[node name="Pier10" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.0649, 4.8925, 53.5432)
+
+[node name="Pier23" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.0588, 4.8925, 47.9382)
+
+[node name="Pier24" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.0588, 4.8925, 42.1692)
+
+[node name="Pier25" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.0588, 4.8925, 59.5222)
+
+[node name="Pier26" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.0588, 4.8925, 65.0132)
+
+[node name="Pier27" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.0649, 4.8925, 81.8051)
+
+[node name="Pier28" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.0588, 4.8925, 76.2001)
+
+[node name="Pier29" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.0588, 4.8925, 70.4311)
+
+[node name="Pier30" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.0588, 4.8925, 87.7841)
+
+[node name="Pier31" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.0588, 4.8925, 93.2751)
+
+[node name="Pier32" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.25984, 4.8925, 81.8051)
+
+[node name="Pier33" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.26595, 4.8925, 76.2001)
+
+[node name="Pier34" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.26595, 4.8925, 70.4311)
+
+[node name="Pier35" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.26595, 4.8925, 87.7841)
+
+[node name="Pier36" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.26595, 4.8925, 93.2751)
+
+[node name="Pier37" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.25984, 4.8925, 54.4389)
+
+[node name="Pier38" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.26595, 4.8925, 48.8338)
+
+[node name="Pier39" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.26595, 4.8925, 43.0648)
+
+[node name="Pier40" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.26595, 4.8925, 60.4178)
+
+[node name="Pier41" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.26595, 4.8925, 65.9089)
+
+[node name="Pier42" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27.764, 4.8925, 98.5083)
+
+[node name="Pier43" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27.7701, 4.8925, 92.9033)
+
+[node name="Pier44" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27.7701, 4.8925, 87.1343)
+
+[node name="Pier45" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27.7701, 4.8925, 104.487)
+
+[node name="Pier46" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27.7701, 4.8925, 109.978)
+
+[node name="Pier14" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.8594, 4.8925, 80.5728)
+
+[node name="Pier47" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.7258, 4.8925, 82.5011)
+
+[node name="Pier15" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.3109, 4.74976, 94.1329)
+
+[node name="Pier16" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.076, 4.8925, 94.1687)
+
+[node name="Pier6" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(0.0308002, 0, 0.999526, 0, 1, 0, -0.999526, 0, 0.0308002, 97.8692, 4.8925, 80.6378)
+
+[node name="Pier7" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(0.0308002, 0, 0.999526, 0, 1, 0, -0.999526, 0, 0.0308002, 97.6801, 4.8925, 86.0802)
+
+[node name="Pier8" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(0.0308002, 0, 0.999526, 0, 1, 0, -0.999526, 0, 0.0308002, 97.4958, 4.8925, 92.1571)
+
+[node name="Pier11" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(0.0308002, 0, 0.999526, 0, 1, 0, -0.999526, 0, 0.0308002, 82.1507, 4.8925, 80.6378)
+
+[node name="Pier12" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(0.0308002, 0, 0.999526, 0, 1, 0, -0.999526, 0, 0.0308002, 81.9616, 4.8925, 86.0802)
+
+[node name="Pier13" parent="Platforms/Piers" instance=ExtResource("11_cys7g")]
+transform = Transform3D(0.0308002, 0, 0.999526, 0, 1, 0, -0.999526, 0, 0.0308002, 81.7772, 4.8925, 92.1571)
+
+[node name="Bases" type="Node3D" parent="Platforms"]
+
+[node name="Base8" type="StaticBody3D" parent="Platforms/Bases"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5086, 0, 31.4367)
+
+[node name="MeshInstance3d6" type="MeshInstance3D" parent="Platforms/Bases/Base8"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -2.74025)
+mesh = SubResource("BoxMesh_o7itq")
+
+[node name="Base4" type="StaticBody3D" parent="Platforms/Bases"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.2135, 0, 7.34736)
+
+[node name="MeshInstance3d6" type="MeshInstance3D" parent="Platforms/Bases/Base4"]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -11.8708, -1.52787, 21.8824)
+mesh = SubResource("BoxMesh_o7itq")
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="Platforms/Bases/Base4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9774, 0.140636, 21.9313)
+shape = SubResource("BoxShape3D_24ljb")
+
+[node name="Base5" type="StaticBody3D" parent="Platforms/Bases"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.7482, 0, -70.9337)
+
+[node name="MeshInstance3d6" type="MeshInstance3D" parent="Platforms/Bases/Base5"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("BoxMesh_o7itq")
+
+[node name="Base6" type="StaticBody3D" parent="Platforms/Bases"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.3483, 0, -70.9337)
+
+[node name="MeshInstance3d6" type="MeshInstance3D" parent="Platforms/Bases/Base6"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("BoxMesh_o7itq")
+
+[node name="Base7" type="StaticBody3D" parent="Platforms/Bases"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.38222, 5.3027, -112.303)
+
+[node name="MeshInstance3d6" type="MeshInstance3D" parent="Platforms/Bases/Base7"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("BoxMesh_o7itq")
+
+[node name="Base2" type="StaticBody3D" parent="Platforms/Bases"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.8864, -0.850445, 85.9943)
+
+[node name="MeshInstance3d6" type="MeshInstance3D" parent="Platforms/Bases/Base2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("BoxMesh_o7itq")
+
+[node name="Houses" type="Node3D" parent="Platforms"]
+
+[node name="House" parent="Platforms/Houses" instance=ExtResource("12_5rff5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.0987, 0.703541, 92.6478)
+
+[node name="House2" parent="Platforms/Houses" instance=ExtResource("12_5rff5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2398, 0.703541, -28.4158)
+
+[node name="House3" parent="Platforms/Houses" instance=ExtResource("12_5rff5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2135, 0.703541, -28.4158)
+
+[node name="House4" parent="Platforms/Houses" instance=ExtResource("12_5rff5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.6536, 0.703541, -28.4158)
+
+[node name="House5" parent="Platforms/Houses" instance=ExtResource("12_5rff5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.6536, 0.703541, -3.10088)
+
+[node name="House6" parent="Platforms/Houses" instance=ExtResource("12_5rff5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.8394, 0.703541, -6.33929)
+
+[node name="House7" parent="Platforms/Houses" instance=ExtResource("12_5rff5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.8394, 0.703541, -46.7738)
+
+[node name="House8" parent="Platforms/Houses" instance=ExtResource("12_5rff5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.468, 0.703541, 0.467804)
+
+[node name="House9" parent="Platforms/Houses" instance=ExtResource("12_5rff5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0925, 0.703541, 0.467804)
+
+[node name="House10" parent="Platforms/Houses" instance=ExtResource("12_5rff5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.4515, 0.703541, 25.9126)
+
+[node name="House11" parent="Platforms/Houses" instance=ExtResource("12_5rff5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.0869, 0.703541, 25.9126)
+
+[node name="House12" parent="Platforms/Houses" instance=ExtResource("12_5rff5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.104, 0.703541, -40.5325)
+
+[node name="Boats" type="Node3D" parent="Platforms"]
+
+[node name="Boat" parent="Platforms/Boats" instance=ExtResource("10_wnd06")]
 transform = Transform3D(-0.810655, 0, -0.585524, 0, 1, 0, 0.585524, 0, -0.810655, 104.258, -0.2172, 128.555)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Boat"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Boats/Boat"]
 autoplay = "New Anim"
 libraries = {
 "": SubResource("AnimationLibrary_inh0x")
 }
 
-[node name="Pier" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.156, 4.8925, 80.9113)
+[node name="Middle1" type="Node3D" parent="Platforms"]
 
-[node name="Pier9" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.0739, 4.8925, 94.0918)
+[node name="SmallRamp" parent="Platforms/Middle1" instance=ExtResource("15_iqr43")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0.5, 0.866025, 2.18557e-08, -0.866025, 0.5, -3.78552e-08, 50.3155, 4.30115, 48.8955)
 
-[node name="Pier17" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.9697, 4.63542, 103.822)
+[node name="SmallRamp2" parent="Platforms/Middle1" instance=ExtResource("15_iqr43")]
+transform = Transform3D(-3.58795e-08, 0, 1, 0.410414, 0.866025, 2.18557e-08, -0.710857, 0.5, -3.78552e-08, 57.5685, 7.22348, 44.3425)
 
-[node name="Pier19" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.6894, 1.38033, 105.969)
+[node name="SmallRamp3" parent="Platforms/Middle1" instance=ExtResource("15_iqr43")]
+transform = Transform3D(-3.80753e-08, 0, 1, 0.435531, 0.866025, 2.18557e-08, -0.754362, 0.5, -3.78552e-08, 63.8053, 10.9356, 39.1621)
 
-[node name="Pier20" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.6128, 1.38033, 113.989)
+[node name="SmallRamp4" parent="Platforms/Middle1" instance=ExtResource("15_iqr43")]
+transform = Transform3D(-4.37114e-08, 0, 0.758996, -0.427989, 0.800637, -1.41993e-08, -0.903784, -0.379143, -2.99847e-08, 57.5313, 10.9356, 33.3692)
 
-[node name="Pier21" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.5315, 1.38033, 120.527)
+[node name="SmallRamp9" parent="Platforms/Middle1" instance=ExtResource("15_iqr43")]
+transform = Transform3D(-4.37114e-08, -4.51745e-16, 0.758996, 0.0117283, 0.885811, 3.8913e-10, -0.999931, 0.0103902, -3.31746e-08, 70.4472, 17.1931, 3.37245)
 
-[node name="Pier22" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.5315, 10.2207, 114.207)
+[node name="SmallRamp10" parent="Platforms/Middle1" instance=ExtResource("15_iqr43")]
+transform = Transform3D(0.439807, -0.0103215, -2.28267e-12, 0.00515854, 0.879991, 3.89123e-10, -1.32197e-12, -4.51187e-10, 0.758996, 70.4472, 17.1931, 27.1282)
 
-[node name="Pier18" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(0.999754, 0, -0.0221639, 0, 1, 0, 0.0221639, 0, 0.999754, 91.1138, 4.96465, 81.1663)
+[node name="SmallRamp16" parent="Platforms/Middle1" instance=ExtResource("15_iqr43")]
+transform = Transform3D(0.439807, -0.0103215, -2.28267e-12, 0.00515854, 0.879991, 3.89123e-10, -1.32197e-12, -4.51187e-10, 0.758996, 78.6499, 24.6092, 50.5262)
 
-[node name="Pier2" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120.761, 4.8925, 80.9052)
+[node name="SmallRamp12" parent="Platforms/Middle1" instance=ExtResource("15_iqr43")]
+transform = Transform3D(0.439807, -0.0103215, -2.28267e-12, 0.00515854, 0.879991, 3.89123e-10, -1.32197e-12, -4.51187e-10, 0.758996, 97.3091, 17.1931, 30.7039)
 
-[node name="Pier3" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.53, 4.8925, 80.9052)
+[node name="SmallRamp13" parent="Platforms/Middle1" instance=ExtResource("15_iqr43")]
+transform = Transform3D(0.439807, -0.0103215, -2.28267e-12, 0.00515854, 0.879991, 3.89123e-10, -1.32197e-12, -4.51187e-10, 0.758996, 90.4385, 20.1234, 30.7039)
 
-[node name="Pier4" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.177, 4.8925, 80.9052)
+[node name="SmallRamp14" parent="Platforms/Middle1" instance=ExtResource("15_iqr43")]
+transform = Transform3D(0.439807, -0.0103215, -2.28267e-12, 0.00515854, 0.879991, 3.89123e-10, -1.32197e-12, -4.51187e-10, 0.758996, 82.956, 23.0914, 30.7039)
 
-[node name="Pier5" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.686, 4.8925, 80.9052)
+[node name="SmallRamp14" parent="Platforms/Middle1/SmallRamp14" instance=ExtResource("15_iqr43")]
+transform = Transform3D(0.439807, -0.0103215, -2.28267e-12, 0.00515854, 0.879991, 3.89123e-10, -1.32197e-12, -4.51187e-10, 0.758996, 82.956, 23.0914, 30.7039)
 
-[node name="Pier10" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.0649, 4.8925, 53.5432)
+[node name="SmallRamp5" parent="Platforms/Middle1" instance=ExtResource("15_iqr43")]
+transform = Transform3D(-4.39946e-08, -1.28214e-15, 0.783335, 0.535272, 0.734438, 1.82101e-08, -0.852338, 0.46123, -2.89968e-08, 49.9516, 11.9758, 28.7966)
 
-[node name="Pier23" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.0588, 4.8925, 47.9382)
+[node name="SmallRamp6" parent="Platforms/Middle1" instance=ExtResource("15_iqr43")]
+transform = Transform3D(-4.37114e-08, 1.12418e-17, 1.63647, -0.000471145, 1.0003, -3.37021e-11, -1, -0.000471286, -7.15323e-08, 49.9516, 15.0498, 17.9125)
 
-[node name="Pier24" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.0588, 4.8925, 42.1692)
+[node name="SmallRamp17" parent="Platforms/Middle1" instance=ExtResource("15_iqr43")]
+transform = Transform3D(-4.37114e-08, 1.12418e-17, 1.63647, -0.000471145, 1.0003, -3.37021e-11, -1, -0.000471286, -7.15323e-08, 49.9516, 15.0498, 4.83831)
 
-[node name="Pier25" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.0588, 4.8925, 59.5222)
+[node name="SmallRamp7" parent="Platforms/Middle1" instance=ExtResource("16_q2bb5")]
+transform = Transform3D(0.102254, 0, -0.994758, 0, 1, 0, 0.994758, 0, 0.102254, 64.0243, 14.8226, 16.9814)
 
-[node name="Pier26" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.0588, 4.8925, 65.0132)
+[node name="SmallRamp8" parent="Platforms/Middle1" instance=ExtResource("16_q2bb5")]
+transform = Transform3D(-0.431708, 0, 0.902013, 0, 1, 0, -0.902013, 0, -0.431708, 77.82, 14.5998, 12.7439)
 
-[node name="Pier27" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.0649, 4.8925, 81.8051)
+[node name="SmallRamp11" parent="Platforms/Middle1" instance=ExtResource("16_q2bb5")]
+transform = Transform3D(0.999566, 0, 0.0294572, 0, 1, 0, -0.0294572, 0, 0.999566, 97.0801, 14.8226, 16.2708)
 
-[node name="Pier28" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.0588, 4.8925, 76.2001)
-
-[node name="Pier29" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.0588, 4.8925, 70.4311)
-
-[node name="Pier30" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.0588, 4.8925, 87.7841)
-
-[node name="Pier31" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.0588, 4.8925, 93.2751)
-
-[node name="Pier32" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.25984, 4.8925, 81.8051)
-
-[node name="Pier33" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.26595, 4.8925, 76.2001)
-
-[node name="Pier34" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.26595, 4.8925, 70.4311)
-
-[node name="Pier35" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.26595, 4.8925, 87.7841)
-
-[node name="Pier36" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.26595, 4.8925, 93.2751)
-
-[node name="Pier37" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.25984, 4.8925, 54.4389)
-
-[node name="Pier38" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.26595, 4.8925, 48.8338)
-
-[node name="Pier39" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.26595, 4.8925, 43.0648)
-
-[node name="Pier40" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.26595, 4.8925, 60.4178)
-
-[node name="Pier41" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.26595, 4.8925, 65.9089)
-
-[node name="Pier42" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27.764, 4.8925, 98.5083)
-
-[node name="Pier43" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27.7701, 4.8925, 92.9033)
-
-[node name="Pier44" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27.7701, 4.8925, 87.1343)
-
-[node name="Pier45" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27.7701, 4.8925, 104.487)
-
-[node name="Pier46" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27.7701, 4.8925, 109.978)
-
-[node name="Pier14" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.8594, 4.8925, 80.5728)
-
-[node name="Pier47" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.7258, 4.8925, 82.5011)
-
-[node name="Pier15" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.3109, 4.74976, 94.1329)
-
-[node name="Pier16" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.076, 4.8925, 94.1687)
-
-[node name="Pier6" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(0.0308002, 0, 0.999526, 0, 1, 0, -0.999526, 0, 0.0308002, 97.8692, 4.8925, 80.6378)
-
-[node name="Pier7" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(0.0308002, 0, 0.999526, 0, 1, 0, -0.999526, 0, 0.0308002, 97.6801, 4.8925, 86.0802)
-
-[node name="Pier8" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(0.0308002, 0, 0.999526, 0, 1, 0, -0.999526, 0, 0.0308002, 97.4958, 4.8925, 92.1571)
-
-[node name="Pier11" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(0.0308002, 0, 0.999526, 0, 1, 0, -0.999526, 0, 0.0308002, 82.1507, 4.8925, 80.6378)
-
-[node name="Pier12" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(0.0308002, 0, 0.999526, 0, 1, 0, -0.999526, 0, 0.0308002, 81.9616, 4.8925, 86.0802)
-
-[node name="Pier13" parent="Platforms" instance=ExtResource("11_cys7g")]
-transform = Transform3D(0.0308002, 0, 0.999526, 0, 1, 0, -0.999526, 0, 0.0308002, 81.7772, 4.8925, 92.1571)
-
-[node name="House" parent="Platforms" instance=ExtResource("12_5rff5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.0987, 0.703541, 92.6478)
-
-[node name="House2" parent="Platforms" instance=ExtResource("12_5rff5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2398, 0.703541, -28.4158)
-
-[node name="House3" parent="Platforms" instance=ExtResource("12_5rff5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2135, 0.703541, -28.4158)
-
-[node name="House4" parent="Platforms" instance=ExtResource("12_5rff5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.6536, 0.703541, -28.4158)
-
-[node name="House5" parent="Platforms" instance=ExtResource("12_5rff5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.6536, 0.703541, -3.10088)
-
-[node name="House6" parent="Platforms" instance=ExtResource("12_5rff5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.8394, 0.703541, -6.33929)
-
-[node name="House7" parent="Platforms" instance=ExtResource("12_5rff5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.8394, 0.703541, -46.7738)
-
-[node name="House8" parent="Platforms" instance=ExtResource("12_5rff5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.468, 0.703541, 0.467804)
-
-[node name="House9" parent="Platforms" instance=ExtResource("12_5rff5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0925, 0.703541, 0.467804)
-
-[node name="House10" parent="Platforms" instance=ExtResource("12_5rff5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.4515, 0.703541, 25.9126)
-
-[node name="House11" parent="Platforms" instance=ExtResource("12_5rff5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.0869, 0.703541, 25.9126)
-
-[node name="House12" parent="Platforms" instance=ExtResource("12_5rff5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.104, 0.703541, -40.5325)
-
-[node name="Base8" type="StaticBody3D" parent="Platforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5086, 0, 31.4367)
-
-[node name="CollisionShape3d" type="CollisionShape3D" parent="Platforms/Base8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.195686, 0.342763, -1.73724)
-shape = SubResource("BoxShape3D_mbhst")
-
-[node name="MeshInstance3d6" type="MeshInstance3D" parent="Platforms/Base8"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -2.74025)
-mesh = SubResource("BoxMesh_o7itq")
-
-[node name="Base4" type="StaticBody3D" parent="Platforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.2135, 0, 7.34736)
-
-[node name="CollisionShape3d" type="CollisionShape3D" parent="Platforms/Base4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4834, 1.08478, 20.6152)
-shape = SubResource("BoxShape3D_mbhst")
-
-[node name="MeshInstance3d6" type="MeshInstance3D" parent="Platforms/Base4"]
-transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -11.8708, -1.52787, 21.8824)
-mesh = SubResource("BoxMesh_o7itq")
-
-[node name="Base5" type="StaticBody3D" parent="Platforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.7482, 0, -70.9337)
-
-[node name="CollisionShape3d" type="CollisionShape3D" parent="Platforms/Base5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19444, 0.496636, -1.07066)
-shape = SubResource("BoxShape3D_mbhst")
-
-[node name="MeshInstance3d6" type="MeshInstance3D" parent="Platforms/Base5"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("BoxMesh_o7itq")
-
-[node name="Base6" type="StaticBody3D" parent="Platforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.3483, 0, -70.9337)
-
-[node name="CollisionShape3d" type="CollisionShape3D" parent="Platforms/Base6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.118109, 0.405661, -0.858139)
-shape = SubResource("BoxShape3D_mbhst")
-
-[node name="MeshInstance3d6" type="MeshInstance3D" parent="Platforms/Base6"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("BoxMesh_o7itq")
-
-[node name="Base7" type="StaticBody3D" parent="Platforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.38222, 5.3027, -112.303)
-
-[node name="CollisionShape3d" type="CollisionShape3D" parent="Platforms/Base7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1976, 0.469734, -1.50968)
-shape = SubResource("BoxShape3D_mbhst")
-
-[node name="MeshInstance3d6" type="MeshInstance3D" parent="Platforms/Base7"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("BoxMesh_o7itq")
-
-[node name="Base2" type="StaticBody3D" parent="Platforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.8864, -0.850445, 85.9943)
-
-[node name="CollisionShape3d" type="CollisionShape3D" parent="Platforms/Base2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101.15, -0.657237, 54.88)
-shape = SubResource("BoxShape3D_mbhst")
-
-[node name="MeshInstance3d6" type="MeshInstance3D" parent="Platforms/Base2"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("BoxMesh_o7itq")
+[node name="SmallRamp15" parent="Platforms/Middle1" instance=ExtResource("16_q2bb5")]
+transform = Transform3D(0.999566, 0, 0.0294572, 0, 1, 0, -0.0294572, 0, 0.999566, 83.2773, 23.3472, 44.5048)
 
 [node name="Harmful" type="Node3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -67.3226, 1.0189, -17.1863)
@@ -802,35 +840,1485 @@ libraries = {
 "": SubResource("AnimationLibrary_0fwcc")
 }
 
-[node name="HarmFog" parent="Harmful" instance=ExtResource("15_rqu6r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.028, -0.472258, 53.1089)
+[node name="JumpBall3" parent="Harmful" instance=ExtResource("13_vhv31")]
+transform = Transform3D(1.49998, -1.07816e-06, -0.00704379, 1.07288e-06, 1.5, -1.12555e-06, 0.00704379, 1.1205e-06, 1.49998, 79.4402, 3.36408, 13.0112)
 
-[node name="LightSquare" parent="Harmful" instance=ExtResource("17_iobdp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.7667, 0.762321, 35.0458)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Harmful/LightSquare"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Harmful/JumpBall3"]
 autoplay = "New Anim"
 libraries = {
-"": SubResource("AnimationLibrary_6notq")
+"": SubResource("AnimationLibrary_l55ka")
 }
 
-[node name="LightSquare2" parent="Harmful" instance=ExtResource("17_iobdp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.1134, 0.762321, 23.4521)
+[node name="Fogs" type="Node3D" parent="Harmful"]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Harmful/LightSquare2"]
-autoplay = "New Anim"
-libraries = {
-"": SubResource("AnimationLibrary_0baq0")
-}
+[node name="HarmFog" parent="Harmful/Fogs" instance=ExtResource("15_rqu6r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.028, -0.311001, 53.1089)
 
-[node name="DistortSquare" parent="Harmful" instance=ExtResource("18_2c1a5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.806, 5.2541, 32.2291)
+[node name="HarmFog2" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 80.092, 1.4415, 29.4352)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Harmful/DistortSquare"]
-autoplay = "New Anim"
-libraries = {
-"": SubResource("AnimationLibrary_ax50x")
-}
+[node name="HarmFog5" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 95.0727, 1.4415, 37.4807)
+
+[node name="HarmFog6" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 95.0727, 1.4415, 36.2643)
+
+[node name="HarmFog7" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 95.0727, 1.4415, 35.0764)
+
+[node name="HarmFog8" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 95.0727, 1.4415, 33.8482)
+
+[node name="HarmFog9" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 95.0727, 1.4415, 32.6318)
+
+[node name="HarmFog10" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 95.0727, 1.4415, 31.444)
+
+[node name="HarmFog11" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 95.0727, 1.4415, 30.2011)
+
+[node name="HarmFog12" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 95.0727, 1.4415, 28.9847)
+
+[node name="HarmFog13" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 95.0727, 1.4415, 27.7969)
+
+[node name="HarmFog14" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 95.0727, 1.4415, 26.6368)
+
+[node name="HarmFog15" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 95.0727, 1.4415, 25.4204)
+
+[node name="HarmFog16" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 93.7823, 1.4415, 24.2326)
+
+[node name="HarmFog17" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 93.7823, 1.4415, 37.4807)
+
+[node name="HarmFog18" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 93.7823, 1.4415, 36.2643)
+
+[node name="HarmFog19" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 93.7823, 1.4415, 35.0764)
+
+[node name="HarmFog20" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 93.7823, 1.4415, 33.8482)
+
+[node name="HarmFog21" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 93.7823, 1.4415, 32.6318)
+
+[node name="HarmFog22" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 93.7823, 1.4415, 31.444)
+
+[node name="HarmFog23" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 93.7823, 1.4415, 30.2011)
+
+[node name="HarmFog24" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 93.7823, 1.4415, 28.9847)
+
+[node name="HarmFog25" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 93.7823, 1.4415, 27.7969)
+
+[node name="HarmFog26" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 93.7823, 1.4415, 26.6368)
+
+[node name="HarmFog27" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 93.7823, 1.4415, 25.4204)
+
+[node name="HarmFog28" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 93.7823, 1.4415, 24.2326)
+
+[node name="HarmFog29" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 92.3884, 1.4415, 24.2326)
+
+[node name="HarmFog30" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 92.3884, 1.4415, 37.4807)
+
+[node name="HarmFog31" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 92.3884, 1.4415, 36.2643)
+
+[node name="HarmFog32" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 92.3884, 1.4415, 35.0764)
+
+[node name="HarmFog33" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 92.3884, 1.4415, 33.8482)
+
+[node name="HarmFog34" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 92.3884, 1.4415, 32.6318)
+
+[node name="HarmFog36" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 92.3884, 1.4415, 30.2011)
+
+[node name="HarmFog37" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 92.3884, 1.4415, 28.9847)
+
+[node name="HarmFog38" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 92.3884, 1.4415, 27.7969)
+
+[node name="HarmFog39" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 92.3884, 1.4415, 26.6368)
+
+[node name="HarmFog40" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 92.3884, 1.4415, 25.4204)
+
+[node name="HarmFog41" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 92.3884, 1.4415, 24.2326)
+
+[node name="HarmFog42" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 91.1447, 1.4415, 24.2326)
+
+[node name="HarmFog43" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 91.1447, 1.4415, 37.4807)
+
+[node name="HarmFog44" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 91.1447, 1.4415, 36.2643)
+
+[node name="HarmFog45" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 91.1447, 1.4415, 35.0764)
+
+[node name="HarmFog46" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 91.1447, 1.4415, 33.8482)
+
+[node name="HarmFog47" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 91.1447, 1.4415, 32.6318)
+
+[node name="HarmFog49" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 91.1447, 1.4415, 30.2011)
+
+[node name="HarmFog50" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 91.1447, 1.4415, 28.9847)
+
+[node name="HarmFog51" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 91.1447, 1.4415, 27.7969)
+
+[node name="HarmFog52" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 91.1447, 1.4415, 26.6368)
+
+[node name="HarmFog53" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 91.1447, 1.4415, 25.4204)
+
+[node name="HarmFog54" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 91.1447, 1.4415, 24.2326)
+
+[node name="HarmFog55" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 89.9685, 1.4415, 24.2326)
+
+[node name="HarmFog61" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 87.2375, 8.0294, 24.2326)
+
+[node name="HarmFog68" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 88.5425, 8.0294, 24.2326)
+
+[node name="HarmFog74" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 88.6568, 8.0294, 25.381)
+
+[node name="HarmFog79" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 87.2375, 8.0294, 25.381)
+
+[node name="HarmFog56" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 89.9685, 1.4415, 37.4807)
+
+[node name="HarmFog57" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 89.9685, 1.4415, 36.2643)
+
+[node name="HarmFog58" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 89.9685, 1.4415, 35.0764)
+
+[node name="HarmFog59" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 89.9685, 1.4415, 33.8482)
+
+[node name="HarmFog60" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 89.9685, 1.4415, 32.6318)
+
+[node name="HarmFog62" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 89.9685, 1.4415, 30.2011)
+
+[node name="HarmFog63" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 89.9685, 1.4415, 28.9847)
+
+[node name="HarmFog64" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 89.9685, 1.4415, 27.7969)
+
+[node name="HarmFog65" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 89.9685, 1.4415, 26.6368)
+
+[node name="HarmFog66" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 89.9685, 1.4415, 25.4204)
+
+[node name="HarmFog67" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 89.9685, 1.4415, 24.2326)
+
+[node name="HarmFog69" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 88.6723, 1.4415, 37.4807)
+
+[node name="HarmFog70" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 88.6723, 1.4415, 36.2643)
+
+[node name="HarmFog71" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 88.6723, 1.4415, 35.0764)
+
+[node name="HarmFog72" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 88.6723, 1.4415, 33.8482)
+
+[node name="HarmFog73" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 88.6723, 1.4415, 32.6318)
+
+[node name="HarmFog75" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 88.6723, 1.4415, 30.2011)
+
+[node name="HarmFog76" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 88.6723, 1.4415, 28.9847)
+
+[node name="HarmFog77" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 88.6723, 1.4415, 27.7969)
+
+[node name="HarmFog78" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 88.6723, 1.4415, 26.6368)
+
+[node name="HarmFog81" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 87.4006, 1.4415, 37.4807)
+
+[node name="HarmFog82" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 87.4006, 1.4415, 36.2643)
+
+[node name="HarmFog83" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 87.4006, 1.4415, 35.0764)
+
+[node name="HarmFog84" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 87.4006, 1.4415, 33.8482)
+
+[node name="HarmFog87" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 87.4006, 1.4415, 30.2011)
+
+[node name="HarmFog88" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 87.4006, 1.4415, 28.9847)
+
+[node name="HarmFog89" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 87.4006, 1.4415, 27.7969)
+
+[node name="HarmFog90" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 87.4006, 1.4415, 26.6368)
+
+[node name="HarmFog93" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 86.0066, 1.4415, 24.2326)
+
+[node name="HarmFog94" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 86.0066, 1.4415, 37.4807)
+
+[node name="HarmFog95" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 86.0066, 1.4415, 36.2643)
+
+[node name="HarmFog96" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 86.0066, 1.4415, 35.0764)
+
+[node name="HarmFog97" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 86.0066, 1.4415, 33.8482)
+
+[node name="HarmFog99" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 86.0066, 1.4415, 31.444)
+
+[node name="HarmFog100" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 86.0066, 1.4415, 30.2011)
+
+[node name="HarmFog101" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 86.0066, 1.4415, 28.9847)
+
+[node name="HarmFog102" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 86.0066, 1.4415, 27.7969)
+
+[node name="HarmFog103" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 86.0066, 1.4415, 26.6368)
+
+[node name="HarmFog107" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 84.7629, 1.4415, 37.4807)
+
+[node name="HarmFog108" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 84.7629, 1.4415, 36.2643)
+
+[node name="HarmFog109" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 84.7629, 1.4415, 35.0764)
+
+[node name="HarmFog110" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 84.7629, 1.4415, 33.8482)
+
+[node name="HarmFog118" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 84.7629, 1.4415, 24.2326)
+
+[node name="HarmFog119" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 83.5868, 1.4415, 24.2326)
+
+[node name="HarmFog120" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 83.5868, 1.4415, 37.4807)
+
+[node name="HarmFog121" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 83.5868, 1.4415, 36.2643)
+
+[node name="HarmFog122" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 83.5868, 1.4415, 35.0764)
+
+[node name="HarmFog123" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 83.5868, 1.4415, 33.8482)
+
+[node name="HarmFog124" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 83.5868, 1.4415, 32.6318)
+
+[node name="HarmFog125" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 83.5868, 1.4415, 31.444)
+
+[node name="HarmFog126" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 83.5868, 1.4415, 30.2011)
+
+[node name="HarmFog128" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 83.5868, 1.4415, 27.7969)
+
+[node name="HarmFog129" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 83.5868, 1.4415, 26.6368)
+
+[node name="HarmFog130" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 83.5868, 1.4415, 25.4204)
+
+[node name="HarmFog131" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 83.5868, 1.4415, 24.2326)
+
+[node name="HarmFog132" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 82.2905, 1.4415, 24.2326)
+
+[node name="HarmFog133" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 82.2905, 1.4415, 37.4807)
+
+[node name="HarmFog134" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 82.2905, 1.4415, 36.2643)
+
+[node name="HarmFog135" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 82.2905, 1.4415, 35.0764)
+
+[node name="HarmFog136" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 82.2905, 1.4415, 33.8482)
+
+[node name="HarmFog137" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 82.2905, 1.4415, 32.6318)
+
+[node name="HarmFog142" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 82.2905, 1.4415, 26.6368)
+
+[node name="HarmFog143" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 82.2905, 1.4415, 25.4204)
+
+[node name="HarmFog144" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 82.2905, 1.4415, 24.2326)
+
+[node name="HarmFog145" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 81.119, 1.4415, 37.4807)
+
+[node name="HarmFog146" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 81.119, 1.4415, 36.2643)
+
+[node name="HarmFog147" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 81.119, 1.4415, 35.0764)
+
+[node name="HarmFog148" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 81.119, 1.4415, 33.8482)
+
+[node name="HarmFog149" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 81.119, 1.4415, 32.6318)
+
+[node name="HarmFog151" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 81.119, 1.4415, 30.2011)
+
+[node name="HarmFog152" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 81.119, 1.4415, 28.9847)
+
+[node name="HarmFog153" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 81.119, 1.4415, 27.7969)
+
+[node name="HarmFog154" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 81.119, 1.4415, 26.6368)
+
+[node name="HarmFog155" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 81.119, 1.4415, 25.4204)
+
+[node name="HarmFog156" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 81.119, 1.4415, 24.2326)
+
+[node name="HarmFog157" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 79.7251, 1.4415, 24.2326)
+
+[node name="HarmFog158" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 79.7251, 1.4415, 37.4807)
+
+[node name="HarmFog159" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 79.7251, 1.4415, 36.2643)
+
+[node name="HarmFog160" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 79.7251, 1.4415, 35.0764)
+
+[node name="HarmFog161" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 79.7251, 1.4415, 33.8482)
+
+[node name="HarmFog162" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 79.7251, 1.4415, 32.6318)
+
+[node name="HarmFog164" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 79.7251, 1.4415, 30.2011)
+
+[node name="HarmFog165" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 79.7251, 1.4415, 28.9847)
+
+[node name="HarmFog166" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 79.7251, 1.4415, 27.7969)
+
+[node name="HarmFog167" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 79.7251, 1.4415, 26.6368)
+
+[node name="HarmFog168" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 79.7251, 1.4415, 25.4204)
+
+[node name="HarmFog169" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 79.7251, 1.4415, 24.2326)
+
+[node name="HarmFog170" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 78.4814, 1.4415, 24.2326)
+
+[node name="HarmFog171" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 78.4814, 1.4415, 37.4807)
+
+[node name="HarmFog172" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 78.4814, 1.4415, 36.2643)
+
+[node name="HarmFog173" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 78.4814, 1.4415, 35.0764)
+
+[node name="HarmFog174" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 78.4814, 1.4415, 33.8482)
+
+[node name="HarmFog175" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 78.4814, 1.4415, 32.6318)
+
+[node name="HarmFog177" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 78.4814, 1.4415, 30.2011)
+
+[node name="HarmFog178" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 78.4814, 1.4415, 28.9847)
+
+[node name="HarmFog179" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 78.4814, 1.4415, 27.7969)
+
+[node name="HarmFog180" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 78.4814, 1.4415, 26.6368)
+
+[node name="HarmFog181" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 78.4814, 1.4415, 25.4204)
+
+[node name="HarmFog182" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 78.4814, 1.4415, 24.2326)
+
+[node name="HarmFog183" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 77.3052, 1.4415, 24.2326)
+
+[node name="HarmFog184" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 77.3052, 1.4415, 37.4807)
+
+[node name="HarmFog185" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 77.3052, 1.4415, 36.2643)
+
+[node name="HarmFog186" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 77.3052, 1.4415, 35.0764)
+
+[node name="HarmFog187" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 77.3052, 1.4415, 33.8482)
+
+[node name="HarmFog188" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 77.3052, 1.4415, 32.6318)
+
+[node name="HarmFog190" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 77.3052, 1.4415, 30.2011)
+
+[node name="HarmFog191" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 77.3052, 1.4415, 28.9847)
+
+[node name="HarmFog192" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 77.3052, 1.4415, 27.7969)
+
+[node name="HarmFog193" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 77.3052, 1.4415, 26.6368)
+
+[node name="HarmFog194" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 77.3052, 1.4415, 25.4204)
+
+[node name="HarmFog195" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 77.3052, 1.4415, 24.2326)
+
+[node name="HarmFog196" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 76.009, 1.4415, 24.2326)
+
+[node name="HarmFog197" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 76.009, 1.4415, 37.4807)
+
+[node name="HarmFog198" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 76.009, 1.4415, 36.2643)
+
+[node name="HarmFog199" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 76.009, 1.4415, 35.0764)
+
+[node name="HarmFog200" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 76.009, 1.4415, 33.8482)
+
+[node name="HarmFog201" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 76.009, 1.4415, 32.6318)
+
+[node name="HarmFog203" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 76.009, 1.4415, 30.2011)
+
+[node name="HarmFog204" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 76.009, 1.4415, 28.9847)
+
+[node name="HarmFog205" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 76.009, 1.4415, 27.7969)
+
+[node name="HarmFog206" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 76.009, 1.4415, 26.6368)
+
+[node name="HarmFog207" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 76.009, 1.4415, 25.4204)
+
+[node name="HarmFog208" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 76.009, 1.4415, 24.2326)
+
+[node name="HarmFog209" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 81.119, 1.4415, 22.12)
+
+[node name="HarmFog210" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 81.119, 1.4415, 20.9036)
+
+[node name="HarmFog211" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 81.119, 1.4415, 19.7158)
+
+[node name="HarmFog212" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 81.119, 1.4415, 18.4875)
+
+[node name="HarmFog213" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 81.119, 1.4415, 17.2712)
+
+[node name="HarmFog214" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 81.119, 1.4415, 16.0833)
+
+[node name="HarmFog215" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 81.119, 1.4415, 14.8404)
+
+[node name="HarmFog216" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 81.119, 1.4415, 13.624)
+
+[node name="HarmFog217" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 81.119, 1.4415, 12.4362)
+
+[node name="HarmFog218" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 81.119, 1.4415, 11.2761)
+
+[node name="HarmFog219" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 81.119, 1.4415, 10.0598)
+
+[node name="HarmFog220" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 81.119, 1.4415, 8.87194)
+
+[node name="HarmFog221" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 79.7251, 1.4415, 8.87194)
+
+[node name="HarmFog222" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 79.7251, 1.4415, 22.12)
+
+[node name="HarmFog223" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 79.7251, 1.4415, 20.9036)
+
+[node name="HarmFog224" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 79.7251, 1.4415, 19.7158)
+
+[node name="HarmFog225" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 79.7251, 1.4415, 18.4875)
+
+[node name="HarmFog226" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 79.7251, 1.4415, 17.2712)
+
+[node name="HarmFog227" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 79.7251, 1.4415, 16.0833)
+
+[node name="HarmFog228" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 79.7251, 1.4415, 14.8404)
+
+[node name="HarmFog229" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 79.7251, 1.4415, 13.624)
+
+[node name="HarmFog230" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 79.7251, 1.4415, 12.4362)
+
+[node name="HarmFog231" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 79.7251, 1.4415, 11.2761)
+
+[node name="HarmFog232" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 79.7251, 1.4415, 10.0598)
+
+[node name="HarmFog233" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 79.7251, 1.4415, 8.87194)
+
+[node name="HarmFog234" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 78.4814, 1.4415, 8.87194)
+
+[node name="HarmFog235" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 78.4814, 1.4415, 22.12)
+
+[node name="HarmFog236" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 78.4814, 1.4415, 20.9036)
+
+[node name="HarmFog237" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 78.4814, 1.4415, 19.7158)
+
+[node name="HarmFog238" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 78.4814, 1.4415, 18.4875)
+
+[node name="HarmFog239" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 78.4814, 1.4415, 17.2712)
+
+[node name="HarmFog240" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 78.4814, 1.4415, 16.0833)
+
+[node name="HarmFog241" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 78.4814, 1.4415, 14.8404)
+
+[node name="HarmFog242" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 78.4814, 1.4415, 13.624)
+
+[node name="HarmFog243" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 78.4814, 1.4415, 12.4362)
+
+[node name="HarmFog244" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 78.4814, 1.4415, 11.2761)
+
+[node name="HarmFog245" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 78.4814, 1.4415, 10.0598)
+
+[node name="HarmFog246" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 78.4814, 1.4415, 8.87194)
+
+[node name="HarmFog247" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 77.3052, 1.4415, 8.87194)
+
+[node name="HarmFog248" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 77.3052, 1.4415, 22.12)
+
+[node name="HarmFog249" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 77.3052, 1.4415, 20.9036)
+
+[node name="HarmFog250" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 77.3052, 1.4415, 19.7158)
+
+[node name="HarmFog251" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 77.3052, 1.4415, 18.4875)
+
+[node name="HarmFog252" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 77.3052, 1.4415, 17.2712)
+
+[node name="HarmFog253" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 77.3052, 1.4415, 16.0833)
+
+[node name="HarmFog254" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 77.3052, 1.4415, 14.8404)
+
+[node name="HarmFog255" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 77.3052, 1.4415, 13.624)
+
+[node name="HarmFog256" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 77.3052, 1.4415, 12.4362)
+
+[node name="HarmFog257" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 77.3052, 1.4415, 11.2761)
+
+[node name="HarmFog258" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 77.3052, 1.4415, 10.0598)
+
+[node name="HarmFog259" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 77.3052, 1.4415, 8.87194)
+
+[node name="HarmFog260" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 76.009, 1.4415, 8.87194)
+
+[node name="HarmFog261" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 76.009, 1.4415, 22.12)
+
+[node name="HarmFog262" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 76.009, 1.4415, 20.9036)
+
+[node name="HarmFog263" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 76.009, 1.4415, 19.7158)
+
+[node name="HarmFog264" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 76.009, 1.4415, 18.4875)
+
+[node name="HarmFog265" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 76.009, 1.4415, 17.2712)
+
+[node name="HarmFog266" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 76.009, 1.4415, 16.0833)
+
+[node name="HarmFog267" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 76.009, 1.4415, 14.8404)
+
+[node name="HarmFog268" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 76.009, 1.4415, 13.624)
+
+[node name="HarmFog269" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 76.009, 1.4415, 12.4362)
+
+[node name="HarmFog270" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 76.009, 1.4415, 11.2761)
+
+[node name="HarmFog271" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 76.009, 1.4415, 10.0598)
+
+[node name="HarmFog272" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 76.009, 1.4415, 8.87194)
+
+[node name="HarmFog273" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 87.973, 1.4415, 22.12)
+
+[node name="HarmFog274" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 87.973, 1.4415, 20.9036)
+
+[node name="HarmFog275" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 87.973, 1.4415, 19.7158)
+
+[node name="HarmFog276" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 87.973, 1.4415, 18.4875)
+
+[node name="HarmFog277" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 87.973, 1.4415, 17.2712)
+
+[node name="HarmFog278" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 87.973, 1.4415, 16.0833)
+
+[node name="HarmFog279" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 87.973, 1.4415, 14.8404)
+
+[node name="HarmFog280" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 87.973, 1.4415, 13.624)
+
+[node name="HarmFog281" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 87.973, 1.4415, 12.4362)
+
+[node name="HarmFog282" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 87.973, 1.4415, 11.2761)
+
+[node name="HarmFog283" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 87.973, 1.4415, 10.0598)
+
+[node name="HarmFog284" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 87.973, 1.4415, 8.87194)
+
+[node name="HarmFog285" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 86.5791, 1.4415, 8.87194)
+
+[node name="HarmFog286" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 86.5791, 1.4415, 22.12)
+
+[node name="HarmFog287" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 86.5791, 1.4415, 20.9036)
+
+[node name="HarmFog288" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 86.5791, 1.4415, 19.7158)
+
+[node name="HarmFog289" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 86.5791, 1.4415, 18.4875)
+
+[node name="HarmFog290" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 86.5791, 1.4415, 17.2712)
+
+[node name="HarmFog291" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 86.5791, 1.4415, 16.0833)
+
+[node name="HarmFog292" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 86.5791, 1.4415, 14.8404)
+
+[node name="HarmFog293" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 86.5791, 1.4415, 13.624)
+
+[node name="HarmFog294" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 86.5791, 1.4415, 12.4362)
+
+[node name="HarmFog295" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 86.5791, 1.4415, 11.2761)
+
+[node name="HarmFog296" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 86.5791, 1.4415, 10.0598)
+
+[node name="HarmFog297" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 86.5791, 1.4415, 8.87194)
+
+[node name="HarmFog298" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 85.3353, 1.4415, 8.87194)
+
+[node name="HarmFog299" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 85.3353, 1.4415, 22.12)
+
+[node name="HarmFog300" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 85.3353, 1.4415, 20.9036)
+
+[node name="HarmFog301" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 85.3353, 1.4415, 19.7158)
+
+[node name="HarmFog302" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 85.3353, 1.4415, 18.4875)
+
+[node name="HarmFog303" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 85.3353, 1.4415, 17.2712)
+
+[node name="HarmFog304" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 85.3353, 1.4415, 16.0833)
+
+[node name="HarmFog305" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 85.3353, 1.4415, 14.8404)
+
+[node name="HarmFog306" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 85.3353, 1.4415, 13.624)
+
+[node name="HarmFog307" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 85.3353, 1.4415, 12.4362)
+
+[node name="HarmFog308" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 85.3353, 1.4415, 11.2761)
+
+[node name="HarmFog309" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 85.3353, 1.4415, 10.0598)
+
+[node name="HarmFog310" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 85.3353, 1.4415, 8.87194)
+
+[node name="HarmFog311" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 84.1592, 1.4415, 8.87194)
+
+[node name="HarmFog312" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 84.1592, 1.4415, 22.12)
+
+[node name="HarmFog313" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 84.1592, 1.4415, 20.9036)
+
+[node name="HarmFog314" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 84.1592, 1.4415, 19.7158)
+
+[node name="HarmFog315" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 84.1592, 1.4415, 18.4875)
+
+[node name="HarmFog316" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 84.1592, 1.4415, 17.2712)
+
+[node name="HarmFog317" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 84.1592, 1.4415, 16.0833)
+
+[node name="HarmFog318" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 84.1592, 1.4415, 14.8404)
+
+[node name="HarmFog319" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 84.1592, 1.4415, 13.624)
+
+[node name="HarmFog320" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 84.1592, 1.4415, 12.4362)
+
+[node name="HarmFog321" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 84.1592, 1.4415, 11.2761)
+
+[node name="HarmFog322" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 84.1592, 1.4415, 10.0598)
+
+[node name="HarmFog323" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 84.1592, 1.4415, 8.87194)
+
+[node name="HarmFog324" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 82.8629, 1.4415, 8.87194)
+
+[node name="HarmFog325" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 82.8629, 1.4415, 22.12)
+
+[node name="HarmFog326" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 82.8629, 1.4415, 20.9036)
+
+[node name="HarmFog327" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 82.8629, 1.4415, 19.7158)
+
+[node name="HarmFog328" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 82.8629, 1.4415, 18.4875)
+
+[node name="HarmFog329" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 82.8629, 1.4415, 17.2712)
+
+[node name="HarmFog330" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 82.8629, 1.4415, 16.0833)
+
+[node name="HarmFog331" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 82.8629, 1.4415, 14.8404)
+
+[node name="HarmFog332" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 82.8629, 1.4415, 13.624)
+
+[node name="HarmFog333" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 82.8629, 1.4415, 12.4362)
+
+[node name="HarmFog334" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 82.8629, 1.4415, 11.2761)
+
+[node name="HarmFog335" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 82.8629, 1.4415, 10.0598)
+
+[node name="HarmFog336" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 82.8629, 1.4415, 8.87194)
+
+[node name="HarmFog337" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 94.3574, 1.4415, 22.12)
+
+[node name="HarmFog338" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 94.3574, 1.4415, 20.9036)
+
+[node name="HarmFog339" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 94.3574, 1.4415, 19.7158)
+
+[node name="HarmFog340" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 94.3574, 1.4415, 18.4875)
+
+[node name="HarmFog341" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 94.3574, 1.4415, 17.2712)
+
+[node name="HarmFog342" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 94.3574, 1.4415, 16.0833)
+
+[node name="HarmFog343" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 94.3574, 1.4415, 14.8404)
+
+[node name="HarmFog344" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 94.3574, 1.4415, 13.624)
+
+[node name="HarmFog345" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 94.3574, 1.4415, 12.4362)
+
+[node name="HarmFog346" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 94.3574, 1.4415, 11.2761)
+
+[node name="HarmFog347" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 94.3574, 1.4415, 10.0598)
+
+[node name="HarmFog348" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 94.3574, 1.4415, 8.87194)
+
+[node name="HarmFog349" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 92.9635, 1.4415, 8.87194)
+
+[node name="HarmFog350" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 92.9635, 1.4415, 22.12)
+
+[node name="HarmFog351" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 92.9635, 1.4415, 20.9036)
+
+[node name="HarmFog352" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 92.9635, 1.4415, 19.7158)
+
+[node name="HarmFog353" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 92.9635, 1.4415, 18.4875)
+
+[node name="HarmFog354" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 92.9635, 1.4415, 17.2712)
+
+[node name="HarmFog355" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 92.9635, 1.4415, 16.0833)
+
+[node name="HarmFog356" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 92.9635, 1.4415, 14.8404)
+
+[node name="HarmFog357" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 92.9635, 1.4415, 13.624)
+
+[node name="HarmFog358" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 92.9635, 1.4415, 12.4362)
+
+[node name="HarmFog359" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 92.9635, 1.4415, 11.2761)
+
+[node name="HarmFog360" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 92.9635, 1.4415, 10.0598)
+
+[node name="HarmFog361" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 92.9635, 1.4415, 8.87194)
+
+[node name="HarmFog362" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 91.7198, 1.4415, 8.87194)
+
+[node name="HarmFog363" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 91.7198, 1.4415, 22.12)
+
+[node name="HarmFog364" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 91.7198, 1.4415, 20.9036)
+
+[node name="HarmFog365" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 91.7198, 1.4415, 19.7158)
+
+[node name="HarmFog366" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 91.7198, 1.4415, 18.4875)
+
+[node name="HarmFog367" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 91.7198, 1.4415, 17.2712)
+
+[node name="HarmFog368" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 91.7198, 1.4415, 16.0833)
+
+[node name="HarmFog369" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 91.7198, 1.4415, 14.8404)
+
+[node name="HarmFog370" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 91.7198, 1.4415, 13.624)
+
+[node name="HarmFog371" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 91.7198, 1.4415, 12.4362)
+
+[node name="HarmFog372" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 91.7198, 1.4415, 11.2761)
+
+[node name="HarmFog373" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 91.7198, 1.4415, 10.0598)
+
+[node name="HarmFog374" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 91.7198, 1.4415, 8.87194)
+
+[node name="HarmFog375" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 90.5436, 1.4415, 8.87194)
+
+[node name="HarmFog376" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 90.5436, 1.4415, 22.12)
+
+[node name="HarmFog377" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 90.5436, 1.4415, 20.9036)
+
+[node name="HarmFog378" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 90.5436, 1.4415, 19.7158)
+
+[node name="HarmFog379" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 90.5436, 1.4415, 18.4875)
+
+[node name="HarmFog380" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 90.5436, 1.4415, 17.2712)
+
+[node name="HarmFog381" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 90.5436, 1.4415, 16.0833)
+
+[node name="HarmFog382" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 90.5436, 1.4415, 14.8404)
+
+[node name="HarmFog383" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 90.5436, 1.4415, 13.624)
+
+[node name="HarmFog384" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 90.5436, 1.4415, 12.4362)
+
+[node name="HarmFog385" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 90.5436, 1.4415, 11.2761)
+
+[node name="HarmFog386" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 90.5436, 1.4415, 10.0598)
+
+[node name="HarmFog387" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 90.5436, 1.4415, 8.87194)
+
+[node name="HarmFog388" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 89.2474, 1.4415, 8.87194)
+
+[node name="HarmFog389" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 89.2474, 1.4415, 22.12)
+
+[node name="HarmFog390" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 89.2474, 1.4415, 20.9036)
+
+[node name="HarmFog391" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 89.2474, 1.4415, 19.7158)
+
+[node name="HarmFog392" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 89.2474, 1.4415, 18.4875)
+
+[node name="HarmFog393" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 89.2474, 1.4415, 17.2712)
+
+[node name="HarmFog394" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 89.2474, 1.4415, 16.0833)
+
+[node name="HarmFog395" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 89.2474, 1.4415, 14.8404)
+
+[node name="HarmFog396" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 89.2474, 1.4415, 13.624)
+
+[node name="HarmFog397" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 89.2474, 1.4415, 12.4362)
+
+[node name="HarmFog398" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 89.2474, 1.4415, 11.2761)
+
+[node name="HarmFog399" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 89.2474, 1.4415, 10.0598)
+
+[node name="HarmFog400" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(0.13018, 0, 0, 0, 1, 0, 0, 0, 0.12089, 89.2474, 1.4415, 8.87194)
+
+[node name="HarmFog401" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 9.55746, 35.6216)
+
+[node name="HarmFog402" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 9.55746, 34.4052)
+
+[node name="HarmFog403" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 9.55746, 33.2174)
+
+[node name="HarmFog404" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 9.55746, 31.9892)
+
+[node name="HarmFog405" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 9.55746, 30.7728)
+
+[node name="HarmFog406" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 9.55746, 29.585)
+
+[node name="HarmFog407" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 9.55746, 28.3421)
+
+[node name="HarmFog408" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 9.55746, 27.1257)
+
+[node name="HarmFog409" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 9.55746, 25.9379)
+
+[node name="HarmFog410" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 9.55746, 24.7778)
+
+[node name="HarmFog411" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 9.55746, 23.5614)
+
+[node name="HarmFog412" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 9.55746, 22.3736)
+
+[node name="HarmFog413" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 10.9514, 22.3736)
+
+[node name="HarmFog414" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 10.9514, 35.6216)
+
+[node name="HarmFog415" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 10.9514, 34.4052)
+
+[node name="HarmFog416" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 10.9514, 33.2174)
+
+[node name="HarmFog417" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 10.9514, 31.9892)
+
+[node name="HarmFog418" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 10.9514, 30.7728)
+
+[node name="HarmFog419" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 10.9514, 29.585)
+
+[node name="HarmFog420" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 10.9514, 28.3421)
+
+[node name="HarmFog421" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 10.9514, 27.1257)
+
+[node name="HarmFog422" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 10.9514, 25.9379)
+
+[node name="HarmFog423" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 10.9514, 24.7778)
+
+[node name="HarmFog424" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 10.9514, 23.5614)
+
+[node name="HarmFog425" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 10.9514, 22.3736)
+
+[node name="HarmFog426" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 12.1951, 22.3736)
+
+[node name="HarmFog427" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 12.1951, 35.6216)
+
+[node name="HarmFog428" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 12.1951, 34.4052)
+
+[node name="HarmFog429" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 12.1951, 33.2174)
+
+[node name="HarmFog430" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 12.1951, 31.9892)
+
+[node name="HarmFog431" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 12.1951, 30.7728)
+
+[node name="HarmFog432" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 12.1951, 29.585)
+
+[node name="HarmFog433" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 12.1951, 28.3421)
+
+[node name="HarmFog434" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 12.1951, 27.1257)
+
+[node name="HarmFog435" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 12.1951, 25.9379)
+
+[node name="HarmFog436" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 12.1951, 24.7778)
+
+[node name="HarmFog437" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 12.1951, 23.5614)
+
+[node name="HarmFog438" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 12.1951, 22.3736)
+
+[node name="HarmFog439" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 13.3712, 22.3736)
+
+[node name="HarmFog440" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 13.3712, 35.6216)
+
+[node name="HarmFog441" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 13.3712, 34.4052)
+
+[node name="HarmFog442" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 13.3712, 33.2174)
+
+[node name="HarmFog443" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 13.3712, 31.9892)
+
+[node name="HarmFog444" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 13.3712, 30.7728)
+
+[node name="HarmFog445" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 13.3712, 29.585)
+
+[node name="HarmFog446" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 13.3712, 28.3421)
+
+[node name="HarmFog447" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 13.3712, 27.1257)
+
+[node name="HarmFog448" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 13.3712, 25.9379)
+
+[node name="HarmFog449" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 13.3712, 24.7778)
+
+[node name="HarmFog450" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 13.3712, 23.5614)
+
+[node name="HarmFog451" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 13.3712, 22.3736)
+
+[node name="HarmFog452" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 14.6675, 22.3736)
+
+[node name="HarmFog453" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 14.6675, 35.6216)
+
+[node name="HarmFog454" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 14.6675, 34.4052)
+
+[node name="HarmFog455" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 14.6675, 33.2174)
+
+[node name="HarmFog456" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 14.6675, 31.9892)
+
+[node name="HarmFog457" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 14.6675, 30.7728)
+
+[node name="HarmFog458" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 14.6675, 29.585)
+
+[node name="HarmFog459" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 14.6675, 28.3421)
+
+[node name="HarmFog460" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 14.6675, 27.1257)
+
+[node name="HarmFog461" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 14.6675, 25.9379)
+
+[node name="HarmFog462" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 14.6675, 24.7778)
+
+[node name="HarmFog463" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 14.6675, 23.5614)
+
+[node name="HarmFog464" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-5.69035e-09, 1, 0, -0.13018, -4.37114e-08, 0, 0, 0, 0.12089, 71.0873, 14.6675, 22.3736)
+
+[node name="HarmFog465" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 69.537, 1.48554, 37.6216)
+
+[node name="HarmFog466" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 69.537, 1.48554, 36.4052)
+
+[node name="HarmFog468" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 69.537, 1.48554, 33.9892)
+
+[node name="HarmFog469" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 69.537, 1.48554, 32.7728)
+
+[node name="HarmFog470" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 69.537, 1.48554, 31.585)
+
+[node name="HarmFog471" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 69.537, 1.48554, 30.3421)
+
+[node name="HarmFog472" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 69.537, 1.48554, 29.1257)
+
+[node name="HarmFog473" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 69.537, 1.48554, 27.9379)
+
+[node name="HarmFog474" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 69.537, 1.48554, 26.7778)
+
+[node name="HarmFog475" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 69.537, 1.48554, 25.5614)
+
+[node name="HarmFog476" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 69.537, 1.48554, 24.3736)
+
+[node name="HarmFog477" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 70.9309, 1.48554, 24.3736)
+
+[node name="HarmFog478" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 70.9309, 1.48554, 37.6216)
+
+[node name="HarmFog479" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 70.9309, 1.48554, 36.4052)
+
+[node name="HarmFog481" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 70.9309, 1.48554, 33.9892)
+
+[node name="HarmFog482" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 70.9309, 1.48554, 32.7728)
+
+[node name="HarmFog483" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 70.9309, 1.48554, 31.585)
+
+[node name="HarmFog484" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 70.9309, 1.48554, 30.3421)
+
+[node name="HarmFog485" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 70.9309, 1.48554, 29.1257)
+
+[node name="HarmFog486" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 70.9309, 1.48554, 27.9379)
+
+[node name="HarmFog487" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 70.9309, 1.48554, 26.7778)
+
+[node name="HarmFog488" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 70.9309, 1.48554, 25.5614)
+
+[node name="HarmFog489" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 70.9309, 1.48554, 24.3736)
+
+[node name="HarmFog490" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 72.1746, 1.48554, 24.3736)
+
+[node name="HarmFog491" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 72.1746, 1.48554, 37.6216)
+
+[node name="HarmFog492" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 72.1746, 1.48554, 36.4052)
+
+[node name="HarmFog494" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 72.1746, 1.48554, 33.9892)
+
+[node name="HarmFog495" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 72.1746, 1.48554, 32.7728)
+
+[node name="HarmFog496" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 72.1746, 1.48554, 31.585)
+
+[node name="HarmFog497" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 72.1746, 1.48554, 30.3421)
+
+[node name="HarmFog498" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 72.1746, 1.48554, 29.1257)
+
+[node name="HarmFog499" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 72.1746, 1.48554, 27.9379)
+
+[node name="HarmFog500" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 72.1746, 1.48554, 26.7778)
+
+[node name="HarmFog501" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 72.1746, 1.48554, 25.5614)
+
+[node name="HarmFog502" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 72.1746, 1.48554, 24.3736)
+
+[node name="HarmFog503" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 73.3508, 1.48554, 24.3736)
+
+[node name="HarmFog504" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 73.3508, 1.48554, 37.6216)
+
+[node name="HarmFog505" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 73.3508, 1.48554, 36.4052)
+
+[node name="HarmFog507" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 73.3508, 1.48554, 33.9892)
+
+[node name="HarmFog509" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 73.3508, 1.48554, 31.585)
+
+[node name="HarmFog510" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 73.3508, 1.48554, 30.3421)
+
+[node name="HarmFog511" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 73.3508, 1.48554, 29.1257)
+
+[node name="HarmFog512" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 73.3508, 1.48554, 27.9379)
+
+[node name="HarmFog513" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 73.3508, 1.48554, 26.7778)
+
+[node name="HarmFog514" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 73.3508, 1.48554, 25.5614)
+
+[node name="HarmFog515" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 73.3508, 1.48554, 24.3736)
+
+[node name="HarmFog516" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 74.647, 1.48554, 24.3736)
+
+[node name="HarmFog517" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 74.647, 1.48554, 37.6216)
+
+[node name="HarmFog518" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 74.647, 1.48554, 36.4052)
+
+[node name="HarmFog523" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 74.647, 1.48554, 30.3421)
+
+[node name="HarmFog524" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 74.647, 1.48554, 29.1257)
+
+[node name="HarmFog525" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 74.647, 1.48554, 27.9379)
+
+[node name="HarmFog526" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 74.647, 1.48554, 26.7778)
+
+[node name="HarmFog527" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 74.647, 1.48554, 25.5614)
+
+[node name="HarmFog528" parent="Harmful/Fogs" instance=ExtResource("21_pq162")]
+transform = Transform3D(-0.13018, -8.74228e-08, 0, 1.13807e-08, -1, 0, 0, 0, 0.12089, 74.647, 1.48554, 24.3736)
+
+[node name="Node3d" type="Node3D" parent="Harmful/Fogs"]
 
 [node name="Cannons" type="Node3D" parent="."]
 transform = Transform3D(1.00349, 0, 0, 0, 1.00349, 0, 0, 0, 1.00349, 11.2689, 2.3956, -85.7622)
@@ -905,3 +2393,4 @@ transform = Transform3D(-1.80073, 0, 0.870274, 0, 2, 0, -0.870274, 0, -1.80073, 
 [connection signal="toPerspective" from="Player" to="Player/CameraArm/PlayerCamera" method="_on_player_to_perspective"]
 [connection signal="toUp" from="Player" to="Player/CameraArm/PlayerCamera" method="_on_player_to_up"]
 [connection signal="timeout" from="Player/CameraArm/PlayerCamera/TwistedTimer" to="Player/CameraArm/PlayerCamera" method="_on_twisted_timer_timeout"]
+[connection signal="open" from="Other/Pedestal" to="Interactables/UpCannon" method="_on_pedestal_open"]

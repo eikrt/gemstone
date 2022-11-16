@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://iyp1klimirc4"]
 
-[ext_resource type="Material" path="res://material/objects/sandstone.tres" id="1_knhmo"]
+[ext_resource type="Material" uid="uid://bfjtgnolp5lwa" path="res://material/objects/sandstone.tres" id="1_knhmo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2sbxy"]
 

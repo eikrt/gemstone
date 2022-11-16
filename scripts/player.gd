@@ -118,7 +118,7 @@ func handle_input(delta):
 		if is_on_floor():
 			holdingItem = !holdingItem
 			if !holdingItem and itemInVicinity:
-				itemInVicinity.position = Vector3(position.x, position.y, position.z)
+				itemInVicinity.set_global_position(Vector3(get_global_position().x, get_global_position().y, get_global_position().z))
 				itemInVicinity.holded = holdingItem
 				emit_signal("setShader", "none")
 			if cannoned:
@@ -131,8 +131,8 @@ func handle_input(delta):
 		
 	if holdingItem and itemInVicinity:
 		itemInVicinity.holded = holdingItem
-		itemInVicinity.position = Vector3(position.x, position.y + 1, position.z)
-		emit_signal("setShader", "pixel")
+		itemInVicinity.set_global_position(Vector3(get_global_position().x, get_global_position().y + 1, get_global_position().z))
+		emit_signal("setShader", itemInVicinity.effectName)
 	cameraLookAt.x = lerp(cameraLookAt.x, position.x, 0.2)
 	cameraLookAt.z = lerp(cameraLookAt.z, position.z, 0.2)
 	cameraLookAt.y = lerp(cameraLookAt.y + cameraSetY, position.y, 0.2)
@@ -233,7 +233,7 @@ func conduct_ability(ability):
 			backjump()
 func backjump():
 	aplayer.play("BackFlipAction")
-	velocity.y += BACKJUMP_SPEED
+	velocity.y = BACKJUMP_SPEED
 func forwardjump():
 	aplayer.play("FrontJumpAction")
 	velocity.x += shootDir.x * FORWARD_JUMP_SPEED
@@ -320,7 +320,10 @@ func _on_trigger_area_area_entered(area):
 		launchSpeed = area.launchSpeed
 	if area.get_class() == "UpCannon":
 		upCannoned = true
-		launchSpeed = area.launchSpeed
+		if area.active:
+			launchSpeed = area.launchSpeed
+		else:
+			launchSpeed = 0
 		up_launch()
 	if area.get_class() == "Moon":
 		Globaldata.playerMoons += 1
@@ -364,7 +367,6 @@ func _on_trigger_area_body_exited(body):
 func _on_trigger_area_area_exited(area):
 	if area.get_class() == "EffectItem":
 		itemInVicinity = null
-
 	if area.get_class() == "Checkpoint":
 		Globaldata.checkpointPosition = area.position
 		Globaldata.checkpointOrientation = area.orientation
