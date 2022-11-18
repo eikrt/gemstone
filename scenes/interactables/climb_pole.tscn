@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://o3hl742tsnwl"]
+
+[ext_resource type="Script" path="res://scripts/climb_pole.gd" id="1_ux01j"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_c3njj"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 40.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ug7w6"]
+size = Vector3(0.370707, 39.8277, 0.32714)
+
+[node name="ClimbPole" type="Area3D"]
+script = ExtResource("1_ux01j")
+
+[node name="MeshInstance3d" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_c3njj")
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ug7w6")

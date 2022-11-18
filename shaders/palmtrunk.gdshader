@@ -7,7 +7,6 @@ float random (vec2 uv) {
 }
 void vertex() {
 	VERTEX.y += (sin(TIME + VERTEX.x)) * distance(vec2(0.0,0.0), VERTEX.xz) / 64.0;
-	VERTEX.x += (sin(TIME)) * distance(vec2(0.0,0.0), VERTEX.xy) / 90.0;
 }
 
 

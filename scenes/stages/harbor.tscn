@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://dt6o2hiuk8lec"]
+[gd_scene load_steps=52 format=3 uid="uid://dt6o2hiuk8lec"]
 
 [ext_resource type="PackedScene" uid="uid://dcryfcfk5nnmp" path="res://scenes/entities/player.tscn" id="1_bs4ur"]
 [ext_resource type="Script" path="res://scripts/CameraArm.gd" id="2_qlby7"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cmpv4mamk8dru" path="res://scenes/interactables/upcannon.tscn" id="8_2ujrc"]
 [ext_resource type="PackedScene" uid="uid://k7hs6n7bavaw" path="res://scenes/collectibles/Token.tscn" id="8_r5eyu"]
 [ext_resource type="PackedScene" uid="uid://bncnletwnvibx" path="res://scenes/interactables/pedestal.tscn" id="9_101il"]
+[ext_resource type="PackedScene" uid="uid://o3hl742tsnwl" path="res://scenes/interactables/climb_pole.tscn" id="10_1rdut"]
 [ext_resource type="PackedScene" uid="uid://cnduifhyx160k" path="res://scenes/platforms/boat.tscn" id="10_wnd06"]
 [ext_resource type="PackedScene" uid="uid://dj6e303a7xcx" path="res://scenes/collectibles/EffectItem.tscn" id="10_ywmhg"]
 [ext_resource type="PackedScene" uid="uid://bdxt1v20p12qp" path="res://scenes/platforms/pier.tscn" id="11_cys7g"]
@@ -250,7 +251,7 @@ _data = {
 [node name="Root" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_bs4ur")]
-transform = Transform3D(1.00349, -0.00218927, 0, 0.00218927, 1.00349, 0, 0, 0, 1.00349, 48.338, 22.573, 20.5476)
+transform = Transform3D(1.00349, -0.00218927, 0, 0.00218927, 1.00349, 0, 0, 0, 1.00349, 76.7877, 22.573, -37.1462)
 weight = 1.5
 
 [node name="CameraArm" type="SpringArm3D" parent="Player"]
@@ -437,13 +438,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8324, 106.429, -1.47998)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.9233, 15.6178, 4.57229)
 launchSpeed = 32
 
+[node name="ClimbPole" parent="Interactables" instance=ExtResource("10_1rdut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.5612, 17.2661, -41.3095)
+
 [node name="Tokens" type="Node3D" parent="."]
 
 [node name="Token" parent="Tokens" instance=ExtResource("8_r5eyu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.436, 3.00601, 30.6253)
 
 [node name="Token3" parent="Tokens" instance=ExtResource("8_r5eyu")]
-transform = Transform3D(0.999278, 0, 0.0379867, 0, 1, 0, -0.0379867, 0, 0.999278, 50.4935, 41.6074, -12.1282)
+transform = Transform3D(0.999278, 0, 0.0379867, 0, 1, 0, -0.0379867, 0, 0.999278, 50.4935, 40.4328, -12.1282)
 
 [node name="Token2" parent="Tokens" instance=ExtResource("8_r5eyu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.0958, 84.9907, 9.59444)
@@ -778,7 +782,10 @@ transform = Transform3D(-3.80753e-08, 0, 1, 0.435531, 0.866025, 2.18557e-08, -0.
 transform = Transform3D(-4.37114e-08, 0, 0.758996, -0.427989, 0.800637, -1.41993e-08, -0.903784, -0.379143, -2.99847e-08, 57.5313, 10.9356, 33.3692)
 
 [node name="SmallRamp9" parent="Platforms/Middle1" instance=ExtResource("15_iqr43")]
-transform = Transform3D(-4.37114e-08, -4.51745e-16, 0.758996, 0.0117283, 0.885811, 3.8913e-10, -0.999931, 0.0103902, -3.31746e-08, 70.4472, 17.1931, 3.37245)
+transform = Transform3D(-1.23944e-08, -1.89844e-14, 0.378456, 0.00332556, 0.880602, 1.94028e-10, -0.28353, 0.0103287, -1.65417e-08, 70.4472, 17.1931, 3.37245)
+
+[node name="SmallRamp18" parent="Platforms/Middle1" instance=ExtResource("15_iqr43")]
+transform = Transform3D(0.00874461, 1.57951, -1.03185e-07, 3.29034e-08, -6.90599e-08, -2.38862, -0.745547, 0.0185263, -1.06628e-07, 73.178, 28.9897, -50.2558)
 
 [node name="SmallRamp10" parent="Platforms/Middle1" instance=ExtResource("15_iqr43")]
 transform = Transform3D(0.439807, -0.0103215, -2.28267e-12, 0.00515854, 0.879991, 3.89123e-10, -1.32197e-12, -4.51187e-10, 0.758996, 70.4472, 17.1931, 27.1282)
@@ -2386,6 +2393,9 @@ transform = Transform3D(-1.03274, 0, 1.71273, 0, 2, 0, -1.71273, 0, -1.03274, -9
 
 [node name="Cliff7" parent="Scenery" instance=ExtResource("22_1cu1y")]
 transform = Transform3D(-1.80073, 0, 0.870274, 0, 2, 0, -0.870274, 0, -1.80073, -124.825, 0, -105.342)
+
+[node name="Node3d" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.68902, -7.91313, -5.26099)
 
 [connection signal="setSecondaryShader" from="Player" to="Player/CameraArm/PlayerCamera" method="_on_player_set_secondary_shader"]
 [connection signal="setShader" from="Player" to="Player/CameraArm/PlayerCamera" method="_on_player_set_shader"]

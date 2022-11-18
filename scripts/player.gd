@@ -9,6 +9,8 @@ signal setSecondaryShader(shader)
 const FORWARD_JUMP_SPEED: float = 8.0
 const FORWARD_JUMP_SPEED_Y: float = 3.0
 const BACKJUMP_SPEED: float = 12.0
+const CLIMB_SPEED: float = 8.0
+const CLIMB_ANGLE_STEP: float = 0.01
 @onready var blinkSprite = $BlinkNode/BlinkSprite
 @onready var currentSprite = get_node("BackSprite")
 @onready var Water = preload("res://scenes/scenery/water.tscn")
@@ -24,6 +26,10 @@ var skills = {"blink": "locked", "forwardjump": "ready", "backjump": "ready"}
 var cannoned = false
 var upCannoned = false
 var launchSpeed = 100
+var climbing = false
+var targetPole = null
+var climbAngle = 0.0
+var detach = false
 @onready var aplayer = $PlayerVisual.get_node("AnimationPlayer")
 var orthoDir = "front"
 func get_class():
@@ -42,6 +48,8 @@ func jump():
 	aplayer.play("JumpAction")
 	velocity.y = JUMP_VELOCITY
 	resetStatuses()
+	detach = true
+	$DetachTimer.start()
 func handle_input(delta):
 		# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -49,19 +57,32 @@ func handle_input(delta):
 	# Get the input direction and handle the movement/deceleration.
 	var input = Vector3()
 	projectileSpawnPosition = $ProjectileSpawnNode.position
+	if climbing && targetPole && !detach:
+		velocity.x = 0
+		velocity.z = 0
+		set_global_position(Vector3(targetPole.get_global_position().x, get_global_position().y, targetPole.get_global_position().z))
+		#print(position.x)
+		#print(targetPole.position.z)
+		#position.x = targetPole.position.x
 	if Input.is_action_pressed("w"):
-		if orientation == "3d" || orientation == "up":
+		if climbing and targetPole:
+			velocity.y = CLIMB_SPEED
+		elif orientation == "3d" || orientation == "up":
 			input.z -= 1
-		
-		if orientation == "3d":
-			pass
+
+			
 	if Input.is_action_pressed("s"):
-		if orientation == "3d"  || orientation == "up":
+		if climbing:
+			velocity.y = -CLIMB_SPEED
+		elif orientation == "3d"  || orientation == "up":
 			input.z += 1
-		if orientation == "3d":
-			pass
+	if climbAngle > 2*PI:
+		climbAngle = 0.0
 	if Input.is_action_pressed("a"):
-		if orientation == "3d"  || orientation == "up" :
+		if climbing && targetPole:
+			rotation.y = lerp(rotation.y, rotation.y - 1.0, 0.03)
+			
+		elif orientation == "3d"  || orientation == "up" :
 			input.x -= 1
 		if orientation == "xlocked":
 			if orthoDir == "front":
@@ -88,7 +109,10 @@ func handle_input(delta):
 			else:
 				pass
 	if Input.is_action_pressed("d"):
-		if orientation == "3d"  || orientation == "up":
+		if climbing && targetPole:
+			rotation.y = lerp(rotation.y, rotation.y + 1.0, 0.03)
+			#position = targetPole.position + (position - targetPole.position).rotated(Vector3(0.0,1.0,0.0), position.angle_to(targetPole.position))
+		elif orientation == "3d"  || orientation == "up":
 			input.x += 1
 		if orientation == "xlocked":
 			if orthoDir == "front":
@@ -152,6 +176,10 @@ func handle_input(delta):
 		aplayer.stop(true)
 		aplayer.stop()
 		aplayer.seek(0.2)
+	if !Input.is_action_pressed("w") && !Input.is_action_pressed("s"):
+		if climbing:
+			velocity.y = 0
+			climbAngle = 0.0
 	if ((velocity.x < -0.01 || velocity.x > 0.01) || (velocity.z < -0.01 || velocity.z > 0.01)) && is_on_floor():
 		if not aplayer.is_playing():
 			aplayer.play("WalkAction")
@@ -234,11 +262,15 @@ func conduct_ability(ability):
 func backjump():
 	aplayer.play("BackFlipAction")
 	velocity.y = BACKJUMP_SPEED
+	detach = true
+	$DetachTimer.start()
 func forwardjump():
 	aplayer.play("FrontJumpAction")
 	velocity.x += shootDir.x * FORWARD_JUMP_SPEED
 	velocity.z += shootDir.z * FORWARD_JUMP_SPEED
 	velocity.y += FORWARD_JUMP_SPEED_Y
+	detach = true
+	$DetachTimer.start()
 func blink():
 	set_global_position(blinkSprite.get_global_position())
 func perish():
@@ -292,7 +324,8 @@ func _physics_process(delta):
 	Globaldata.playerGPosition = get_global_position()
 
 	if not is_on_floor():
-		velocity.y -= weight * gravity * delta
+		if not climbing:
+			velocity.y -= weight * gravity * delta
 		
 	Globaldata.playerOrientation = orientation
 	Globaldata.cameraLookAt = cameraLookAt
@@ -355,13 +388,11 @@ func _on_trigger_area_area_entered(area):
 	if area.get_class() == "DistortSquare":
 		emit_signal("setShader", "upsidedown")
 		$DistortionTimer.start()
-	
-	
-		
+	if area.get_class() == "ClimbPole":
+		climbing = true
+		targetPole = area
 
 
-func _on_trigger_area_body_exited(body):
-	pass
 
 
 func _on_trigger_area_area_exited(area):
@@ -374,6 +405,8 @@ func _on_trigger_area_area_exited(area):
 		cannoned = false
 	if area.get_class() == "Water":
 		emit_signal("setSecondaryShader", "exitedUnderWater")
+	if area.get_class() == "ClimbPole":
+		climbing = false
 
 
 
@@ -397,3 +430,7 @@ func _on_backjump_timer_timeout():
 
 func _on_distortion_timer_timeout():
 	emit_signal("setShader", "none")
+
+
+func _on_detach_timer_timeout():
+	detach = false
