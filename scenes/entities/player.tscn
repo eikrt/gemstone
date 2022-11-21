@@ -176,6 +176,7 @@ wait_time = 5.0
 one_shot = true
 
 [node name="DetachTimer" type="Timer" parent="."]
+wait_time = 0.4
 
 [connection signal="area_entered" from="TriggerArea" to="." method="_on_trigger_area_area_entered"]
 [connection signal="area_exited" from="TriggerArea" to="." method="_on_trigger_area_area_exited"]

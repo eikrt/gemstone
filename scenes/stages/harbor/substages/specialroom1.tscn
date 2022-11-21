@@ -25,13 +25,13 @@ subdivide_depth = 32
 [sub_resource type="BoxShape3D" id="BoxShape3D_5hgi0"]
 size = Vector3(33.0733, 1.38941, 31.2245)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5mpr5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ymkdl"]
 render_priority = 0
 shader = ExtResource("3_5xp6y")
 shader_parameter/tex = ExtResource("4_c3jd4")
 
 [sub_resource type="BoxMesh" id="BoxMesh_qaao3"]
-material = SubResource("ShaderMaterial_5mpr5")
+material = SubResource("ShaderMaterial_ymkdl")
 size = Vector3(4, 0.1, 2)
 subdivide_width = 4
 subdivide_height = 4

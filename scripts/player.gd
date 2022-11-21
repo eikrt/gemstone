@@ -11,6 +11,9 @@ const FORWARD_JUMP_SPEED_Y: float = 3.0
 const BACKJUMP_SPEED: float = 12.0
 const CLIMB_SPEED: float = 8.0
 const CLIMB_ANGLE_STEP: float = 0.01
+const WALL_JUMP_SPEED: float = 10.0
+const DEFAULT_WEIGHT: float = 1.5
+const SLOPE_WEIGHT:float  = 1.5 
 @onready var blinkSprite = $BlinkNode/BlinkSprite
 @onready var currentSprite = get_node("BackSprite")
 @onready var Water = preload("res://scenes/scenery/water.tscn")
@@ -30,6 +33,8 @@ var climbing = false
 var targetPole = null
 var climbAngle = 0.0
 var detach = false
+var wall_factor = 1.0
+var beforeImpactVel = Vector3()
 @onready var aplayer = $PlayerVisual.get_node("AnimationPlayer")
 var orthoDir = "front"
 func get_class():
@@ -47,12 +52,14 @@ func jump():
 	aplayer.advance(100)
 	aplayer.play("JumpAction")
 	velocity.y = JUMP_VELOCITY
+	if is_on_wall_only():
+		velocity += get_wall_normal().rotated(Vector3(0.0,1.0,0.0), 0.0) * WALL_JUMP_SPEED
 	resetStatuses()
 	detach = true
 	$DetachTimer.start()
 func handle_input(delta):
 		# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("ui_accept") and (is_on_floor() or is_on_wall_only()):
 		jump()
 	# Get the input direction and handle the movement/deceleration.
 	var input = Vector3()
@@ -318,14 +325,21 @@ func change_orientation(o, dir):
 func _physics_process(delta):
 	# Add the gravity.
 	process_rays(delta)
+	if is_on_wall_only():
+		wall_factor = 0.8
+		velocity.y = lerp(velocity.y, 0.0, 0.1)
+		velocity.x = 0.0
+		velocity.z = 0.0
+	else:
+		wall_factor = 1.0
+		beforeImpactVel = Vector3(velocity.x, velocity.y, velocity.z)
 	handle_input(delta)
-
 	Globaldata.playerPosition = position
 	Globaldata.playerGPosition = get_global_position()
 
 	if not is_on_floor():
 		if not climbing:
-			velocity.y -= weight * gravity * delta
+			velocity.y -= wall_factor * weight * gravity * delta
 		
 	Globaldata.playerOrientation = orientation
 	Globaldata.cameraLookAt = cameraLookAt
@@ -338,10 +352,19 @@ func _physics_process(delta):
 func _process(delta):
 	for skill in skills:
 		if skills[skill] == "pending":
-			if is_on_floor():
+			if is_on_floor() or is_on_wall_only() or climbing:
 				skills[skill] = "ready"
 	if position.y < -150:
 		pass
+	if get_floor_normal().y < 0.95:
+		velocity.x = lerp(velocity.x, velocity.x + get_floor_normal().x * 10, 0.4)
+		velocity.z = lerp(velocity.z, velocity.z + get_floor_normal().z * 10, 0.4)
+		if get_last_slide_collision():
+			#position.y = get_last_slide_collision().get_position().y
+			pass
+		weight = SLOPE_WEIGHT
+	else:
+		weight = DEFAULT_WEIGHT
 		#perish()
 func _on_trigger_area_area_entered(area):
 	if area.get_class() == "Harming":
@@ -360,6 +383,9 @@ func _on_trigger_area_area_entered(area):
 		up_launch()
 	if area.get_class() == "Moon":
 		Globaldata.playerMoons += 1
+		area.queue_free()
+	if area.get_class() == "Feather":
+		Globaldata.playerFeathers += 1
 		area.queue_free()
 	if area.get_class() == "Water":
 		if (area as Water).toxic:
@@ -389,8 +415,10 @@ func _on_trigger_area_area_entered(area):
 		emit_signal("setShader", "upsidedown")
 		$DistortionTimer.start()
 	if area.get_class() == "ClimbPole":
-		climbing = true
+		startClimbing()
 		targetPole = area
+func startClimbing():
+	climbing = true
 
 
 

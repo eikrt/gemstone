@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnkqn5013lahx"]
+
+[ext_resource type="Shader" path="res://shaders/carpet.gdshader" id="1_dvn4a"]
+[ext_resource type="Texture2D" uid="uid://mmvmtrndnige" path="res://material/objects/carpet2_albedo.png" id="2_q2j60"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5mpr5"]
+render_priority = 0
+shader = ExtResource("1_dvn4a")
+shader_parameter/tex = ExtResource("2_q2j60")
+
+[sub_resource type="BoxMesh" id="BoxMesh_dck0r"]
+material = SubResource("ShaderMaterial_5mpr5")
+size = Vector3(4, 0.1, 2)
+subdivide_width = 4
+subdivide_height = 4
+subdivide_depth = 4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j54wf"]
+size = Vector3(19.4655, 1, 20.3495)
+
+[node name="Node3d" type="StaticBody3D"]
+
+[node name="MeshInstance3d" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_dck0r")
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_j54wf")
