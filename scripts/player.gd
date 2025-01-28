@@ -37,7 +37,7 @@ var wall_factor = 1.0
 var beforeImpactVel = Vector3()
 @onready var aplayer = $PlayerVisual.get_node("AnimationPlayer")
 var orthoDir = "front"
-func get_class():
+func _get_class():
 	return "Player"
 func shoot():
 	var projectile = projectileScene.instantiate()

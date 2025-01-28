@@ -5,7 +5,7 @@ extends Area3D
 var holded = false
 @onready var initialPos = get_global_position()
 @export var effectName = "pixel"
-func get_class():
+func _get_class():
 	return "EffectItem"
 func _ready():
 

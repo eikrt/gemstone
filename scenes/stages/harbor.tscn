@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://dt6o2hiuk8lec"]
+[gd_scene load_steps=59 format=3 uid="uid://dt6o2hiuk8lec"]
 
 [ext_resource type="PackedScene" uid="uid://dcryfcfk5nnmp" path="res://scenes/entities/player.tscn" id="1_bs4ur"]
 [ext_resource type="Script" path="res://scripts/CameraArm.gd" id="2_qlby7"]
@@ -27,7 +27,6 @@
 [ext_resource type="PackedScene" uid="uid://b3x6nfy4hqqo4" path="res://scenes/platforms/small_ramp.tscn" id="15_iqr43"]
 [ext_resource type="PackedScene" uid="uid://c75x886y64c8f" path="res://scenes/harmful/harm_fog.tscn" id="15_rqu6r"]
 [ext_resource type="PackedScene" uid="uid://cxhcno1v1gn51" path="res://scenes/platforms/narrow_path.tscn" id="16_q2bb5"]
-[ext_resource type="PackedScene" uid="uid://blg3cwc28qwgk" path="res://scenes/stages/harbor/substages/specialroom1.tscn" id="17_i2bu6"]
 [ext_resource type="PackedScene" uid="uid://b2n22mlntteyb" path="res://scenes/platforms/HarborBlock.tscn" id="19_iq3v3"]
 [ext_resource type="PackedScene" uid="uid://b4l4i1t7oftbk" path="res://scenes/environment/emerging_house_1.tscn" id="20_hoh68"]
 [ext_resource type="PackedScene" uid="uid://enj6tn6ma26h" path="res://scenes/scenery/undulating_dunes.tscn" id="21_pgoig"]
@@ -37,7 +36,6 @@
 [ext_resource type="PackedScene" uid="uid://be26atksuon1o" path="res://scenes/environment/onionhouse.tscn" id="22_hhrij"]
 [ext_resource type="PackedScene" uid="uid://py8fu3qqbfp4" path="res://scenes/environment/onionhouse2.tscn" id="23_ns4ow"]
 [ext_resource type="PackedScene" uid="uid://clcenbauwilmy" path="res://scenes/collectibles/feather.tscn" id="33_nbkcb"]
-[ext_resource type="PackedScene" uid="uid://locbkpaa8v3m" path="res://scenes/stages/harbor/substages/specialroom2.tscn" id="34_urepu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ghag5"]
 sky_top_color = Color(0.654902, 0.360784, 0.164706, 1)
@@ -61,9 +59,6 @@ adjustment_enabled = true
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lmnju"]
 render_priority = 0
 shader = ExtResource("4_2fn3j")
-shader_parameter/pixel_size = null
-shader_parameter/progress = null
-shader_parameter/scale = null
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_v3p0t"]
 material = SubResource("ShaderMaterial_lmnju")
@@ -785,10 +780,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.9, 0.703541, -4.67865)
 transform = Transform3D(0.99999, 0, 0.00455529, 0, 1, 0, -0.00455529, 0, 0.99999, 98.9987, -4.62908, -55.2782)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Houses/EmergingHouse1"]
-autoplay = "New Anim"
 libraries = {
 "": SubResource("AnimationLibrary_h44yt")
 }
+autoplay = "New Anim"
 
 [node name="Port" parent="Platforms/Houses/EmergingHouse1" instance=ExtResource("7_7rsbj")]
 transform = Transform3D(2.71012, 0, 0, 0, -1.23755e-07, 1, 0, -2.83119, -4.37114e-08, 0, 0.855734, 0)
@@ -811,10 +806,10 @@ transform = Transform3D(-0.177411, 0, -0.984137, 0, 1, 0, 0.984137, 0, -0.177411
 transform = Transform3D(-0.810655, 0, -0.585524, 0, 1, 0, 0.585524, 0, -0.810655, 104.258, -0.2172, 128.555)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Boats/Boat"]
-autoplay = "New Anim"
 libraries = {
 "": SubResource("AnimationLibrary_inh0x")
 }
+autoplay = "New Anim"
 
 [node name="Middle1" type="Node3D" parent="Platforms"]
 
@@ -891,28 +886,28 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -67.3226, 1.0189, -17.1863)
 transform = Transform3D(1.49998, -1.07816e-06, -0.00704379, 1.07288e-06, 1.5, -1.12555e-06, 0.00704379, 1.1205e-06, 1.49998, 74.6042, 2.65863, 55.5257)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Harmful/JumpBall"]
-autoplay = "New Anim"
 libraries = {
 "": SubResource("AnimationLibrary_gi5pc")
 }
+autoplay = "New Anim"
 
 [node name="JumpBall2" parent="Harmful" instance=ExtResource("13_vhv31")]
 transform = Transform3D(1.49998, -1.07816e-06, -0.00704379, 1.07288e-06, 1.5, -1.12555e-06, 0.00704379, 1.1205e-06, 1.49998, 82.5031, 2.65863, 49.1341)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Harmful/JumpBall2"]
-autoplay = "New Anim"
 libraries = {
 "": SubResource("AnimationLibrary_0fwcc")
 }
+autoplay = "New Anim"
 
 [node name="JumpBall3" parent="Harmful" instance=ExtResource("13_vhv31")]
 transform = Transform3D(1.49998, -1.07816e-06, -0.00704379, 1.07288e-06, 1.5, -1.12555e-06, 0.00704379, 1.1205e-06, 1.49998, 79.4402, 3.36408, 13.0112)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Harmful/JumpBall3"]
-autoplay = "New Anim"
 libraries = {
 "": SubResource("AnimationLibrary_l55ka")
 }
+autoplay = "New Anim"
 
 [node name="Fogs" type="Node3D" parent="Harmful"]
 
@@ -2409,14 +2404,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.1885, 2.97224, 86.8399)
 [node name="TokenShard2" parent="TokenShard" instance=ExtResource("11_is7ae")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.985, 1.18905, 126.229)
 
-[node name="SpecialRooms" type="Node3D" parent="."]
-
-[node name="HarborSpecialRoom1" parent="SpecialRooms" instance=ExtResource("17_i2bu6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.4682, -208.556, 94.6504)
-
-[node name="HarborSpecialRoom2" parent="SpecialRooms" instance=ExtResource("34_urepu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.85288, -404.334, 25.5178)
-
 [node name="Scenery" type="Node3D" parent="."]
 
 [node name="UndulatingDunes" parent="Scenery" instance=ExtResource("21_pgoig")]
@@ -2472,10 +2459,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.6942, 27.1014, -40.1519)
 [node name="Feather4" parent="Feathers" instance=ExtResource("33_nbkcb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.6185, 26.2427, -50.1619)
 
-[connection signal="setSecondaryShader" from="Player" to="Player/CameraArm/PlayerCamera" method="_on_player_set_secondary_shader"]
-[connection signal="setShader" from="Player" to="Player/CameraArm/PlayerCamera" method="_on_player_set_shader"]
-[connection signal="toOrtho" from="Player" to="Player/CameraArm/PlayerCamera" method="_on_player_to_ortho"]
-[connection signal="toPerspective" from="Player" to="Player/CameraArm/PlayerCamera" method="_on_player_to_perspective"]
-[connection signal="toUp" from="Player" to="Player/CameraArm/PlayerCamera" method="_on_player_to_up"]
 [connection signal="timeout" from="Player/CameraArm/PlayerCamera/TwistedTimer" to="Player/CameraArm/PlayerCamera" method="_on_twisted_timer_timeout"]
 [connection signal="open" from="Other/Pedestal" to="Interactables/UpCannon" method="_on_pedestal_open"]

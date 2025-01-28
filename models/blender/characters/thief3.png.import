@@ -4,23 +4,22 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bl0x4kvk5bk4l"
 path.s3tc="res://.godot/imported/thief3.png-6c026eeca6fc53b36101aad2b2cbbcaf.s3tc.ctex"
-path.etc2="res://.godot/imported/thief3.png-6c026eeca6fc53b36101aad2b2cbbcaf.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc", "etc2"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://models/blender/characters/thief3.png"
-dest_files=["res://.godot/imported/thief3.png-6c026eeca6fc53b36101aad2b2cbbcaf.s3tc.ctex", "res://.godot/imported/thief3.png-6c026eeca6fc53b36101aad2b2cbbcaf.etc2.ctex"]
+dest_files=["res://.godot/imported/thief3.png-6c026eeca6fc53b36101aad2b2cbbcaf.s3tc.ctex"]
 
 [params]
 
 compress/mode=2
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true

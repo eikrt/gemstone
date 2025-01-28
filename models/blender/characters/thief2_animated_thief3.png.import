@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://barg0iek7ixur"
-path.s3tc="res://.godot/imported/goldenwall_albedo.png-9c947108731982c2c7f0ebed6bc29749.s3tc.ctex"
+uid="uid://b4lmsjaup6kiw"
+path.s3tc="res://.godot/imported/thief2_animated_thief3.png-ffe0b5dc97597ff37bda00a5cd9adddc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "bb86118f9bcc6092dbb2299689318adb"
+}
 
 [deps]
 
-source_file="res://material/objects/goldenwall_albedo.png"
-dest_files=["res://.godot/imported/goldenwall_albedo.png-9c947108731982c2c7f0ebed6bc29749.s3tc.ctex"]
+source_file="res://models/blender/characters/thief2_animated_thief3.png"
+dest_files=["res://.godot/imported/thief2_animated_thief3.png-ffe0b5dc97597ff37bda00a5cd9adddc.s3tc.ctex"]
 
 [params]
 

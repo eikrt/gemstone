@@ -6,7 +6,7 @@ extends Area3D
 @export var active = true
 @onready var cannonShader = preload("res://shaders/cannon.gdshader")
 var cannonMat = ShaderMaterial.new()
-func get_class():
+func _get_class():
 	return "UpCannon"
 func _ready():
 	cannonMat.shader = cannonShader

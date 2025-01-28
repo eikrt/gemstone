@@ -3,7 +3,7 @@ extends Node3D
 @export var active = false
 @export var orientation = "3d"
 # Called when the node enters the scene tree for the first time.
-func get_class():
+func _get_class():
 	return "Checkpoint"
 func _ready():
 	pass # Replace with function body.

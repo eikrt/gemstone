@@ -10,7 +10,7 @@ class_name Water
 var toxicMat = ShaderMaterial.new()
 var normalMat = ShaderMaterial.new()
 @onready var twistedTimer = get_node("TwistedTimer")
-func get_class():
+func _get_class():
 	return "Water"
 func _ready():
 	toxicMat.shader = toxicShader
